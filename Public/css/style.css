@@ -1,0 +1,119 @@
+html,
+body {
+  height: 100%;
+}
+
+.page-title {
+  padding: 5rem 0 3rem 0;
+  margin: 0;
+}
+
+.page-subtitle {
+  margin: 2rem 0 2rem 0;
+}
+
+.page-txt {
+  margin: 2rem 0 5rem 0;
+}
+
+.page-footer {
+  padding-top: 0;
+}
+
+/*HOME*/
+.iris {
+  background-image: url("../img/home-img.jpg");
+  background-repeat: no-repeat;
+  height: 120vh;
+  background-size: cover;
+  background-position: center;
+}
+.home-container {
+  padding: 5rem 15rem 17rem 15rem;
+}
+
+.home-page-title {
+  margin: 0rem 0 3rem 0;
+}
+
+/*DISCOVER & COMMENTS*/
+
+.pages-background {
+  background-image: url("../img/pages-background.jpg");
+  background-repeat: no-repeat;
+  height: auto;
+  background-size: cover;
+  background-position: center;
+}
+
+.discover-container {
+  padding: 2rem 0 2rem 0;
+}
+
+.discover-div {
+  padding-bottom: 2rem;
+}
+
+.discover-txt {
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+/*PLAY*/
+#play-carousel {
+  margin-bottom: 250px;
+}
+
+/*COMMENTS*/
+#comm_cards {
+  opacity: 0.7;
+}
+
+/*NOTATION PAR ETOILES*/
+.rating-stars ul {
+  list-style-type: none;
+  padding: 0;
+
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.rating-stars ul > li.star {
+  display: inline-block;
+}
+
+/* Etoiles de base */
+.rating-stars ul > li.star > i.fa {
+  font-size: 1.5em; /* Change the size of the stars */
+  color: #ccc; /* Color on idle state */
+}
+
+/* Etoiles au survol */
+.rating-stars ul > li.star.hover > i.fa {
+  color: #ffcc36;
+}
+
+/* Etoiles sélectionnées */
+.rating-stars ul > li.star.selected > i.fa {
+  color: #ff912c;
+}
+
+/*ENIGMAS*/
+.enigmas-background {
+  background-color: #fafafa;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+}
+
+.enigmas-title {
+  margin: 0;
+  padding: 4rem 0 4rem 0;
+}
+
+.enigmas-subtitle {
+  text-align: justify;
+  margin-bottom: 5rem;
+}
