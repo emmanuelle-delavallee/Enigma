@@ -107,4 +107,4 @@ if ($checkIfAdmin == 1) {
 </div>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('Public/template/template.php'); ?>
+<?php require('View/template/template.php'); ?>
