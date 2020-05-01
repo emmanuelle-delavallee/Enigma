@@ -58,7 +58,7 @@ if (!isset($_SESSION['admin'])) {
                 <img src="Public/img/home-img.jpg">
             </div>
             <a href="#user"><img class="circle" src="Public/img/2.jpg"></a>
-            <a href="#name"><span class="white-text name">Bonjour <?= $_SESSION['username'] ?>,</span></a>
+            <a href="#name"><span class="white-text name">Bonjour<?= '' . $_SESSION['username'] ?>,</span></a>
             <p class="white-text">Prêt·e pour une nouvelle aventure ?</p>
         </div>
     </li>
