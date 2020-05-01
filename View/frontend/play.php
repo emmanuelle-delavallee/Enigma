@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<h2 class="center-align page-title">Les énigmes</h2>
+<h2 class="center-align page-title">Les aventures</h2>
 
 <div class="carousel carousel-slider" id="play-carousel">
     <a class="carousel-item" href="#one!"><img src="Public/img/lucky-luke-home.png"></a>
