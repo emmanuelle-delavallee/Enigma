@@ -14,7 +14,7 @@
             </ul>
         </div>
         <?php
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['submit3'])) {
 
             // Trim supprime l'espace avant le mot 
             $reponse = htmlspecialchars(trim($_POST['reponse']));
@@ -49,7 +49,7 @@
             }
         }
         ?>
-        <h5 class="center">Vous jouez avec Jolly Jumper aux echecs, quand vous remarquez qu'il vous tend une énigme pendant la partie, trouverez-vous la réponse ?</h5>
+        <h5 class="center">Vous vous retrouvez face aux Daltons, prêt à en découdre que faites-vous ?</h5>
 
 
         <!-- MODAL D'AIDE-->
@@ -92,24 +92,37 @@
 
         <!-- IMAGE-->
         <div class="col s12 m12 l10 center">
-            <img src="Public/img/lucky_luke/echec.png" alt="">
+            <img src="Public/img/lucky_luke/LuckyDuel.jpg" alt="">
         </div>
 
+        <p id="disscuss" style="display:none">Les daltons semble ouvert pour une disscussion, à vous de choisir le sujet de la conversation</p>
+        <p id="capture" style="display:none">Plusieurs choix s'offre à vous pour tenter la capture des Daltons</p>
+        <p id="Lelasso" style="display:none">Après 4 brillant tires, les Daltons sont désarmé</p>
 
         <!-- REPONSE-->
-        <div class="row">
-            <div class="col s12 m8 l4 offset-l4">
-                <form action="index.php?url=enigma1-step2" method="post">
-                    <br>
-                    <div class="input-field">
-                        <input type="text" name="reponse" id="reponse">
-                        <label for="comment_title">Quelle est votre réponse ?</label>
-                    </div>
-                    <!-- BTN REPONSE -->
-                    <div class="col s12 m6 l12 center">
-                        <button type="submit" name="submit" class="btn waves-effect waves-light cyan darken-2">Poster ma réponse</button>
-                    </div>
-                </form>
+        <div class="col s12 m8 l4 offset-l4">
+
+            <!-- BTN REPONSE -->
+            <div class="col s12 m6 l12 center">
+                <!-- <button type="submit" name="submit" class="btn waves-effect waves-light cyan darken-2">Tenter la discussion</button>-->
+                <div class="row">
+
+                    <button class="btn waves-effect waves-light cyan darken-2 col l2 offset-l4" id="discuter" onclick="showDiscuter()">Tenter la discussion</button>
+                    <button class="btn waves-effect waves-light cyan darken-2 col l2" id="tirer" onclick="showTirer()">Tenter de les capturer</button>
+
+                    <button class="btn waves-effect waves-light cyan darken-2 col l2 offset-l3" id="fuire" onclick="window.location.href='index.php?url=enigma1-done&id=1'" style="display:none">Les laisser s'enfuir</button>
+
+                    <button class="btn waves-effect waves-light cyan darken-2 col l2" id="saloon" onclick="window.location.href='index.php?url=enigma1-done&id=2'" style="display:none">Emmener Joe au saloon</button>
+                    <button class="btn waves-effect waves-light cyan darken-2 col l2" id="madalton" onclick="window.location.href='index.php?url=enigma1-done&id=3'" style="display:none">Parler de 'ma Dalton</button>
+
+
+                    <button class="btn waves-effect waves-light cyan darken-2 col l2" id="désarmer" onclick="showDesarmer()" style="display:none">Tirer pour les désarmer</button>
+
+                    <button class="btn waves-effect waves-light cyan darken-2 col l2" id="lasso1" onclick="window.location.href='index.php?url=enigma1-done&id=4'" style="display:none">Capturer au lasso</button>
+                    <button class="btn waves-effect waves-light cyan darken-2 col l2" id="lasso2" onclick="window.location.href='index.php?url=enigma1-done&id=5'" style="display:none">Capturer au lasso</button>
+
+
+                </div>
             </div>
         </div>
 

@@ -1,5 +1,8 @@
 <div class="navbar-fixed">
-
+    <?php
+    if (!isset($_SESSION['admin'])) {
+        $_SESSION['admin'] = '';
+    } ?>
     <!-- Change la couleur du menu de la topbar si session admin = cyan si session utlisateur = gris-->
     <nav class="<?php if ($_SESSION['admin'] == "VRAI") echo 'cyan darken-2'; ?><?php if ($_SESSION['admin'] == "") echo 'grey darken-4'; ?>">
 

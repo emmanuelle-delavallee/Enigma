@@ -5,6 +5,7 @@ namespace Enigma;
 use Enigma\CommentsManager;
 use Enigma\StoriesManager;
 use Enigma\UsersManager;
+use Enigma\Enigma1Manager;
 
 class FrontendController
 {
@@ -15,6 +16,7 @@ class FrontendController
         $this->CommentsManager = new CommentsManager();
         $this->StoriesManager = new StoriesManager();
         $this->UsersManager = new UsersManager();
+        $this->Enigma1Manager = new Enigma1Manager();
     }
 
     // Page d'accueil
@@ -75,9 +77,33 @@ class FrontendController
     // Page énigme 1
     function enigma1step1()
     {
+        $responses = $this->Enigma1Manager->Enigma1Answer('1', '1');
+        $helps = $this->Enigma1Manager->Enigma1Help('1', '1');
         require('View/frontend/enigma1/enigma1-step1.php');
     }
 
+    // Page énigme 2
+    function enigma1step2()
+    {
+        $responses = $this->Enigma1Manager->Enigma1Answer('1', '2');
+        $helps = $this->Enigma1Manager->Enigma1Help('1', '2');
+        require('View/frontend/enigma1/enigma1-step2.php');
+    }
+
+    // Page énigme 3
+    function enigma1step3()
+    {
+        $responses = $this->Enigma1Manager->Enigma1Answer('1', '3');
+        $helps = $this->Enigma1Manager->Enigma1Help('1', '3');
+        require('View/frontend/enigma1/enigma1-step3.php');
+    }
+
+    // Page énigme 3
+    function enigma1done($id)
+    {
+
+        require('View/frontend/enigma1/enigma1done.php');
+    }
 
     // Page login
     function login()
@@ -105,6 +131,6 @@ class FrontendController
     // Page d'erreur
     function error()
     {
-        require('Public/template/error.php');
+        require('View/template/error.php');
     }
 }

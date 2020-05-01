@@ -10,9 +10,7 @@
                     <h2 class="home-page-title">Enigma</h2>
                     <h3 class="page-subtitle left-align">Des énigmes en ligne</h3>
                 </div>
-
             </div>
-
         </div>
     </div>
 

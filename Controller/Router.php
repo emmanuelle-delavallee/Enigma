@@ -88,6 +88,74 @@ class Router
                         $this->FrontendController->enigma1step1();
                         break;
 
+                        // Afficher la page d'intro de l'énigme 2
+                    case 'enigma1-step2':
+                        $res = 1;
+                        if (isset($_POST['submit'])) {
+
+                            // Trim supprime l'espace avant le mot 
+                            $reponse = htmlspecialchars(trim($_POST['reponse']));
+
+                            // Vérifie que les champs ont bien été complétés
+                            if (empty($reponse)) {
+                                $res = 0;
+                            } else {
+                                if ($reponse != "37") {
+                                    $res = 0;
+                                }
+                            }
+                        } else {
+                            $res = 0;
+                        }
+
+                        if ($res == 0) {
+                            $this->FrontendController->enigma1step1();
+                        } else {
+                            $this->FrontendController->enigma1step2();
+                        }
+
+                        break;
+
+                        // Afficher la page d'intro de l'énigme 2
+                    case 'enigma1-step3':
+                        $res = 1;
+                        if (isset($_POST['submit2'])) {
+
+                            // Trim supprime l'espace avant le mot 
+                            $reponse = htmlspecialchars(trim($_POST['reponse']));
+
+                            // Vérifie que les champs ont bien été complétés
+                            if (empty($reponse)) {
+                                $res = 0;
+                            } else {
+                                if ($reponse != "2") {
+                                    $res = 0;
+                                }
+                            }
+                        } else {
+                            $res = 0;
+                        }
+
+                        if ($res == 0) {
+                            $this->FrontendController->enigma1step2();
+                        } else {
+                            $this->FrontendController->enigma1step3();
+                        }
+
+                        break;
+
+                        // Afficher la page login (utilisateurs)
+                    case 'enigma1-done':
+
+                        if (isset($_GET['id']) && $_GET['id'] > 0) {
+                            $this->FrontendController->enigma1done($_GET['id']);
+                        } else {
+                            $this->FrontendController->enigma1step3();
+                        }
+
+                        break;
+
+
 
                         // Afficher la page login (utilisateurs)
                     case 'login':

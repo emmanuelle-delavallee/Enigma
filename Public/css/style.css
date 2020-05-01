@@ -98,15 +98,6 @@ body {
 }
 
 /*ENIGMAS*/
-.enigmas-background {
-  background-color: #fafafa;
-  background-repeat: no-repeat;
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  margin: 0;
-  padding: 0;
-}
 
 .enigmas-title {
   margin: 0;
@@ -116,4 +107,19 @@ body {
 .enigmas-subtitle {
   text-align: justify;
   margin-bottom: 5rem;
+}
+
+/*CANVAS*/
+
+#signature_canvas {
+  margin-top: 30px;
+}
+
+#canvas {
+  width: 1240px;
+  height: 720px;
+  border: 1px solid #cecece;
+  margin: 0 auto 40px;
+  display: block;
+  background-image: url("../img/lucky_luke/laby.png");
 }
