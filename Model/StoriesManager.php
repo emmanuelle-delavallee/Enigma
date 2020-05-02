@@ -26,6 +26,21 @@ class StoriesManager extends Manager
     }
 
 
+    //-------------------------------------------------------------//
+
+    // REF // FRONT: récupère les images de la BDD
+    public function getImgs()
+    {
+        $sql = "
+                SELECT stories.image,
+                       stories.published   
+                FROM stories 
+                WHERE published='1' 
+            ";
+
+        return $this->createQuery($sql);
+    }
+
 
     //-------------------------------------------------------------//
 

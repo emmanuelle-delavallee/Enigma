@@ -24,7 +24,7 @@ if (!isset($_SESSION['admin'])) {
                     <?php
                     if ($_SESSION['admin'] == "VRAI") {
                     ?>
-                        <li><a class="waves-effect waves-light btn grey darken-3" href="index.php?url=adminDashboard">Admin</a></li>
+                        <li><a class="waves-effect waves-light btn cyan darken-2" href="index.php?url=adminDashboard">Admin</a></li>
                     <?php
                     }
                     ?>

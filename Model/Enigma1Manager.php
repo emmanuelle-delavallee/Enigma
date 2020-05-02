@@ -35,4 +35,20 @@ class Enigma1Manager extends Manager
 
         return $this->createQuery($sql, array($story, $step));
     }
+
+
+    // REF // FRONT/BACK : récupère les énigmes publiées de la BDD
+    public function enigmaEnding($story, $id)
+    {
+        $sql = "
+                    SELECT ending_title,
+                    ending_image,
+                    ending_text
+                    FROM ending 
+                    WHERE id_story = ? 
+                    and id_ending = ?
+                ";
+
+        return $this->createQuery($sql, array($story, $id));
+    }
 }

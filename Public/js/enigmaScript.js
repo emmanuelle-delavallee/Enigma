@@ -52,6 +52,7 @@ $(document).ready(function () {
 
 function showDiscuter() {
   document.getElementById("discuter").style.display = "none";
+  document.getElementById("intro").style.display = "none";
   document.getElementById("tirer").style.display = "none";
   document.getElementById("fuire").style.display = "block";
   document.getElementById("saloon").style.display = "block";
@@ -61,6 +62,7 @@ function showDiscuter() {
 
 function showTirer() {
   document.getElementById("discuter").style.display = "none";
+  document.getElementById("intro").style.display = "none";
   document.getElementById("tirer").style.display = "none";
   document.getElementById("fuire").style.display = "block";
   document.getElementById("lasso1").style.display = "block";
@@ -73,7 +75,7 @@ function showDesarmer() {
   document.getElementById("désarmer").style.display = "none";
   document.getElementById("fuire").style.display = "none";
   document.getElementById("fuire").style.display = "block";
-  document.getElementById("lasso1").style.display = "block";
-
+  document.getElementById("lasso2").style.display = "block";
   document.getElementById("Lelasso").style.display = "block";
+  document.getElementById("capture").style.display = "none";
 }

@@ -5,7 +5,7 @@
     <div class="col s12">
 
         <div class="fixed-action-btn">
-            <a class="btn-floating btn-large waves-effect waves-light cyan">
+            <a class="btn-floating btn-large waves-effect waves-light teal">
                 <i class="large material-icons">lightbulb_outline</i>
             </a>
             <ul>
@@ -118,7 +118,7 @@
 
                     <!-- BTN REPONSE -->
                     <div class="col s12 m6 l12 center">
-                        <button type="submit2" name="submit2" class="btn waves-effect waves-light cyan darken-2">Poster ma réponse</button>
+                        <button type="submit2" name="submit2" class="btn waves-effect waves-light teal">Poster ma réponse</button>
                     </div>
 
                 </form>

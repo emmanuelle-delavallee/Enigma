@@ -123,3 +123,15 @@ body {
   display: block;
   background-image: url("../img/lucky_luke/laby.png");
 }
+
+.btn-choices {
+  margin: 25px 25px 25px 25px !important;
+}
+
+/*ESPACE PERSONNEL*/
+
+#user_img {
+  width: 70px;
+  height: 70px;
+  margin-top: 5px;
+}

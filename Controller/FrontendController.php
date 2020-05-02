@@ -36,6 +36,7 @@ class FrontendController
     // Page jouer
     function startToPlay()
     {
+        $imgs = $this->StoriesManager->getImgs();
         $responses = $this->StoriesManager->getEnigmas();
 
         require('View/frontend/play.php');
@@ -98,11 +99,13 @@ class FrontendController
         require('View/frontend/enigma1/enigma1-step3.php');
     }
 
+
+
     // Page énigme 3
     function enigma1done($id)
     {
-
-        require('View/frontend/enigma1/enigma1done.php');
+        $endings = $this->Enigma1Manager->enigmaEnding('1', $id);
+        require('View/frontend/enigma1/enigma1-done.php');
     }
 
     // Page login
@@ -125,6 +128,8 @@ class FrontendController
     // Page dashboard des utilisateurs
     function usersDashboard()
     {
+        $responses = $this->StoriesManager->getEnigmas();
+
         require('View/frontend/usersDashboard.php');
     }
 
