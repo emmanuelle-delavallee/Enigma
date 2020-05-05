@@ -19,9 +19,9 @@ class UsersManager extends Manager
            ";
 
         $res = 0;
-        $admins =  $this->createQuery($sql, array($pseudo, sha1($password)));
-        foreach ($admins as $admin) {
-            if ($admin->id > 0) {
+        $users =  $this->createQuery($sql, array($pseudo, sha1($password)));
+        foreach ($users as $user) {
+            if ($user->id > 0) {
                 $res = 1;
             }
         }
@@ -94,5 +94,32 @@ class UsersManager extends Manager
     {
         $sql = "UPDATE users SET users.admin = '1' WHERE pseudo='" . $pseudo . "'";
         $this->createQuery($sql, [$pseudo]);
+    }
+
+    public function addNewUser($name, $email, $password)
+    {
+        $sql = 'INSERT INTO users(pseudo, email, password) VALUES(?, ?, ?)';
+
+        $this->createQuery($sql, array($name, $email, sha1($password)));
+    }
+
+    // Vérification de login utilisateurs + administrateurs
+    public function checkIfUserexist($pseudo)
+    {
+        $sql = "
+         SELECT id
+         FROM users 
+         WHERE pseudo = ? 
+        
+         ";
+
+        $res = 0;
+        $users =  $this->createQuery($sql, array($pseudo));
+        foreach ($users as $user) {
+            if ($user->id > 0) {
+                $res = 1;
+            }
+        }
+        return $res;
     }
 }

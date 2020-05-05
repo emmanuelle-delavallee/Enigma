@@ -70,92 +70,125 @@ class Router
                         }
                         break;
 
-
-                        // Afficher la page d'intro de l'énigme 1
                     case 'enigma':
 
-                        if (isset($_GET['id']) && $_GET['id'] > 0) {
-                            $this->FrontendController->enigma();
-                        } else {
-                            throw new Exception('Aucun identifiant d\'énigme envoyé');
-                        }
-                        break;
+                        if (isset($_SESSION['username']) && $_SESSION['username'] != "") {
+
+                            switch ($_GET['id']) {
+
+                                case '1':
+
+                                    switch ($_GET['step']) {
+
+
+                                            // Afficher la page d'intro de l'énigme 1
+                                        case 'start':
+
+                                            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                                                $this->FrontendController->enigma();
+                                            } else {
+                                                throw new Exception('Aucun identifiant d\'énigme envoyé');
+                                            }
+                                            break;
 
 
 
-                        // Afficher la page d'intro de l'énigme 1
-                    case 'enigma1-step1':
-                        $this->FrontendController->enigma1step1();
-                        break;
+                                            // Afficher la page d'intro de l'énigme 1
+                                        case '1':
+                                            $this->FrontendController->enigmastep('1', '1');
+                                            break;
 
-                        // Afficher la page d'intro de l'énigme 2
-                    case 'enigma1-step2':
-                        $res = 1;
-                        if (isset($_POST['submit'])) {
+                                            // Afficher la page d'intro de l'énigme 2
+                                        case '2':
+                                            $res = 1;
+                                            if (isset($_POST['submit'])) {
 
-                            // Trim supprime l'espace avant le mot 
-                            $reponse = htmlspecialchars(trim($_POST['reponse']));
+                                                // Trim supprime l'espace avant le mot 
+                                                $reponse = htmlspecialchars(trim($_POST['reponse']));
 
-                            // Vérifie que les champs ont bien été complétés
-                            if (empty($reponse)) {
-                                $res = 0;
-                            } else {
-                                if ($reponse != "37") {
-                                    $res = 0;
-                                }
+                                                // Vérifie que les champs ont bien été complétés
+                                                if (empty($reponse)) {
+                                                    $res = 0;
+                                                } else {
+                                                    if ($reponse != "37") {
+                                                        $res = 0;
+                                                    }
+                                                }
+                                            } else {
+                                                $res = 0;
+                                            }
+
+                                            if ($res == 0) {
+                                                $this->FrontendController->enigmastep('1', '1');
+                                            } else {
+
+                                                $this->FrontendController->enigmastep('1', '2');
+                                            }
+
+                                            break;
+
+                                            // Afficher la page d'intro de l'énigme 2
+                                        case '3':
+                                            $res = 1;
+                                            if (isset($_POST['submit2'])) {
+
+                                                // Trim supprime l'espace avant le mot 
+                                                $reponse = htmlspecialchars(trim($_POST['reponse']));
+
+                                                // Vérifie que les champs ont bien été complétés
+                                                if (empty($reponse)) {
+                                                    $res = 0;
+                                                } else {
+                                                    if ($reponse != "2") {
+                                                        $res = 0;
+                                                    }
+                                                }
+                                            } else {
+                                                $res = 0;
+                                            }
+
+                                            if ($res == 0) {
+                                                $this->FrontendController->enigmastep('1', '2');
+                                            } else {
+                                                $this->FrontendController->enigmastep('1', '3');
+                                            }
+
+                                            break;
+
+                                            // Afficher la page login (utilisateurs)
+                                        case 'done':
+
+                                            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                                                $this->FrontendController->enigmadone($_GET['id']);
+                                            } else {
+                                                $this->FrontendController->enigmastep('1', '3');
+                                            }
+
+                                            break;
+                                    }
+                                    break;
+
+
+                                case '2':
+                                    switch ($_GET['step']) {
+
+
+                                            // Afficher la page d'intro de l'énigme 1
+                                        case 'start':
+
+                                            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                                                $this->FrontendController->enigma();
+                                            } else {
+                                                throw new Exception('Aucun identifiant d\'énigme envoyé');
+                                            }
+                                            break;
+                                    }
+                                    break;
                             }
                         } else {
-                            $res = 0;
+                            $this->FrontendController->login();
                         }
-
-                        if ($res == 0) {
-                            $this->FrontendController->enigma1step1();
-                        } else {
-                            $this->FrontendController->enigma1step2();
-                        }
-
                         break;
-
-                        // Afficher la page d'intro de l'énigme 2
-                    case 'enigma1-step3':
-                        $res = 1;
-                        if (isset($_POST['submit2'])) {
-
-                            // Trim supprime l'espace avant le mot 
-                            $reponse = htmlspecialchars(trim($_POST['reponse']));
-
-                            // Vérifie que les champs ont bien été complétés
-                            if (empty($reponse)) {
-                                $res = 0;
-                            } else {
-                                if ($reponse != "2") {
-                                    $res = 0;
-                                }
-                            }
-                        } else {
-                            $res = 0;
-                        }
-
-                        if ($res == 0) {
-                            $this->FrontendController->enigma1step2();
-                        } else {
-                            $this->FrontendController->enigma1step3();
-                        }
-
-                        break;
-
-                        // Afficher la page login (utilisateurs)
-                    case 'enigma1-done':
-
-                        if (isset($_GET['id']) && $_GET['id'] > 0) {
-                            $this->FrontendController->enigma1done($_GET['id']);
-                        } else {
-                            $this->FrontendController->enigma1step3();
-                        }
-
-                        break;
-
-
 
                         // Afficher la page login (utilisateurs)
                     case 'login':
@@ -203,9 +236,37 @@ class Router
                         if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
                             if ($this->FrontendController->checkLogin($_POST['pseudo'], $_POST['password']) == 1) {
                                 $_SESSION['username'] = $_POST['pseudo'];
-                                $this->BackendController->adminDashboard();
+
+
+                                if ($this->FrontendController->checkAdmin() == 1) {
+                                    $_SESSION['admin'] = 'VRAI';
+                                    $this->BackendController->adminDashboard();
+                                } else {
+                                    $this->FrontendController->usersDashboard();
+                                }
                             } else {
-                                $this->FrontendController->usersDashboard();
+                                $this->FrontendController->login();
+                            }
+                        } else {
+                            $this->FrontendController->login();
+                        }
+                        break;
+
+                        // Ajouter un nouvel administrateur ou modérateur 
+                    case 'newUser':
+                        if (!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['repeat_email']) && !empty($_POST['password']) && !empty($_POST['repeat_password'])) {
+                            if ($_POST['email'] == $_POST['repeat_email'] && $_POST['password'] == $_POST['repeat_password']) {
+
+                                if ($this->FrontendController->checkUser($_POST['pseudo']) == 0) {
+
+                                    $this->FrontendController->addUser($_POST['pseudo'], $_POST['email'], $_POST['password']);
+                                    $_SESSION['username'] = $_POST['pseudo'];
+                                    $this->FrontendController->usersDashboard();
+                                } else {
+                                    throw new Exception('Le pseudo existe déjà !');
+                                }
+                            } else {
+                                $this->FrontendController->login();
                             }
                         } else {
                             $this->FrontendController->login();
@@ -254,10 +315,15 @@ class Router
                         $this->BackendController->adminEnigmas();
                         break;
 
+
                         // Afficher la page de gestion des énigmes publiées/non-publiées(admin)
                     case 'adminAllEnigmas':
                         $this->BackendController->adminAllEnigmas();
                         break;
+
+
+
+
 
                         // Si aucune page n'est définie dans URL ou que la page d'existe pas, renvoi vers la page d'erreur
                     default:

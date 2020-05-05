@@ -7,7 +7,7 @@
     <div class="col s12 m4 l4 right">
         <div class="card">
             <div class="card-content center">
-                <img class="circle" src="Public/img/2.jpg" alt="user_img" id="user_img">
+                <img class="circle user_img" src="Public/img/2.jpg" alt="user_img">
                 <h5>Bonjour <?= $_SESSION['username'] ?></h5>
                 <a class="waves-effect waves-light btn cyan darken-2 modal-trigger" href="#userModal"><i class="material-icons left">settings</i>Options</a>
             </div>
@@ -42,17 +42,16 @@
                 <div class="card">
 
                     <div class="row">
-                        <div class="col s12 m12 l4 ">
-                            <img src="Public/img/2.jpg" class="materialboxed responsive-img" alt="Titre de l'énigme">
+                        <div class="col s12 m12 l4">
+                            <img src="Public/img/<?= $response->image ?>" class="materialboxed responsive-img" alt="Image_personnelle">
                         </div>
 
                         <div class="col s12 m12 l8">
                             <h4 class="enigma-subtitle"><?= $response->name ?></h4>
                             <p><?= $response->resume ?></p>
                             <br>
-                            <a class="right waves-effect waves-light btn cyan darken-2 btn-choices" href="index.php?url=enigma&id=<?= $response->id ?>">Jouer <i class="material-icons right">play_arrow</i></a>
-                            <p><strong>Statut : Effectué/Non effectué</strong></p>
-                            <a href="index.php?url=enigma&id=<?= $response->id ?>">Lire le résumé de mon aventure</a>
+                            <a class="right waves-effect waves-light btn cyan darken-2 btn-choices" href="index.php?url=enigma&id=<?= $response->id ?>&step=start">Jouer <i class="material-icons right">play_arrow</i></a>
+                            <a class="right waves-effect waves-light btn cyan darken-2 btn-choices" href="index.php?url=enigma&id=<?= $response->id ?>&step=start">Rejouer <i class="material-icons right">play_arrow</i></a>
 
                         </div>
                     </div>

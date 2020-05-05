@@ -36,15 +36,10 @@ if ($checkIfAdmin == 0) {
 
                     <td><?= $comment->name ?></td>
 
-
-
-                    <td><?php if ($comment->comment_status == '2') { ?> <i class="material-icons red-text text-darken-1"> priority_high</i> <?php } ?> <?= $comment->comment_title ?> </td>
-
-
-
+                    <td><?php if ($comment->comment_status == '2') { ?> <i class="material-icons red-text text-darken-1 left"> priority_high</i> <?php } ?> <?= $comment->comment_title ?> </td>
 
                     <td><?= $comment->pseudo ?></td>
-                    <td><a href="#comment_<?= $comment->id ?>" class="btn-floating btn-small waves-effect waves-light cyan modal-trigger" id="dashboard-btn"><i class="material-icons">add</i></a></td>
+                    <td><a href="#comment_<?= $comment->id ?>" class="btn-floating btn-small waves-effect waves-light cyan darken-2 modal-trigger" id="dashboard-btn"><i class="material-icons">add</i></a></td>
 
                     <div class="modal" id="comment_<?= $comment->id ?>">
                         <div class="modal-content">
@@ -55,7 +50,7 @@ if ($checkIfAdmin == 0) {
                         </div>
 
                         <div class="modal-footer">
-                            <a href="index.php?url=validComment&id= <?= $comment->id ?>" class="modal-action modal-close btn-floating btn-small waves-effect waves-light cyan"><i class="material-icons">done</i></a>
+                            <a href="index.php?url=validComment&id= <?= $comment->id ?>" class="modal-action modal-close btn-floating btn-small waves-effect waves-light cyan darken-2"><i class="material-icons">done</i></a>
                             <a href="index.php?url=deleteComment&id= <?= $comment->id ?>" class="modal-action modal-close btn-floating btn-small waves-effect waves-light red darken-1"><i class="material-icons">delete</i></a>
                         </div>
                     </div>
@@ -89,7 +84,7 @@ if ($checkIfAdmin == 0) {
                 <tr>
                     <th>Pseudo</th>
                     <th>Email</th>
-                    <th><a href="#adminCreate" class="btn-floating btn-small waves-effect waves-light cyan modal-trigger" id="dashboard-btn"><i class="material-icons">add</i></a></th>
+                    <th><a href="#adminCreate" class="btn-floating btn-small waves-effect waves-light cyan darken-2 modal-trigger" id="dashboard-btn"><i class="material-icons">add</i></a></th>
                 </tr>
             </thead>
 
@@ -125,10 +120,6 @@ if ($checkIfAdmin == 0) {
                     ?>
 
 
-
-
-
-
                     <div class="modal" id="adminCreate">
                         <div class="modal-content">
 
@@ -147,7 +138,7 @@ if ($checkIfAdmin == 0) {
 
 
                                     <div class="col s10 m8 l6 offset-l3 center-align">
-                                        <button type="submit" name="submit" class="modal-action modal-close btn-floating btn-small waves-effect waves-light cyan"><i class="material-icons">done</i></button>
+                                        <button type="submit" name="submit" class="modal-action modal-close btn-floating btn-small waves-effect waves-light cyan darken-2"><i class="material-icons">done</i></button>
                                     </div>
 
                                 </div>

@@ -15,20 +15,20 @@
 </div>
 
 
-<div class="col col s12 m12 l12">
+<div class="col s12 m12 l12">
 
-    <?php
-    if ($responses != false) {
-        foreach ($responses as $response) {
-    ?>
-            <div class="row">
 
+    <div class="row">
+        <?php
+        if ($responses != false) {
+            foreach ($responses as $response) {
+        ?>
                 <div class="col col s12 m6 l4">
                     <div class="card">
 
                         <div class="card-image">
                             <img src="Public/img/<?= $response->image ?>">
-                            <a class="btn-floating halfway-fab waves-effect waves-light cyan" href="index.php?url=enigma&id=<?= $response->id ?>"><i class="material-icons">play_arrow</i></a>
+                            <a class="btn-floating halfway-fab waves-effect waves-light cyan" href="index.php?url=enigma&id=<?= $response->id ?>&step=start"><i class="material-icons">play_arrow</i></a>
                         </div>
 
                         <div class="card-content">
@@ -39,11 +39,11 @@
                 </div>
 
         <?php
+            }
         }
-    }
         ?>
 
-            </div>
+    </div>
 
 </div>
 

@@ -22,6 +22,7 @@ class FrontendController
     // Page d'accueil
     function home()
     {
+        $enigmes = $this->StoriesManager->getEnigma();
         require('View/frontend/home.php');
     }
 
@@ -69,42 +70,27 @@ class FrontendController
     // Page énigme
     function enigma()
     {
-        $response = $this->StoriesManager->getEnigma();
+        $enigmes = $this->StoriesManager->getEnigma();
 
         require('View/frontend/enigma1/enigma.php');
     }
 
 
     // Page énigme 1
-    function enigma1step1()
+    function enigmastep($id, $step)
     {
-        $responses = $this->Enigma1Manager->Enigma1Answer('1', '1');
-        $helps = $this->Enigma1Manager->Enigma1Help('1', '1');
-        require('View/frontend/enigma1/enigma1-step1.php');
-    }
-
-    // Page énigme 2
-    function enigma1step2()
-    {
-        $responses = $this->Enigma1Manager->Enigma1Answer('1', '2');
-        $helps = $this->Enigma1Manager->Enigma1Help('1', '2');
-        require('View/frontend/enigma1/enigma1-step2.php');
-    }
-
-    // Page énigme 3
-    function enigma1step3()
-    {
-        $responses = $this->Enigma1Manager->Enigma1Answer('1', '3');
-        $helps = $this->Enigma1Manager->Enigma1Help('1', '3');
-        require('View/frontend/enigma1/enigma1-step3.php');
+        $responses = $this->Enigma1Manager->Enigma1Answer($id, $step);
+        $helps = $this->Enigma1Manager->Enigma1Help($id, $step);
+        require('View/frontend/enigma' . $id . '/enigma' . $id . '-step' . $step . '.php');
     }
 
 
 
     // Page énigme 3
-    function enigma1done($id)
+    function enigmadone($id)
     {
         $endings = $this->Enigma1Manager->enigmaEnding('1', $id);
+
         require('View/frontend/enigma1/enigma1-done.php');
     }
 
@@ -115,6 +101,11 @@ class FrontendController
         require('View/frontend/login.php');
     }
 
+    //new user
+    function addUser($name, $email, $password)
+    {
+        $user = $this->UsersManager->addNewUser($name, $email, $password);
+    }
 
     // Vérifie la connexion d'un utilisateur ou administrateur
     function checkLogin($pseudo, $password)
@@ -124,6 +115,17 @@ class FrontendController
         return $checkLogin;
     }
 
+    function checkAdmin()
+    {
+        $checkAdmin = $this->UsersManager->checkIfAdmin();
+        return $checkAdmin;
+    }
+
+    function checkUser($pseudo)
+    {
+        $checkuser = $this->UsersManager->checkIfUserexist($pseudo);
+        return $checkuser;
+    }
 
     // Page dashboard des utilisateurs
     function usersDashboard()

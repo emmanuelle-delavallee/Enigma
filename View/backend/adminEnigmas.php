@@ -11,42 +11,26 @@
             <a class="btn waves-effect waves-light cyan darken-2 right" href="index.php?url=adminAllEnigmas">Afficher les énigmes non publiées</a>
         </div>
 
-        <div class="row">
-            <div class="col s12 m12 l4 ">
-                <img src="Public/img/2.jpg" class="materialboxed responsive-img" alt="Titre de l'énigme">
-            </div>
+        <?php
+        if ($responses != false) {
+            foreach ($responses as $response) {
+        ?>
+                <div class="row">
 
-            <div class="col s12 m12 l8">
-                <h4 class="enigma-subtitle">Titre de l'énigme</h4>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis</p>
-                <a class="waves-effect waves-light btn cyan" href="#">Modifier</a>
-            </div>
-        </div>
+                    <div class="col s12 m12 l4 ">
+                        <img src="Public/img/<?= $response->image ?>" class="materialboxed responsive-img" alt="Titre de l'énigme">
+                    </div>
 
-        <div class="row">
-            <div class="col s12 m12 l4 ">
-                <img src="Public/img/2.jpg" class="materialboxed responsive-img" alt="Titre de l'énigme">
-            </div>
-
-            <div class="col s12 m12 l8">
-                <h4 class="enigma-subtitle">Titre de l'énigme</h4>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis</p>
-                <a class="waves-effect waves-light btn cyan" href="#">Modifier</a>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s12 m12 l4 ">
-                <img src="Public/img/2.jpg" class="materialboxed responsive-img" alt="Titre de l'énigme">
-            </div>
-
-            <div class="col s12 m12 l8">
-                <h4 class="enigma-subtitle">Titre de l'énigme</h4>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis</p>
-                <a class="waves-effect waves-light btn cyan" href="#">Modifier</a>
-            </div>
-        </div>
-
+                    <div class="col s12 m12 l8">
+                        <h4 class="enigma-subtitle"><?= $response->name ?></h4>
+                        <p><?= $response->resume ?></p>
+                        <a class="waves-effect waves-light btn cyan darken-2" href="#">Modifier</a>
+                    </div>
+                </div>
+        <?php
+            }
+        }
+        ?>
     </div>
 </div>
 
