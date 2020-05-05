@@ -14,10 +14,11 @@
             </ul>
         </div>
         <?php
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['submit2'])) {
 
             // Trim supprime l'espace avant le mot 
-            $reponse = htmlspecialchars(trim($_POST['reponse']));
+            $reponse = $_POST['reponse'];
+
 
 
             // Stocke les erreurs dans un tableau pour pouvoir les afficher
@@ -27,7 +28,7 @@
             if (empty($reponse)) {
                 $errors['empty'] = "Il faut indiquer une réponse !";
             } else {
-                if ($reponse != "37") {
+                if ($reponse != "2") {
                     $errors['erreur'] = "Mauvaise réponse ! Réessayer ";
                 }
             }
@@ -49,7 +50,9 @@
             }
         }
         ?>
-        <h5 class="center">Vous jouez avec Jolly Jumper aux echecs, quand vous remarquez qu'il vous tend une énigme pendant la partie, trouverez-vous la réponse ?</h5>
+        <h5 class="center">Retrouverez-vous les Daltons ?</h5>
+        <p class="center">Cliquez sur l'image pour dessiner le chemin</p>
+
 
 
         <!-- MODAL D'AIDE-->
@@ -90,29 +93,37 @@
         </div>
 
 
-        <!-- IMAGE-->
-        <div class="col s12 m12 l10 center">
-            <img src="Public/img/lucky_luke/echec.png" alt="">
+        <!-- IMAGE + CANVAS DE DESSIN-->
+        <div id="signature_canvas" class="form-group">
+            <canvas id="canvas"></canvas>
         </div>
+        <button class="btn" id="removeSignatureBtn" type="reset">
+            Effacer les traits
+        </button>
 
 
         <!-- REPONSE-->
         <div class="row">
             <div class="col s12 m8 l4 offset-l4">
-                <form action="index.php?url=enigma&id=1&step=2" method="post">
-                    <br>
-                    <div class="input-field">
-                        <input type="text" name="reponse" id="reponse">
-                        <label for="comment_title">Quelle est votre réponse ?</label>
+                <form action="index.php?url=enigma&id=1&step=3" method="post">
+                    <div class="input-field col s12">
+                        <select name="reponse" id="reponse">
+                            <option value="" disabled selected>Quel chemin choisissez-vous ?</option>
+                            <option value="1">Chemin n°1</option>
+                            <option value="2">Chemin n°2</option>
+                            <option value="3">Chemin n°3</option>
+                        </select>
                     </div>
+
+
                     <!-- BTN REPONSE -->
                     <div class="col s12 m6 l12 center">
-                        <button type="submit" name="submit" class="btn waves-effect waves-light teal">Poster ma réponse</button>
+                        <button type="submit2" name="submit2" class="btn waves-effect waves-light teal">Poster ma réponse</button>
                     </div>
+
                 </form>
             </div>
         </div>
-
 
     </div>
 </div>

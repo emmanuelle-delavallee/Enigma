@@ -14,7 +14,7 @@
             </ul>
         </div>
         <?php
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['submit3'])) {
 
             // Trim supprime l'espace avant le mot 
             $reponse = htmlspecialchars(trim($_POST['reponse']));
@@ -49,7 +49,7 @@
             }
         }
         ?>
-        <h5 class="center">Vous jouez avec Jolly Jumper aux echecs, quand vous remarquez qu'il vous tend une énigme pendant la partie, trouverez-vous la réponse ?</h5>
+        <h5 class="center">Vous vous retrouvez face aux Daltons, prêt à en découdre</h5>
 
 
         <!-- MODAL D'AIDE-->
@@ -92,31 +92,37 @@
 
         <!-- IMAGE-->
         <div class="col s12 m12 l10 center">
-            <img src="Public/img/lucky_luke/echec.png" alt="">
+            <img src="Public/img/lucky_luke/LuckyDuel.jpg" alt="">
         </div>
-
 
         <!-- REPONSE-->
-        <div class="row">
-            <div class="col s12 m8 l4 offset-l4">
-                <form action="index.php?url=enigma&id=1&step=2" method="post">
-                    <br>
-                    <div class="input-field">
-                        <input type="text" name="reponse" id="reponse">
-                        <label for="comment_title">Quelle est votre réponse ?</label>
-                    </div>
+        <div class="container ">
+            <div class="col s12 m8 l4 offset-l8 center">
+                <div class="row">
+
+                    <h5 id="intro" style="display:block">Que faites-vous ?</h5>
+                    <h5 id="disscuss" style="display:none">Les daltons semblent prêts à discuter, à vous de choisir le sujet de la conversation</h5>
+                    <h5 id="capture" style="display:none">Plusieurs choix s'offrent à vous pour tenter la capture des Daltons</h5>
+                    <h5 id="Lelasso" style="display:none">Après 4 brillant tirs, les Dalton sont désarmés</h5>
+
                     <!-- BTN REPONSE -->
-                    <div class="col s12 m6 l12 center">
-                        <button type="submit" name="submit" class="btn waves-effect waves-light teal">Poster ma réponse</button>
-                    </div>
-                </form>
+
+                    <button class="btn waves-effect waves-teal btn-flat btn-choices " id="discuter" onclick="showDiscuter()" style="display:block"> <i class="large material-icons left">arrow_forward</i>Tenter de discuter</button>
+                    <button class="btn waves-effect waves-teal btn-flat btn-choices " id="tirer" onclick="showTirer()" style="display:block"><i class="large material-icons left">arrow_forward</i>Tenter de les capturer</button>
+
+                    <button class="btn waves-effect waves-teal btn-flat btn-choices" id="fuire" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=1'" style="display:none"><i class="large material-icons left">arrow_forward</i>Les laisser s'enfuir</button>
+                    <button class="btn waves-effect waves-teal btn-flat btn-choices" id="saloon" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=2'" style="display:none"><i class="large material-icons left">arrow_forward</i>Emmener Joe au saloon</button>
+                    <button class="btn waves-effect waves-teal btn-flat btn-choices" id="madalton" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=3'" style="display:none"><i class="large material-icons left">arrow_forward</i>Parler de 'ma Dalton</button>
+
+                    <button class="btn waves-effect waves-teal btn-flat btn-choices" id="désarmer" onclick="showDesarmer()" style="display:none"><i class="large material-icons left">arrow_forward</i>Tirer pour les désarmer</button>
+                    <button class="btn waves-effect waves-teal btn-flat btn-choices" id="lasso1" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=4'" style="display:none"><i class="large material-icons left">arrow_forward</i>Capturer au lasso</button>
+                    <button class="btn waves-effect waves-teal btn-flat btn-choices" id="lasso2" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=5'" style="display:none"><i class="large material-icons left">arrow_forward</i>Capturer au lasso</button>
+
+                </div>
             </div>
         </div>
-
-
     </div>
 </div>
-
 
 <?php $content = ob_get_clean(); ?>
 

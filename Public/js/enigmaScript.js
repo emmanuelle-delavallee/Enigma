@@ -49,3 +49,33 @@ $(document).ready(function () {
     $("#idNote").val(onStar); // met la note dans l input
   });
 });
+
+function showDiscuter() {
+  document.getElementById("discuter").style.display = "none";
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("tirer").style.display = "none";
+  document.getElementById("fuire").style.display = "block";
+  document.getElementById("saloon").style.display = "block";
+  document.getElementById("madalton").style.display = "block";
+  document.getElementById("disscuss").style.display = "block";
+}
+
+function showTirer() {
+  document.getElementById("discuter").style.display = "none";
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("tirer").style.display = "none";
+  document.getElementById("fuire").style.display = "block";
+  document.getElementById("lasso1").style.display = "block";
+  document.getElementById("désarmer").style.display = "block";
+  document.getElementById("capture").style.display = "block";
+}
+
+function showDesarmer() {
+  document.getElementById("lasso1").style.display = "none";
+  document.getElementById("désarmer").style.display = "none";
+  document.getElementById("fuire").style.display = "none";
+  document.getElementById("fuire").style.display = "block";
+  document.getElementById("lasso2").style.display = "block";
+  document.getElementById("Lelasso").style.display = "block";
+  document.getElementById("capture").style.display = "none";
+}

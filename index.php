@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-//123//
-
 use Enigma\Autoloader;
 
 require 'Controller/Autoloader.php';

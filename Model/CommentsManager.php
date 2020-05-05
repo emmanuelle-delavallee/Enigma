@@ -26,9 +26,11 @@ class CommentsManager extends Manager
                users_comments.note,
                users_comments.date,
                users_comments.comment_status,
-               users.pseudo
+               users.pseudo,
+               stories.name
         FROM users_comments  
         INNER JOIN users ON users.id = users_comments.id_user
+        INNER JOIN stories ON stories.id = users_comments.id_story
         WHERE (comment_status = '0' or comment_status = '1')
         ORDER BY date DESC
         ";
