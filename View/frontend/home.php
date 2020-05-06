@@ -7,8 +7,8 @@
         <div class="caption right-align white-text">
             <div class="col l12">
                 <div class="col l6 offset-l6">
-                    <h2 class="home-page-title">Enigma</h2>
-                    <h3 class="page-subtitle left-align">Des énigmes en ligne</h3>
+                    <h2 class="home-page-title tracking-in-expand-fwd">Enigma</h2>
+                    <h3 class="page-subtitle left-align tracking-in-expand-fwd">Des énigmes en ligne</h3>
                 </div>
             </div>
         </div>
@@ -31,8 +31,8 @@
                                 <h5 class="enigma-subtitle"><?= $enigme->name ?></h5>
                                 <p><?= $enigme->resume ?></p>
                             </div>
-                            <div class="card-action">
-                                <a class="right waves-effect waves-light btn grey darken-3" href="index.php?url=enigma&id=<?= $enigme->id ?>&step=start">Jouer</a>
+                            <div class="card-action play-btn">
+                                <a class="right waves-effect waves-light btn cyan darken-2 " href="index.php?url=enigma&id=<?= $enigme->id ?>&step=start">Jouer <i class="material-icons right">play_arrow</i></a>
                             </div>
                         </div>
                     </div>

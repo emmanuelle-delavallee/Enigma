@@ -8,7 +8,6 @@
             foreach ($endings as $ending) {
         ?>
 
-
                 <h5 class="center"> <?= $ending->ending_title ?></h5>
 
                 <!-- IMAGE-->

@@ -76,7 +76,7 @@ class FrontendController
     }
 
 
-    // Page énigme 1
+    // Pages énigme 1
     function enigmastep($id, $step)
     {
         $responses = $this->Enigma1Manager->Enigma1Answer($id, $step);
@@ -86,13 +86,14 @@ class FrontendController
 
 
 
-    // Page énigme 3
+    // Page finale énigme
     function enigmadone($id)
     {
         $endings = $this->Enigma1Manager->enigmaEnding('1', $id);
 
         require('View/frontend/enigma1/enigma1-done.php');
     }
+
 
     // Page login
     function login()
@@ -101,7 +102,7 @@ class FrontendController
         require('View/frontend/login.php');
     }
 
-    //new user
+    // S'inscrire
     function addUser($name, $email, $password)
     {
         $user = $this->UsersManager->addNewUser($name, $email, $password);
@@ -115,12 +116,14 @@ class FrontendController
         return $checkLogin;
     }
 
+    // Vérifie si l'utilisateur est admin
     function checkAdmin()
     {
         $checkAdmin = $this->UsersManager->checkIfAdmin();
         return $checkAdmin;
     }
 
+    // Vérifie que l'utilisateur soit unique
     function checkUser($pseudo)
     {
         $checkuser = $this->UsersManager->checkIfUserexist($pseudo);

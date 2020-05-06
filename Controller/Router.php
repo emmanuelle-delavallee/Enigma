@@ -70,12 +70,15 @@ class Router
                         }
                         break;
 
+
+                        // Enigmes cas = id d'égnigme
                     case 'enigma':
 
                         if (isset($_SESSION['username']) && $_SESSION['username'] != "") {
 
                             switch ($_GET['id']) {
 
+                                    // Enigme n°2
                                 case '1':
 
                                     switch ($_GET['step']) {
@@ -93,20 +96,20 @@ class Router
 
 
 
-                                            // Afficher la page d'intro de l'énigme 1
+                                            // Afficher la page 1 de l'énigme 1
                                         case '1':
                                             $this->FrontendController->enigmastep('1', '1');
                                             break;
 
-                                            // Afficher la page d'intro de l'énigme 2
+
+
+                                            // Afficher la page 2 de l'énigme 1
                                         case '2':
                                             $res = 1;
                                             if (isset($_POST['submit'])) {
 
-                                                // Trim supprime l'espace avant le mot 
                                                 $reponse = htmlspecialchars(trim($_POST['reponse']));
 
-                                                // Vérifie que les champs ont bien été complétés
                                                 if (empty($reponse)) {
                                                     $res = 0;
                                                 } else {
@@ -127,7 +130,9 @@ class Router
 
                                             break;
 
-                                            // Afficher la page d'intro de l'énigme 2
+
+
+                                            // Afficher la page 3 de l'énigme 1
                                         case '3':
                                             $res = 1;
                                             if (isset($_POST['submit2'])) {
@@ -155,7 +160,8 @@ class Router
 
                                             break;
 
-                                            // Afficher la page login (utilisateurs)
+
+                                            // Afficher la page finale de l'énigme 1
                                         case 'done':
 
                                             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -169,6 +175,7 @@ class Router
                                     break;
 
 
+                                    // Enigme n°2
                                 case '2':
                                     switch ($_GET['step']) {
 
@@ -189,6 +196,7 @@ class Router
                             $this->FrontendController->login();
                         }
                         break;
+
 
                         // Afficher la page login (utilisateurs)
                     case 'login':
@@ -252,6 +260,7 @@ class Router
                         }
                         break;
 
+
                         // Ajouter un nouvel administrateur ou modérateur 
                     case 'newUser':
                         if (!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['repeat_email']) && !empty($_POST['password']) && !empty($_POST['repeat_password'])) {
@@ -281,8 +290,6 @@ class Router
                         $_SESSION['admin'] = '';
                         $this->FrontendController->home();
                         break;
-
-
 
 
 
@@ -316,13 +323,11 @@ class Router
                         break;
 
 
+
                         // Afficher la page de gestion des énigmes publiées/non-publiées(admin)
                     case 'adminAllEnigmas':
                         $this->BackendController->adminAllEnigmas();
                         break;
-
-
-
 
 
                         // Si aucune page n'est définie dans URL ou que la page d'existe pas, renvoi vers la page d'erreur

@@ -103,7 +103,10 @@ class UsersManager extends Manager
         $this->createQuery($sql, array($name, $email, sha1($password)));
     }
 
-    // Vérification de login utilisateurs + administrateurs
+
+
+    //-------------------------------------------------------------//
+    // Vérification si le pseudo existe déjà
     public function checkIfUserexist($pseudo)
     {
         $sql = "
