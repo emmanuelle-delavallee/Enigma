@@ -72,7 +72,7 @@ class FrontendController
     {
         $enigmes = $this->StoriesManager->getEnigma();
 
-        require('View/frontend/enigma1/enigma.php');
+        require('View/frontend/enigma.php');
     }
 
 
@@ -134,7 +134,7 @@ class FrontendController
     function usersDashboard()
     {
         $responses = $this->StoriesManager->getEnigmas();
-
+        $users = $this->UsersManager->getUser();
         require('View/frontend/usersDashboard.php');
     }
 
@@ -142,5 +142,11 @@ class FrontendController
     function error()
     {
         require('View/template/error.php');
+    }
+
+    // User ajout image
+    function editUser($pseudo, $imageTemp, $extension)
+    {
+        $responses = $this->UsersManager->postImg($pseudo, $imageTemp, $extension);
     }
 }

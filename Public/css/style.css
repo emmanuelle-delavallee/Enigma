@@ -205,3 +205,8 @@ body {
   height: 70px;
   margin-top: 5px;
 }
+
+.asterix-table {
+  word-wrap: break-word;
+  max-width: 50px;
+}

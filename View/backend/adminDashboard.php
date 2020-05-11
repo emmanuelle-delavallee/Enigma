@@ -9,75 +9,94 @@ if ($checkIfAdmin == 0) {
 <a class="waves-effect waves-light btn cyan darken-2 right" href="index.php?url=adminEnigmas">Gestion des énigmes</a>
 <br>
 
-<h4>Statistiques</h4>
-<p>Insérer ici des statistiques</p>
-<br><br><br>
+<!--STATISTIQUES-->
+<section>
+    <div class="col s12 valign-wrapper">
+        <h4 class="right-align">Statistiques </h4>
+        <button class="waves-effect btn-flat right-align" id="stats-up"><i class="material-icons" id="stats-up-icon">arrow_drop_up</i></button>
+    </div>
 
+    <div class="col s12 stats-slide-hide">
+        <p>Insérer ici des statistiques</p>
+    </div>
+</section>
+<br>
 
-<h4>Commentaires</h4>
+<!--COMMENTAIRES-->
+<section>
+    <div class="col s12 valign-wrapper">
+        <h4 class="right-align">Commentaires</h4>
+        <button class="waves-effect btn-flat right-align" id="comments-up"><i class="material-icons" id="comments-up-icon">arrow_drop_up</i></button>
+    </div>
 
-<table>
-    <thead>
-        <tr>
-            <th>Enigme</th>
-            <th>Titre du commentaire</th>
-            <th>Auteur</th>
-        </tr>
-    </thead>
+    <div class="col s12 comments-slide-hide">
 
-    <tbody>
-
-        <?php
-        if (!empty($comments)) {
-            foreach ($comments as $comment) {
-
-        ?>
+        <table class="responsive-table">
+            <thead>
                 <tr>
-
-                    <td><?= $comment->name ?></td>
-
-                    <td><?php if ($comment->comment_status == '2') { ?> <i class="material-icons red-text text-darken-1 left"> priority_high</i> <?php } ?> <?= $comment->comment_title ?> </td>
-
-                    <td><?= $comment->pseudo ?></td>
-                    <td><a href="#comment_<?= $comment->id ?>" class="btn-floating btn-small waves-effect waves-light cyan darken-2 modal-trigger" id="dashboard-btn"><i class="material-icons">add</i></a></td>
-
-                    <div class="modal" id="comment_<?= $comment->id ?>">
-                        <div class="modal-content">
-                            <h4><?= $comment->comment_title ?></h4>
-                            <p>Commentaire posté par <?= "<strong>" . $comment->pseudo . "</strong> le " . date("d/m/Y", strtotime($comment->date)) ?>, à propos de l'aventure <?= $comment->name ?></p>
-                            <hr>
-                            <p> <?= nl2br($comment->comment) ?></p>
-                        </div>
-
-                        <div class="modal-footer">
-                            <a href="index.php?url=validComment&id= <?= $comment->id ?>" class="modal-action modal-close btn-floating btn-small waves-effect waves-light cyan darken-2"><i class="material-icons">done</i></a>
-                            <a href="index.php?url=deleteComment&id= <?= $comment->id ?>" class="modal-action modal-close btn-floating btn-small waves-effect waves-light red darken-1"><i class="material-icons">delete</i></a>
-                        </div>
-                    </div>
+                    <th>Enigme</th>
+                    <th>Titre du commentaire</th>
+                    <th>Auteur</th>
                 </tr>
+            </thead>
 
-            <?php
-            }
-        } else {
-            ?>
-            <tr>
-                <td></td>
-                <td>Aucun commentaire à valider</td>
-            </tr>
+            <tbody>
 
+                <?php
+                if (!empty($comments)) {
+                    foreach ($comments as $comment) {
 
-        <?php
-        }
-        ?>
-    </tbody>
-</table>
+                ?>
+                        <tr>
 
-<div class="row">
+                            <td><?= $comment->name ?></td>
 
-    <div class="col s12 m12 ">
+                            <td><?php if ($comment->comment_status == '2') { ?> <i class="material-icons red-text text-darken-1 left"> priority_high</i> <?php } ?> <?= $comment->comment_title ?> </td>
 
-        <h4>Administrateurs</h4>
+                            <td><?= $comment->pseudo ?></td>
+                            <td><a href="#comment_<?= $comment->id ?>" class="btn-floating btn-small waves-effect waves-light cyan darken-2 modal-trigger" id="dashboard-btn"><i class="material-icons">add</i></a></td>
 
+                            <!--Modal-->
+                            <div class="modal" id="comment_<?= $comment->id ?>">
+                                <div class="modal-content">
+                                    <h4><?= $comment->comment_title ?></h4>
+                                    <p>Commentaire posté par <?= "<strong>" . $comment->pseudo . "</strong> le " . date("d/m/Y", strtotime($comment->date)) ?>, à propos de l'aventure <?= $comment->name ?></p>
+                                    <hr>
+                                    <p> <?= nl2br($comment->comment) ?></p>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <a href="index.php?url=validComment&id= <?= $comment->id ?>" class="modal-action modal-close btn-floating btn-small waves-effect waves-light cyan darken-2"><i class="material-icons">done</i></a>
+                                    <a href="index.php?url=deleteComment&id= <?= $comment->id ?>" class="modal-action modal-close btn-floating btn-small waves-effect waves-light red darken-1"><i class="material-icons">delete</i></a>
+                                </div>
+                            </div>
+                        </tr>
+
+                    <?php
+                    }
+                } else {
+                    ?>
+                    <tr>
+                        <td></td>
+                        <td>Aucun commentaire à valider</td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</section>
+<br>
+
+<!--ADMINISTRATEURS-->
+<section>
+    <div class="col s12 valign-wrapper">
+        <h4 class="right-align">Administrateurs </h4>
+        <button class="waves-effect btn-flat right-align" id="admins-up"><i class="material-icons" id="admins-up-icon">arrow_drop_up</i></button>
+    </div>
+
+    <div class="col s12 admins-slide-hide">
         <table class="responsive-table">
 
             <thead>
@@ -87,8 +106,6 @@ if ($checkIfAdmin == 0) {
                     <th><a href="#adminCreate" class="btn-floating btn-small waves-effect waves-light cyan darken-2 modal-trigger" id="dashboard-btn"><i class="material-icons">add</i></a></th>
                 </tr>
             </thead>
-
-
 
             <tbody>
                 <?php
@@ -112,13 +129,10 @@ if ($checkIfAdmin == 0) {
                                     <a href="index.php?url=deleteAdmin&id= <?= $admin->id ?>" class="modal-action modal-close btn-floating btn-small waves-effect waves-light red darken-1"><i class="material-icons">delete</i></a>
                                 </div>
                             </div>
-
-
                     <?php
                     }
                 }
                     ?>
-
 
                     <div class="modal" id="adminCreate">
                         <div class="modal-content">
@@ -126,7 +140,6 @@ if ($checkIfAdmin == 0) {
                             <h4 class="center">Ajouter un administrateur</h4>
 
                             <p class="grey-text darken-2 center">Ce compte utilisateur sera défini comme administrateur</p>
-
 
                             <!-- Formulaire d'inscription d'un nouvel admin -->
                             <form action="index.php?url=addAdmin" method="post">
@@ -136,11 +149,9 @@ if ($checkIfAdmin == 0) {
                                         <label for="pseudo">Pseudo</label>
                                     </div>
 
-
                                     <div class="col s10 m8 l6 offset-l3 center-align">
                                         <button type="submit" name="submit" class="modal-action modal-close btn-floating btn-small waves-effect waves-light cyan darken-2"><i class="material-icons">done</i></button>
                                     </div>
-
                                 </div>
                             </form>
                         </div>
@@ -150,9 +161,7 @@ if ($checkIfAdmin == 0) {
         </table>
     </div>
 
-
-
-</div>
+</section>
 
 <?php $content = ob_get_clean(); ?>
 

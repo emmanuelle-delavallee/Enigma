@@ -7,7 +7,7 @@
 
     <div class="container discover-container">
 
-        <h2 class="page-title center white-text">Vos commentaires</h2>
+        <h2 class="page-title center white-text">Les commentaires</h2>
 
 
         <!-- BTN ECRIRE UN COMMENTAIRE -->
@@ -35,7 +35,7 @@
                                 </div>
 
                                 <div class="col s12 m12 l2 center">
-                                    <img class="circle user_img" src="Public/img/2.jpg" alt="user_img" id="user_img_comments">
+                                    <img class="circle user_img" src="Public/img/users/<?= $response->image ?>" alt="user_img" id="user_img_comments">
                                     <p><?= $response->pseudo ?></p>
                                 </div>
                             </div>

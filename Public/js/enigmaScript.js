@@ -1,6 +1,40 @@
 $(document).ready(function () {
-  $(".sidenav").sidenav(); // Menu latéral
-  $(".materialboxed").materialbox(); // Zoom des images
+  /* AFFICHER/MASQUER DETAIL ADMIN DASHBOARD*/
+
+  $("#stats-up").click(function () {
+    $("#stats-up-icon").text(
+      $("#stats-up-icon").text() == "arrow_drop_up"
+        ? "arrow_drop_down"
+        : "arrow_drop_up"
+    );
+    $(".stats-slide-hide").slideToggle();
+  });
+
+  $("#comments-up").click(function () {
+    $("#comments-up-icon").text(
+      $("#comments-up-icon").text() == "arrow_drop_up"
+        ? "arrow_drop_down"
+        : "arrow_drop_up"
+    );
+    $(".comments-slide-hide").slideToggle();
+  });
+
+  $("#admins-up").click(function () {
+    $("#admins-up-icon").text(
+      $("#admins-up-icon").text() == "arrow_drop_up"
+        ? "arrow_drop_down"
+        : "arrow_drop_up"
+    );
+    $(".admins-slide-hide").slideToggle();
+  });
+
+  /*MENU LATERAL*/
+  $(".sidenav").sidenav();
+
+  /*ZOOM DES IMAGES*/
+  $(".materialboxed").materialbox();
+
+  /*CAROUSEL*/
   $(".carousel").carousel({
     fullWidth: true,
   });

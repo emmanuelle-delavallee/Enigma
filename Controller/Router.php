@@ -31,6 +31,28 @@ class Router
                 // Selon l'URL
                 switch ($_GET['url']) {
 
+                    case 'AddImage':
+
+                        $image =  isset($_FILES['image']['name']) ?  $_FILES['image']['name'] : '';
+
+                        if (!empty($image)) {
+
+                            $extensions = ['.png', '.jpg', '.jpeg', '.gif', '.PNG', '.JPG', '.JPEG', '.GIF'];
+
+
+                            // Récupère l'extension du fichier
+                            $extension = strrchr($image, '.');
+
+
+                            // Vérifie si l'extension du fichier sélectionné est dans le tableau extensions
+                            if (in_array($extension, $extensions)) {
+                                $this->FrontendController->editUser($_SESSION['username'], $_FILES['image']['tmp_name'], $extension);
+                            }
+                        }
+                        $this->FrontendController->usersDashboard();
+
+                        break;
+
 
                         // Afficher la page découvrir
                     case 'discover':
@@ -52,7 +74,7 @@ class Router
                         // Poste un nouveau commentaire
                     case 'addNewComment':
                         if (!empty($_POST['id_story']) && !empty($_SESSION['username']) && !empty($_POST['comment_title']) && !empty($_POST['comment']) && !empty($_POST['note'])) {
-                            $this->FrontendController->addUserComment($_POST['id_story'], $_SESSION['admin'], $_POST['comment_title'], $_POST['comment'], $_POST['note']);
+                            $this->FrontendController->addUserComment($_POST['id_story'], $_SESSION['username'], $_POST['comment_title'], $_POST['comment'], $_POST['note']);
                             $this->FrontendController->comments();
                         } else {
                             throw new Exception('Tous les champs ne sont pas remplis !');
@@ -127,7 +149,6 @@ class Router
 
                                                 $this->FrontendController->enigmastep('1', '2');
                                             }
-
                                             break;
 
 
@@ -164,8 +185,8 @@ class Router
                                             // Afficher la page finale de l'énigme 1
                                         case 'done':
 
-                                            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                                                $this->FrontendController->enigmadone($_GET['id']);
+                                            if (isset($_GET['idending']) && $_GET['idending'] > 0) {
+                                                $this->FrontendController->enigmadone($_GET['idending']);
                                             } else {
                                                 $this->FrontendController->enigmastep('1', '3');
                                             }
@@ -180,7 +201,7 @@ class Router
                                     switch ($_GET['step']) {
 
 
-                                            // Afficher la page d'intro de l'énigme 1
+                                            // Afficher la page d'intro de l'énigme 2
                                         case 'start':
 
                                             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -189,6 +210,42 @@ class Router
                                                 throw new Exception('Aucun identifiant d\'énigme envoyé');
                                             }
                                             break;
+
+
+                                            // Afficher la page 1 de l'énigme 2
+                                        case '1':
+                                            $this->FrontendController->enigmastep('2', '1');
+                                            break;
+
+
+                                            // Afficher la page 2 de l'énigme 2
+                                        case '2':
+
+                                            if (isset($_POST['group1']) && isset($_POST['group2']) && isset($_POST['group3'])) {
+                                                $answer1 = $_POST['group1'];
+                                                $answer2 = $_POST['group2'];
+                                                $answer3 = $_POST['group3'];
+
+                                                if (($answer1 == '2') && ($answer2 == '4') && ($answer3 == '3')) {
+                                                    $this->FrontendController->enigmastep('2', '2');
+                                                } else {
+                                                    $this->FrontendController->enigmastep('2', '1');
+                                                }
+                                            } else {
+                                                $this->FrontendController->enigmastep('2', '1');
+                                            }
+                                            break;
+
+
+                                            // Afficher la page 3 de l'énigme 2
+                                        case '3':
+
+
+                                            break;
+
+
+                                            //
+
                                     }
                                     break;
                             }
