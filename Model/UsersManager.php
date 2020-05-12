@@ -23,6 +23,7 @@ class UsersManager extends Manager
         foreach ($users as $user) {
             if ($user->id > 0) {
                 $res = 1;
+                $_SESSION['id_user'] = $user->id;
             }
         }
         return $res;
@@ -124,5 +125,38 @@ class UsersManager extends Manager
             }
         }
         return $res;
+    }
+
+    // BACK : ajoute une image à un article 
+    public function postImg($pseudo, $tmp_name, $extension)
+    {
+
+        // Update de la BDD là où l'ID correspond à l'ID de l'article, insère l'image et change l'image par défaut
+        $sql = "
+         UPDATE users 
+         SET image = ?
+         WHERE pseudo = ?
+         ";
+
+
+        $this->createQuery($sql, [$pseudo . $extension, $pseudo]);
+
+        // Classe le fichier sélectionné dans le dossier image
+        move_uploaded_file($tmp_name, "Public/img/users/" . $pseudo . $extension);
+    }
+
+    // REF // Récupère les administrateurs de la BDD
+    public function getUser()
+    {
+        $sql = "
+        SELECT id,
+               pseudo,
+               email,
+               image
+        FROM users
+        where pseudo = ?
+        ";
+
+        return $this->createQuery($sql, [$_SESSION['username']]);
     }
 }

@@ -63,13 +63,23 @@ class BackendController
     function adminEnigmas()
     {
         $responses = $this->StoriesManager->getEnigmas();
+
         require('View/backend/adminEnigmas.php');
     }
 
-    // Gestion de toutes les énigmes
-    function adminAllEnigmas()
+    // Gestion des énigmes publiées
+    function updateEnigma()
     {
-        $responses = $this->StoriesManager->getAllEnigmas();
-        require('View/backend/adminAllEnigmas.php');
+        $enigmes = $this->StoriesManager->getEnigma();
+
+        $indices = $this->StoriesManager->getIndices();
+        require('View/backend/adminUpdateEnigma.php');
+    }
+
+
+    // Gestion des énigmes publiées
+    function updateStepEnigme($id_story, $id_step, $help, $text)
+    {
+        $enigmes = $this->StoriesManager->updateStepEnig($id_story, $id_step, $help, $text);
     }
 }

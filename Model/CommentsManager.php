@@ -27,6 +27,7 @@ class CommentsManager extends Manager
                users_comments.date,
                users_comments.comment_status,
                users.pseudo,
+               users.image,
                stories.name
         FROM users_comments  
         INNER JOIN users ON users.id = users_comments.id_user
@@ -48,7 +49,9 @@ class CommentsManager extends Manager
         $sql = 'INSERT INTO users_comments(id_story, id_user, comment_title, comment, note, date)'
             . ' VALUES(?, 
             (select id from users where pseudo = ?),
-            ?, ?, ?, NOW())';
+            ?, 
+            ?,
+             ?, NOW())';
 
         $this->createQuery($sql, array($id_story, $pseudo, $comment_title, $comment, $note));
     }
@@ -81,6 +84,7 @@ class CommentsManager extends Manager
                 users_comments.date,
                 users_comments.comment_status,
                 users.pseudo,
+                users.image,
                 stories.name
         FROM users_comments
         INNER JOIN users ON users.id = users_comments.id_user

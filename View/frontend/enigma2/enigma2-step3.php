@@ -49,10 +49,7 @@
             }
         }
         ?>
-        <h5 class="enigmas-title center">Vous faites face aux Daltons</h5>
-
-        <h6 class="center">Ils sont armés et prêts à en découdre</h6>
-
+        <h5 class="enigmas-title center">Vous êtes arrivés devant le camp romain de Petibonum</h5>
 
 
         <!-- MODAL D'AIDE-->
@@ -94,8 +91,8 @@
 
 
         <!-- IMAGE-->
-        <div class="col s12 m12 l10 center enigma-img">
-            <img src="Public/img/lucky_luke/LuckyDuel.jpg" alt="Duel_Lucky_Luke_Daltons">
+        <div class="col s12 m12 l12 center enigma-img">
+            <img src="Public/img/asterix/camp-romain-asterix.png" alt="Camp_romain_de_Petibonum">
         </div>
 
         <!-- REPONSE-->
@@ -103,23 +100,22 @@
             <div class="row">
 
                 <h5 class="enigmas-subtitle" id="intro" style="display:block">Que faites-vous ?</h5>
-                <h5 class="enigmas-subtitle" id="disscuss" style="display:none">Les daltons semblent prêts à discuter, à vous de choisir le sujet de la conversation</h5>
-                <h5 class="enigmas-subtitle" id="capture" style="display:none">Plusieurs choix s'offrent à vous pour tenter la capture des Daltons</h5>
-                <h5 class="enigmas-subtitle" id="Lelasso" style="display:none">Après 4 brillant tirs, les Dalton sont désarmés</h5>
+                <h5 class="enigmas-subtitle" id="disscuss" style="display:none">Vous êtes devant le légionnaire de garde</h5>
+                <h5 class="enigmas-subtitle" id="capture" style="display:none">Que faites vous pour attaquer le camp ?</h5>
+                <h5 class="enigmas-subtitle" id="Lelasso" style="display:none">Vous etes maintenant super fort ! C'est parti</h5>
 
                 <!-- BTN REPONSE -->
 
-                <button class="btn waves-effect waves-teal btn-flat btn-choices " id="discuter" onclick="showDiscuter()" style="display:block"> <i class="large material-icons left">arrow_forward</i>Tenter de discuter</button>
-                <button class="btn waves-effect waves-teal btn-flat btn-choices " id="tirer" onclick="showTirer()" style="display:block"><i class="large material-icons left">arrow_forward</i>Tenter de les capturer</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices " id="discuter" onclick="showDiscuter()" style="display:block"> <i class="large material-icons left">arrow_forward</i>Négocier avec le légionnaire de garde</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices " id="tirer" onclick="showTirer()" style="display:block"><i class="large material-icons left">arrow_forward</i>Attaquer le camp</button>
 
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="fuire" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=1'" style="display:none"><i class="large material-icons left">arrow_forward</i>Les laisser s'enfuir</button>
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="saloon" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=2'" style="display:none"><i class="large material-icons left">arrow_forward</i>Emmener Joe au saloon</button>
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="madalton" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=3'" style="display:none"><i class="large material-icons left">arrow_forward</i>Parler de 'ma Dalton</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="fuire" onclick="window.location.href='index.php?url=enigma&id=2&step=done&idending=1'" style="display:none"><i class="large material-icons left">arrow_forward</i>Changer d'avis et rentrer au village</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="saloon" onclick="window.location.href='index.php?url=enigma&id=2&step=done&idending=2'" style="display:none"><i class="large material-icons left">arrow_forward</i>Lui offrir un sanglier</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="madalton" onclick="window.location.href='index.php?url=enigma&id=2&step=done&idending=2'" style="display:none"><i class="large material-icons left">arrow_forward</i>Le menacer au nom de césar </button>
 
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="désarmer" onclick="showDesarmer()" style="display:none"><i class="large material-icons left">arrow_forward</i>Tirer pour les désarmer</button>
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="lasso1" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=4'" style="display:none"><i class="large material-icons left">arrow_forward</i>Capturer au lasso</button>
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="lasso2" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=5'" style="display:none"><i class="large material-icons left">arrow_forward</i>Capturer au lasso</button>
-
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="désarmer" onclick="showDesarmer()" style="display:none"><i class="large material-icons left">arrow_forward</i>Boire de la potion magique</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="lasso1" onclick="window.location.href='index.php?url=enigma&id=2&step=done&idending=3'" style="display:none"><i class="large material-icons left">arrow_forward</i>Jeter un menhir sur la tente du général</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="lasso2" onclick="window.location.href='index.php?url=enigma&id=2&step=done&idending=3'" style="display:none"><i class="large material-icons left">arrow_forward</i>A l'attaaaque !</button>
             </div>
         </div>
     </div>

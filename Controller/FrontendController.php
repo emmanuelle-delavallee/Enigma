@@ -49,6 +49,8 @@ class FrontendController
     {
         $responses = $this->CommentsManager->getComments();
 
+        $enigmes = $this->StoriesManager->getEnigmas();
+
         require('View/frontend/comments.php');
     }
 
@@ -72,7 +74,7 @@ class FrontendController
     {
         $enigmes = $this->StoriesManager->getEnigma();
 
-        require('View/frontend/enigma1/enigma.php');
+        require('View/frontend/enigma.php');
     }
 
 
@@ -85,14 +87,15 @@ class FrontendController
     }
 
 
-
     // Page finale énigme
-    function enigmadone($id)
+    function enigmadone($id_enigme, $id_ending, $id_user)
     {
-        $endings = $this->Enigma1Manager->enigmaEnding('1', $id);
-
-        require('View/frontend/enigma1/enigma1-done.php');
+        $endings = $this->Enigma1Manager->enigmaEnding($id_enigme, $id_ending);
+        $postending = $this->Enigma1Manager->postEnding($id_enigme, $id_user, $id_ending);
+        require('View/frontend/enigma-done.php');
     }
+
+
 
 
     // Page login
@@ -133,7 +136,8 @@ class FrontendController
     // Page dashboard des utilisateurs
     function usersDashboard()
     {
-        $responses = $this->StoriesManager->getEnigmas();
+        $responses = $this->StoriesManager->getEnigmasUser();
+        $users = $this->UsersManager->getUser();
 
         require('View/frontend/usersDashboard.php');
     }
@@ -142,5 +146,11 @@ class FrontendController
     function error()
     {
         require('View/template/error.php');
+    }
+
+    // User ajout image
+    function editUser($pseudo, $imageTemp, $extension)
+    {
+        $responses = $this->UsersManager->postImg($pseudo, $imageTemp, $extension);
     }
 }

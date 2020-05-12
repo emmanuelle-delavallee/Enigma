@@ -7,7 +7,7 @@
 
     <div class="container discover-container">
 
-        <h2 class="page-title center white-text">Vos commentaires</h2>
+        <h2 class="page-title center white-text">Les avis des joueurs</h2>
 
 
         <!-- BTN ECRIRE UN COMMENTAIRE -->
@@ -19,33 +19,44 @@
         <!-- COMMENTAIRES -->
         <div class="container">
             <div class="col s12 m12 l12">
+                <div id="pagination">
 
-                <?php
-                if ($responses != false) {
-                    foreach ($responses as $response) {
-                ?>
+                    <?php
+                    if ($responses != false) {
+                        foreach ($responses as $response) {
+                    ?>
 
-                        <div class="card grey lighten-5 comm-card">
-                            <div class="row">
-                                <div class="col s12 m12 l10">
-                                    <span class="card-title"> <strong> <?= $response->comment_title ?> - <?= $response->note ?>/5 </strong> </span>
-                                    <p class="grey-text text-darken-1">Publié le <?= date("d/m/Y", strtotime($response->date)) ?> au sujet de l'aventure <?= $response->name ?></p>
-                                    <p><?= nl2br($response->comment) ?></p>
-                                    <a href="index.php?url=warning&id=<?= $response->id ?>" class="right cyan-text text-darken-2">Signaler ce commentaire</a>
-                                </div>
+                            <div class="card grey lighten-5 comm-card">
+                                <div class="row">
+                                    <div class="col s12 m12 l10">
+                                        <span class="card-title"> <strong> <?= $response->comment_title ?> - <?= $response->note ?>/5 </strong> </span>
+                                        <p class="grey-text text-darken-1">Publié le <?= date("d/m/Y", strtotime($response->date)) ?> au sujet de l'aventure <?= $response->name ?></p>
+                                        <p><?= nl2br($response->comment) ?></p>
+                                        <a href="index.php?url=warning&id=<?= $response->id ?>" class="right cyan-text text-darken-2">Signaler ce commentaire</a>
+                                    </div>
 
-                                <div class="col s12 m12 l2 center">
-                                    <img class="circle user_img" src="Public/img/2.jpg" alt="user_img" id="user_img_comments">
-                                    <p><?= $response->pseudo ?></p>
+                                    <div class="col s12 m12 l2 center">
+                                        <img class="circle user_img" src="Public/img/users/<?= $response->image ?>" alt="user_img" id="user_img_comments">
+                                        <p><?= $response->pseudo ?></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                <?php
+                    <?php
+                        }
                     }
-                }
-                ?>
+                    ?>
+                    <ul class="pagination">
+                        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                        <li class="active"><a href="#!">1</a></li>
+                        <li class="waves-effect"><a href="#!">2</a></li>
+                        <li class="waves-effect"><a href="#!">3</a></li>
+                        <li class="waves-effect"><a href="#!">4</a></li>
+                        <li class="waves-effect"><a href="#!">5</a></li>
+                        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                    </ul>
 
+                </div>
             </div>
         </div>
 
@@ -78,7 +89,7 @@
             // Affiche les erreurs si existantes
             if (!empty($errors)) {
         ?>
-                <div class="card red">
+                <div class="card red error-message">
                     <div class="card-content white-text">
                         <?php
                         foreach ($errors as $error) {
@@ -120,9 +131,13 @@
 
                             <div class="input-field col s12 m6 l3">
                                 <select name="id_story" id="id_story">
-                                    <option value="1">Lucky Luke et la locomotive piégée</option>
-                                    <option value="2">Enigme 2</option>
-                                    <option value="3">Enigme 3</option>
+
+                                    <?php
+                                    foreach ($enigmes as $enigme) {
+                                        echo  "<option value=" . $enigme->id . ">" . $enigme->name . "</option>";
+                                    }
+                                    ?>
+
                                 </select>
                                 <label for="id_story">Sélectionner l'énigme</label>
                             </div>
@@ -157,12 +172,12 @@
                             </div>
 
                             <div class="input-field col s12 m8 l12">
-                                <textarea name="comment" id="comment" class="materialize-textarea"></textarea>
+                                <textarea name="comment" id="comment-textarea" class="materialize-textarea"></textarea>
                                 <label for="comment">Rédiger le commentaire</label>
                             </div>
 
                             <div class="col s12 m6 l12 center">
-                                <button type="submit" name="submit" class="btn waves-effect waves-light cyan darken-2">Poster mon commentaire</button>
+                                <button type="submit" name="submit" id="comment-form-btn" class="btn waves-effect waves-light cyan darken-2 disabled">Poster mon commentaire</button>
                             </div>
                         </form>
                         </section>

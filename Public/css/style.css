@@ -161,12 +161,21 @@ body {
 
 .enigmas-title {
   margin: 0;
-  padding: 4rem 0 4rem 0;
+  padding: 4rem 0 2rem 0;
+  text-align: center;
 }
 
 .enigmas-subtitle {
-  text-align: justify;
-  margin-bottom: 5rem;
+  text-align: center;
+  margin: 3rem 0 3rem 0;
+}
+
+.enigma-img {
+  margin: 2rem 0 2rem 0;
+}
+
+.enigma-submit-btn {
+  margin: 1rem 0 1rem 0;
 }
 
 /*CANVAS*/
@@ -204,4 +213,9 @@ body {
   width: 70px;
   height: 70px;
   margin-top: 5px;
+}
+
+.asterix-table {
+  word-wrap: break-word;
+  max-width: 50px;
 }

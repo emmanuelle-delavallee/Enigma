@@ -1,19 +1,19 @@
 class Canvas {
-  constructor(canvasId, removeSignatureBtn) {
+  constructor(canvasId, removeDrawBtn) {
     this.canvas = document.getElementById(canvasId);
     this.ctx = this.canvas.getContext("2d");
     this.painting = false;
     this.finger = false;
     this.canvas.width = 1240;
     this.canvas.height = 720;
-    this.clearButton = document.getElementById("removeSignatureBtn");
+    this.clearButton = document.getElementById("removeDrawBtn");
     this.ctx.lineWidth = 5;
     this.ctx.lineCap = "round";
     this.ctx.strokeStyle = "#ffffff";
     this.startX = 0;
     this.startY = 0;
 
-    this.removeSignatureBtn = document.getElementById(removeSignatureBtn);
+    this.removeDrawBtn = document.getElementById(removeDrawBtn);
 
     this.signature();
     this.clear();
@@ -69,7 +69,7 @@ class Canvas {
     this.canvas.addEventListener(
       "mousedown",
       (e) => {
-        this.removeSignatureBtn.style.visibility = "visible";
+        this.removeDrawBtn.style.visibility = "visible";
 
         this.startX = e.clientX - this.canvas.getBoundingClientRect().left;
         this.startY = e.clientY - this.canvas.getBoundingClientRect().top;
@@ -100,7 +100,7 @@ class Canvas {
     this.canvas.addEventListener(
       "touchstart",
       (e) => {
-        this.removeSignatureBtn.style.visibility = "visible";
+        this.removeDrawBtn.style.visibility = "visible";
 
         this.startX =
           e.touches[0].pageX - this.canvas.getBoundingClientRect().left;
@@ -138,6 +138,6 @@ class Canvas {
   // Remise à zéro de la signature
   clear() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.removeSignatureBtn.style.visibility = "hidden";
+    this.removeDrawBtn.style.visibility = "hidden";
   }
 }

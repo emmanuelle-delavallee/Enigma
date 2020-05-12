@@ -31,6 +31,28 @@ class Router
                 // Selon l'URL
                 switch ($_GET['url']) {
 
+                    case 'AddImage':
+
+                        $image =  isset($_FILES['image']['name']) ?  $_FILES['image']['name'] : '';
+
+                        if (!empty($image)) {
+
+                            $extensions = ['.png', '.jpg', '.jpeg', '.gif', '.PNG', '.JPG', '.JPEG', '.GIF'];
+
+
+                            // Récupère l'extension du fichier
+                            $extension = strrchr($image, '.');
+
+
+                            // Vérifie si l'extension du fichier sélectionné est dans le tableau extensions
+                            if (in_array($extension, $extensions)) {
+                                $this->FrontendController->editUser($_SESSION['username'], $_FILES['image']['tmp_name'], $extension);
+                            }
+                        }
+                        $this->FrontendController->usersDashboard();
+
+                        break;
+
 
                         // Afficher la page découvrir
                     case 'discover':
@@ -52,7 +74,7 @@ class Router
                         // Poste un nouveau commentaire
                     case 'addNewComment':
                         if (!empty($_POST['id_story']) && !empty($_SESSION['username']) && !empty($_POST['comment_title']) && !empty($_POST['comment']) && !empty($_POST['note'])) {
-                            $this->FrontendController->addUserComment($_POST['id_story'], $_SESSION['admin'], $_POST['comment_title'], $_POST['comment'], $_POST['note']);
+                            $this->FrontendController->addUserComment($_POST['id_story'], $_SESSION['username'], $_POST['comment_title'], $_POST['comment'], $_POST['note']);
                             $this->FrontendController->comments();
                         } else {
                             throw new Exception('Tous les champs ne sont pas remplis !');
@@ -106,14 +128,14 @@ class Router
                                             // Afficher la page 2 de l'énigme 1
                                         case '2':
                                             $res = 1;
-                                            if (isset($_POST['submit'])) {
+                                            if (isset($_POST['submit11'])) {
 
-                                                $reponse = htmlspecialchars(trim($_POST['reponse']));
+                                                $answer11 = htmlspecialchars(trim($_POST['answer11']));
 
-                                                if (empty($reponse)) {
+                                                if (empty($answer11)) {
                                                     $res = 0;
                                                 } else {
-                                                    if ($reponse != "37") {
+                                                    if ($answer11 != "37") {
                                                         $res = 0;
                                                     }
                                                 }
@@ -127,7 +149,6 @@ class Router
 
                                                 $this->FrontendController->enigmastep('1', '2');
                                             }
-
                                             break;
 
 
@@ -135,16 +156,16 @@ class Router
                                             // Afficher la page 3 de l'énigme 1
                                         case '3':
                                             $res = 1;
-                                            if (isset($_POST['submit2'])) {
+                                            if (isset($_POST['submit12']) && isset($_POST['answer12'])) {
 
                                                 // Trim supprime l'espace avant le mot 
-                                                $reponse = htmlspecialchars(trim($_POST['reponse']));
+                                                $answer12 = htmlspecialchars(trim($_POST['answer12']));
 
                                                 // Vérifie que les champs ont bien été complétés
-                                                if (empty($reponse)) {
+                                                if (empty($answer12)) {
                                                     $res = 0;
                                                 } else {
-                                                    if ($reponse != "2") {
+                                                    if ($answer12 != "2") {
                                                         $res = 0;
                                                     }
                                                 }
@@ -164,8 +185,8 @@ class Router
                                             // Afficher la page finale de l'énigme 1
                                         case 'done':
 
-                                            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                                                $this->FrontendController->enigmadone($_GET['id']);
+                                            if (isset($_GET['idending']) && $_GET['idending'] > 0) {
+                                                $this->FrontendController->enigmadone('1', $_GET['idending'], $_SESSION['username']);
                                             } else {
                                                 $this->FrontendController->enigmastep('1', '3');
                                             }
@@ -180,7 +201,7 @@ class Router
                                     switch ($_GET['step']) {
 
 
-                                            // Afficher la page d'intro de l'énigme 1
+                                            // Afficher la page d'intro de l'énigme 2
                                         case 'start':
 
                                             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -188,6 +209,73 @@ class Router
                                             } else {
                                                 throw new Exception('Aucun identifiant d\'énigme envoyé');
                                             }
+                                            break;
+
+
+                                            // Afficher la page 1 de l'énigme 2
+                                        case '1':
+                                            $this->FrontendController->enigmastep('2', '1');
+                                            break;
+
+
+                                            // Afficher la page 2 de l'énigme 2
+                                        case '2':
+
+                                            if (isset($_POST['group1']) && isset($_POST['group2']) && isset($_POST['group3'])) {
+                                                $answer1 = $_POST['group1'];
+                                                $answer2 = $_POST['group2'];
+                                                $answer3 = $_POST['group3'];
+
+                                                if (($answer1 == '2') && ($answer2 == '4') && ($answer3 == '3')) {
+                                                    $this->FrontendController->enigmastep('2', '2');
+                                                } else {
+                                                    $this->FrontendController->enigmastep('2', '1');
+                                                }
+                                            } else {
+                                                $this->FrontendController->enigmastep('2', '1');
+                                            }
+                                            break;
+
+
+                                            // Afficher la page 3 de l'énigme 2
+                                        case '3':
+                                            $res = 1;
+                                            if (isset($_POST['submit22']) && isset($_POST['answer22'])) {
+
+                                                // Trim supprime l'espace avant le mot 
+                                                $answer22 = htmlspecialchars(trim($_POST['answer22']));
+
+                                                // Vérifie que les champs ont bien été complétés
+                                                if (empty($answer22)) {
+                                                    $res = 0;
+                                                } else {
+                                                    if ($answer22 != "3") {
+                                                        $res = 0;
+                                                    }
+                                                }
+                                            } else {
+                                                $res = 0;
+                                            }
+
+                                            if ($res == 0) {
+                                                $this->FrontendController->enigmastep('2', '2');
+                                            } else {
+                                                $this->FrontendController->enigmastep('2', '3');
+                                            }
+
+
+                                            break;
+
+
+                                            // Afficher la page finale de l'énigme 1
+                                        case 'done':
+
+                                            if (isset($_GET['idending']) && $_GET['idending'] > 0) {
+                                                $this->FrontendController->enigmadone('2', $_GET['idending'], $_SESSION['username']);
+                                            } else {
+                                                $this->FrontendController->enigmastep('2', '3');
+                                            }
+
                                             break;
                                     }
                                     break;
@@ -288,6 +376,7 @@ class Router
                     case 'logout':
                         $_SESSION['username'] = "";
                         $_SESSION['admin'] = '';
+                        $_SESSION['id_user'] = '';
                         $this->FrontendController->home();
                         break;
 
@@ -323,12 +412,20 @@ class Router
                         break;
 
 
-
-                        // Afficher la page de gestion des énigmes publiées/non-publiées(admin)
-                    case 'adminAllEnigmas':
-                        $this->BackendController->adminAllEnigmas();
+                    case 'updateEnigma':
+                        if (isset($_GET['id']) && $_GET['id'] > 0) {
+                            $this->BackendController->updateEnigma($_GET['id']);
+                        } else {
+                            $this->BackendController->adminDashboard();
+                        }
                         break;
 
+                    case 'updateStepEnigme':
+                        if (!empty($_POST['indice'])) {
+                            $this->BackendController->updateStepEnigme($_GET['id_story'], $_GET['id_step'], $_GET['help'], $_POST['indice']);
+                        }
+                        $this->BackendController->updateEnigma($_GET['id_story']);
+                        break;
 
                         // Si aucune page n'est définie dans URL ou que la page d'existe pas, renvoi vers la page d'erreur
                     default:

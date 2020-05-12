@@ -13,29 +13,30 @@
                 <li><a class="btn-floating waves-effect waves-light amber modal-trigger" href="#helpModal"><i class="material-icons">lightbulb_outline</i></a></li>
             </ul>
         </div>
+
+
         <?php
-        if (isset($_POST['submit12'])) {
-            if (isset($_POST['answer12'])) {
+        if (isset($_POST['submit22'])) {
 
-                $answer12 = $_POST['answer12'];
+            if (isset($_POST['answer22'])) {
 
+                $answer22 = $_POST['answer22'];
 
 
                 // Stocke les erreurs dans un tableau pour pouvoir les afficher
                 $errors = [];
 
                 // Vérifie que les champs ont bien été complétés
-                if (empty($answer12)) {
+                if (empty($answer22)) {
                     $errors['empty'] = "Il faut indiquer une réponse !";
                 } else {
-                    if ($answer12 != "2") {
+                    if ($answer22 != "2") {
                         $errors['erreur'] = "Mauvaise réponse ! Réessayer ";
                     }
                 }
             } else {
                 $errors['empty'] = "Il faut indiquer une réponse !";
             }
-
             // Affiche les erreurs si existantes
             if (!empty($errors)) {
         ?>
@@ -53,10 +54,10 @@
             }
         }
         ?>
-        <h5 class="enigmas-title center">Retrouverez-vous les Daltons ?</h5>
-        <p class="center">Cliquez sur l'image pour dessiner le chemin</p>
 
 
+        <h5 class="enigmas-title center">Sur le chemin pour Petibonum, vous traversez la forêt des Carnutes</h5>
+        <h6 class="enigmas-subtitle">Il semble qu'un villageois ait perdu quelque chose dans cette forêt</h6>
 
         <!-- MODAL D'AIDE-->
         <div id="helpModal" class="modal">
@@ -95,37 +96,30 @@
             </div>
         </div>
 
-
-        <!-- IMAGE + CANVAS DE DESSIN-->
+        <!-- IMAGE-->
         <div class="col s12 m12 l10 center enigma-img">
-            <div id="signature_canvas" class="form-group">
-                <canvas id="canvas"></canvas>
-            </div>
-
-            <!--BTN EFFACER TRAITS DESSINES-->
-            <button class="btn" id="removeDrawBtn" type="reset">
-                Effacer les traits dessinés
-            </button>
+            <img src="Public/img/asterix/asterix-2-4.png" alt="">
         </div>
-
 
         <!-- REPONSE-->
         <div class="row">
             <div class="col s12 m8 l4 offset-l4">
-                <form action="index.php?url=enigma&id=1&step=3" method="post">
+                <form action="index.php?url=enigma&id=2&step=3" method="post">
                     <div class="input-field col s12">
-                        <select name="answer12" id="answer12">
-                            <option value="0" disabled selected>Quel chemin choisissez-vous ?</option>
-                            <option value="1">Chemin n°1</option>
-                            <option value="2">Chemin n°2</option>
-                            <option value="3">Chemin n°3</option>
+                        <select name="answer22" id="answer22">
+                            <option value="" disabled selected>Quel est l'objet perdu ?</option>
+                            <option value="1">Un marteau de Cétautomatix</option>
+                            <option value="2">La serpe d'or de Panoramix</option>
+                            <option value="3">Un poisson d'Ordalfabétix</option>
+                            <option value="4">La canne d'Agecanonix</option>
+                            <option value="5">La lyre d'Assurancetourix</option>
                         </select>
                     </div>
 
 
                     <!-- BTN REPONSE -->
                     <div class="col s12 m6 l12 center">
-                        <button type="submit" name="submit12" class="btn waves-effect waves-light teal enigma-submit-btn">Poster ma réponse</button>
+                        <button type="submit" name="submit22" class="btn waves-effect waves-light teal">Poster ma réponse</button>
                     </div>
 
                 </form>
