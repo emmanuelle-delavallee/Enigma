@@ -28,7 +28,7 @@
         // Affiche les erreurs s'il y en a, sinon upload et redirige vers l'article publié
         if (!empty($errors)) {
     ?>
-            <div class="card red">
+            <div class="card red error-message">
                 <div class="card-content white-text">
                     <?php
                     foreach ($errors as $error) {
@@ -40,9 +40,9 @@
         <?php
         } else {
         ?>
-            <div class="card green">
-                <div class="card-content white-text">
-                    <p> Votre image a bien été ajoutée</p>
+            <div class="card light-green lighten-2">
+                <div class="card-content success-message">
+                    <p class="center-align">Votre image a bien été ajoutée</p>
                 </div>
             </div>
 
@@ -123,8 +123,15 @@
                             <h4 class="enigma-subtitle"><?= $response->name ?></h4>
                             <p><?= $response->resume ?></p>
                             <br>
-                            <a class="right waves-effect waves-light btn cyan darken-2 btn-choices" href="index.php?url=enigma&id=<?= $response->id ?>&step=start">Jouer <i class="material-icons right">play_arrow</i></a>
-                            <a class="right waves-effect waves-light btn cyan darken-2 btn-choices" href="index.php?url=enigma&id=<?= $response->id ?>&step=start">Rejouer <i class="material-icons right">play_arrow</i></a>
+                            <?php
+                            if (!empty($response->id_ending)) {
+                                echo '<a class="right waves-effect waves-light btn cyan darken-2 btn-choices" href="index.php?url=enigma&id=' . $response->id . '&step=start">Rejouer <i class="material-icons right">play_arrow</i></a>';
+                            } else {
+                                echo '<a class="right waves-effect waves-light btn cyan darken-2 btn-choices" href="index.php?url=enigma&id=' . $response->id . '&step=start">Jouer <i class="material-icons right">play_arrow</i></a>';
+                            }
+
+                            ?>
+
 
                         </div>
                     </div>

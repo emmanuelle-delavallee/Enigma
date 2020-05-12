@@ -23,6 +23,7 @@ class UsersManager extends Manager
         foreach ($users as $user) {
             if ($user->id > 0) {
                 $res = 1;
+                $_SESSION['id_user'] = $user->id;
             }
         }
         return $res;

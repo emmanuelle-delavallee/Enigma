@@ -41,7 +41,7 @@
             if (!empty($errors)) {
         ?>
 
-                <div class="card red">
+                <div class="card red error-message">
                     <div class="card-content white-text">
                         <?php
                         foreach ($errors as $error) {

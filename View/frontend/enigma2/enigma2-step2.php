@@ -14,8 +14,50 @@
             </ul>
         </div>
 
-        <h5 class="center">Sur le chemin pour Petibonum, vous traversez la forêt des Carnutes</h5>
-        <p class="center">Il semble qu'un villageois ait perdu quelque chose dans cette forêt</p>
+
+        <?php
+        if (isset($_POST['submit22'])) {
+
+            if (isset($_POST['answer22'])) {
+
+                $answer22 = $_POST['answer22'];
+
+
+                // Stocke les erreurs dans un tableau pour pouvoir les afficher
+                $errors = [];
+
+                // Vérifie que les champs ont bien été complétés
+                if (empty($answer22)) {
+                    $errors['empty'] = "Il faut indiquer une réponse !";
+                } else {
+                    if ($answer22 != "2") {
+                        $errors['erreur'] = "Mauvaise réponse ! Réessayer ";
+                    }
+                }
+            } else {
+                $errors['empty'] = "Il faut indiquer une réponse !";
+            }
+            // Affiche les erreurs si existantes
+            if (!empty($errors)) {
+        ?>
+                <div class="card red error-message">
+                    <div class="card-content white-text">
+                        <?php
+                        foreach ($errors as $error) {
+                            echo $error . "<br/>";
+                        }
+
+                        ?>
+                    </div>
+                </div>
+        <?php
+            }
+        }
+        ?>
+
+
+        <h5 class="enigmas-title center">Sur le chemin pour Petibonum, vous traversez la forêt des Carnutes</h5>
+        <h6 class="enigmas-subtitle">Il semble qu'un villageois ait perdu quelque chose dans cette forêt</h6>
 
         <!-- MODAL D'AIDE-->
         <div id="helpModal" class="modal">
@@ -31,7 +73,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan">Retour au jeu <i class="material-icons right">play_arrow</i></a>
+                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan darken-2">Retour au jeu <i class="material-icons right">play_arrow</i></a>
             </div>
         </div>
 
@@ -50,11 +92,12 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan">Retour au jeu <i class="material-icons right">play_arrow</i></a>
+                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan darken-2">Retour au jeu <i class="material-icons right">play_arrow</i></a>
             </div>
         </div>
+
         <!-- IMAGE-->
-        <div class="col s12 m12 l10 center">
+        <div class="col s12 m12 l10 center enigma-img">
             <img src="Public/img/asterix/asterix-2-4.png" alt="">
         </div>
 
@@ -76,7 +119,7 @@
 
                     <!-- BTN REPONSE -->
                     <div class="col s12 m6 l12 center">
-                        <button type="submit" name="submit" class="btn waves-effect waves-light teal">Poster ma réponse</button>
+                        <button type="submit" name="submit22" class="btn waves-effect waves-light teal">Poster ma réponse</button>
                     </div>
 
                 </form>

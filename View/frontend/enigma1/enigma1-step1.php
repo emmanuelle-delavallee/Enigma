@@ -14,20 +14,20 @@
             </ul>
         </div>
         <?php
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['submit11'])) {
 
             // Trim supprime l'espace avant le mot 
-            $reponse = htmlspecialchars(trim($_POST['reponse']));
+            $answer11 = htmlspecialchars(trim($_POST['answer11']));
 
 
             // Stocke les erreurs dans un tableau pour pouvoir les afficher
             $errors = [];
 
             // Vérifie que les champs ont bien été complétés
-            if (empty($reponse)) {
+            if (empty($answer11)) {
                 $errors['empty'] = "Il faut indiquer une réponse !";
             } else {
-                if ($reponse != "37") {
+                if ($answer11 != "37") {
                     $errors['erreur'] = "Mauvaise réponse ! Réessayer ";
                 }
             }
@@ -35,7 +35,7 @@
             // Affiche les erreurs si existantes
             if (!empty($errors)) {
         ?>
-                <div class="card red">
+                <div class="card red error-message">
                     <div class="card-content white-text">
                         <?php
                         foreach ($errors as $error) {
@@ -49,7 +49,9 @@
             }
         }
         ?>
-        <h5 class="center">Vous jouez avec Jolly Jumper aux echecs, quand vous remarquez qu'il vous tend une énigme pendant la partie, trouverez-vous la réponse ?</h5>
+        <h5 class="enigmas-title center">Vous jouez aux échecs avec Jolly Jumper</h5>
+        <h6 class="enigmas-subtitle">Pendant la partie, vous remarquez qu'il vous tend une énigme, trouverez-vous la réponse ?</h6>
+
 
 
         <!-- MODAL D'AIDE-->
@@ -66,7 +68,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan">Retour au jeu <i class="material-icons right">play_arrow</i></a>
+                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan darken-2">Retour au jeu <i class="material-icons right">play_arrow</i></a>
             </div>
         </div>
 
@@ -85,14 +87,14 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan">Retour au jeu <i class="material-icons right">play_arrow</i></a>
+                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan darken-2">Retour au jeu <i class="material-icons right">play_arrow</i></a>
             </div>
         </div>
 
 
         <!-- IMAGE-->
-        <div class="col s12 m12 l10 center">
-            <img src="Public/img/lucky_luke/echec.png" alt="">
+        <div class="col s12 m12 l10 center enigma-img">
+            <img src="Public/img/lucky_luke/echec.png" alt="Jeux_dechecs_Lucky_Luke">
         </div>
 
 
@@ -102,12 +104,12 @@
                 <form action="index.php?url=enigma&id=1&step=2" method="post">
                     <br>
                     <div class="input-field">
-                        <input type="text" name="reponse" id="reponse">
+                        <input type="text" name="answer11" id="answer11">
                         <label for="comment_title">Quelle est votre réponse ?</label>
                     </div>
                     <!-- BTN REPONSE -->
                     <div class="col s12 m6 l12 center">
-                        <button type="submit" name="submit" class="btn waves-effect waves-light teal">Poster ma réponse</button>
+                        <button type="submit" name="submit11" class="btn waves-effect waves-light teal enigma-submit-btn">Poster ma réponse</button>
                     </div>
                 </form>
             </div>

@@ -35,7 +35,7 @@
             // Affiche les erreurs si existantes
             if (!empty($errors)) {
         ?>
-                <div class="card red">
+                <div class="card red error-message">
                     <div class="card-content white-text">
                         <?php
                         foreach ($errors as $error) {
@@ -49,7 +49,10 @@
             }
         }
         ?>
-        <h5 class="center">Vous vous retrouvez face aux Daltons, prêt à en découdre</h5>
+        <h5 class="enigmas-title center">Vous faites face aux Daltons</h5>
+
+        <h6 class="center">Ils sont armés et prêts à en découdre</h6>
+
 
 
         <!-- MODAL D'AIDE-->
@@ -66,7 +69,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan">Retour au jeu <i class="material-icons right">play_arrow</i></a>
+                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan darken-2">Retour au jeu <i class="material-icons right">play_arrow</i></a>
             </div>
         </div>
 
@@ -85,40 +88,38 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan">Retour au jeu <i class="material-icons right">play_arrow</i></a>
+                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan darken-2">Retour au jeu <i class="material-icons right">play_arrow</i></a>
             </div>
         </div>
 
 
         <!-- IMAGE-->
-        <div class="col s12 m12 l10 center">
-            <img src="Public/img/lucky_luke/LuckyDuel.jpg" alt="">
+        <div class="col s12 m12 l10 center enigma-img">
+            <img src="Public/img/lucky_luke/LuckyDuel.jpg" alt="Duel_Lucky_Luke_Daltons">
         </div>
 
         <!-- REPONSE-->
         <div class="container ">
-            <div class="col s12 m8 l4 offset-l8 center">
-                <div class="row">
+            <div class="row">
 
-                    <h5 id="intro" style="display:block">Que faites-vous ?</h5>
-                    <h5 id="disscuss" style="display:none">Les daltons semblent prêts à discuter, à vous de choisir le sujet de la conversation</h5>
-                    <h5 id="capture" style="display:none">Plusieurs choix s'offrent à vous pour tenter la capture des Daltons</h5>
-                    <h5 id="Lelasso" style="display:none">Après 4 brillant tirs, les Dalton sont désarmés</h5>
+                <h5 class="enigmas-subtitle" id="intro" style="display:block">Que faites-vous ?</h5>
+                <h5 class="enigmas-subtitle" id="disscuss" style="display:none">Les daltons semblent prêts à discuter, à vous de choisir le sujet de la conversation</h5>
+                <h5 class="enigmas-subtitle" id="capture" style="display:none">Plusieurs choix s'offrent à vous pour tenter la capture des Daltons</h5>
+                <h5 class="enigmas-subtitle" id="Lelasso" style="display:none">Après 4 brillant tirs, les Dalton sont désarmés</h5>
 
-                    <!-- BTN REPONSE -->
+                <!-- BTN REPONSE -->
 
-                    <button class="btn waves-effect waves-teal btn-flat btn-choices " id="discuter" onclick="showDiscuter()" style="display:block"> <i class="large material-icons left">arrow_forward</i>Tenter de discuter</button>
-                    <button class="btn waves-effect waves-teal btn-flat btn-choices " id="tirer" onclick="showTirer()" style="display:block"><i class="large material-icons left">arrow_forward</i>Tenter de les capturer</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices " id="discuter" onclick="showDiscuter()" style="display:block"> <i class="large material-icons left">arrow_forward</i>Tenter de discuter</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices " id="tirer" onclick="showTirer()" style="display:block"><i class="large material-icons left">arrow_forward</i>Tenter de les capturer</button>
 
-                    <button class="btn waves-effect waves-teal btn-flat btn-choices" id="fuire" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=1'" style="display:none"><i class="large material-icons left">arrow_forward</i>Les laisser s'enfuir</button>
-                    <button class="btn waves-effect waves-teal btn-flat btn-choices" id="saloon" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=2'" style="display:none"><i class="large material-icons left">arrow_forward</i>Emmener Joe au saloon</button>
-                    <button class="btn waves-effect waves-teal btn-flat btn-choices" id="madalton" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=3'" style="display:none"><i class="large material-icons left">arrow_forward</i>Parler de 'ma Dalton</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="fuire" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=1'" style="display:none"><i class="large material-icons left">arrow_forward</i>Les laisser s'enfuir</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="saloon" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=2'" style="display:none"><i class="large material-icons left">arrow_forward</i>Emmener Joe au saloon</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="madalton" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=3'" style="display:none"><i class="large material-icons left">arrow_forward</i>Parler de 'ma Dalton</button>
 
-                    <button class="btn waves-effect waves-teal btn-flat btn-choices" id="désarmer" onclick="showDesarmer()" style="display:none"><i class="large material-icons left">arrow_forward</i>Tirer pour les désarmer</button>
-                    <button class="btn waves-effect waves-teal btn-flat btn-choices" id="lasso1" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=4'" style="display:none"><i class="large material-icons left">arrow_forward</i>Capturer au lasso</button>
-                    <button class="btn waves-effect waves-teal btn-flat btn-choices" id="lasso2" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=5'" style="display:none"><i class="large material-icons left">arrow_forward</i>Capturer au lasso</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="désarmer" onclick="showDesarmer()" style="display:none"><i class="large material-icons left">arrow_forward</i>Tirer pour les désarmer</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="lasso1" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=4'" style="display:none"><i class="large material-icons left">arrow_forward</i>Capturer au lasso</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="lasso2" onclick="window.location.href='index.php?url=enigma&id=1&step=done&idending=5'" style="display:none"><i class="large material-icons left">arrow_forward</i>Capturer au lasso</button>
 
-                </div>
             </div>
         </div>
     </div>

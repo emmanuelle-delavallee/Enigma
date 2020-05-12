@@ -43,12 +43,19 @@ class Enigma1Manager extends Manager
         $sql = "
                     SELECT ending_title,
                     ending_image,
-                    ending_text
+                    ending_text 
                     FROM ending 
                     WHERE id_story = ? 
                     and id_ending = ?
                 ";
 
         return $this->createQuery($sql, array($story, $id));
+    }
+
+    public function postEnding($id_story, $user_name, $id_ending)
+    {
+        $sql = 'INSERT INTO progress(id_story, id_user, id_ending) VALUES(?, (select id from users where pseudo = ?), ?)';
+
+        $this->createQuery($sql, array($id_story, $user_name, $id_ending));
     }
 }

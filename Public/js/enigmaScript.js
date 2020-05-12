@@ -1,6 +1,52 @@
 $(document).ready(function () {
-  /* AFFICHER/MASQUER DETAIL ADMIN DASHBOARD*/
+  /*CONTROLE DES CHAMPS DU FORMULAIRE DES COMMENTAIRES*/
+  $("#comment_title").change(function () {
+    modifyBtn();
+  });
 
+  $("#comment-textarea").change(function () {
+    modifyBtn();
+  });
+  $("#comment_title").keyup(function () {
+    modifyBtn();
+  });
+
+  $("#comment-textarea").keyup(function () {
+    modifyBtn();
+  });
+
+  $("#idNote").change(function () {
+    modifyBtn();
+  });
+
+  $("#idNote").click(function () {
+    modifyBtn();
+  });
+
+  function modifyBtn() {
+    var title = $("#comment_title").val();
+    var textarea = $("#comment-textarea").val();
+    var note = $("#idNote").val();
+
+    var titlelenght = title.length;
+    var textarealength = textarea.length;
+    var notelength = note.length;
+
+    if (titlelenght < 1 || textarealength < 1 || notelength < 1) {
+      event.preventDefault();
+      $("#comment-form-btn").addClass("disabled");
+    } else {
+      $("#comment-form-btn").removeClass("disabled");
+    }
+  }
+
+  /* AFFICHAGE MESSAGES D'ERREURS / DE SUCCES*/
+  setTimeout(function () {
+    $(".success-message").fadeOut("slow");
+    $(".error-message").fadeOut("slow");
+  }, 2000);
+
+  /* AFFICHER/MASQUER DETAIL ADMIN DASHBOARD*/
   $("#stats-up").click(function () {
     $("#stats-up-icon").text(
       $("#stats-up-icon").text() == "arrow_drop_up"

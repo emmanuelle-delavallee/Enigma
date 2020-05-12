@@ -34,7 +34,7 @@
             // Affiche les erreurs si existantes
             if (!empty($errors)) {
         ?>
-                <div class="card red">
+                <div class="card red error-message">
                     <div class="card-content white-text">
                         <?php
                         foreach ($errors as $error) {
@@ -49,9 +49,9 @@
         }
         ?>
 
-        <h5 class="center">Vous préparez votre départ, quel équipement emportez vous ?</h5>
-        <p class="center">Vous devez prendre une arme, un repas et une boisson.</p>
-        <p class="center">Vous ne pouvez porter que 4 kg maximum sinon vous serez surchargés et ralentis.</p>
+        <h5 class="enigmas-title center">Vous préparez votre départ, quel équipement emportez-vous ?</h5>
+        <h6 class="center">Vous devez choisir une arme, un repas et une boisson.</h6>
+        <h6 class="center">Vous pouvez porter 4 kg. Pas moins, sinon vous serez mal équipé, et pas davantage sinon vous serez ralenti.</h6>
 
         <!-- MODAL D'AIDE-->
         <div id="helpModal" class="modal">
@@ -67,7 +67,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan">Retour au jeu <i class="material-icons right">play_arrow</i></a>
+                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan darken-2">Retour au jeu <i class="material-icons right">play_arrow</i></a>
             </div>
         </div>
 
@@ -86,13 +86,13 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan">Retour au jeu <i class="material-icons right">play_arrow</i></a>
+                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan darken-2">Retour au jeu <i class="material-icons right">play_arrow</i></a>
             </div>
         </div>
 
         <!-- IMAGE-->
-        <div class="col s12 m12 l10 center">
-            <img src="Public/img/asterix/asterix-1.png" alt="">
+        <div class="col s12 m12 l12 center enigma-img">
+            <img src="Public/img/asterix/asterix-1.png" alt="asterix_ et_obelix">
         </div>
 
         <div class="row">
@@ -209,7 +209,7 @@
 
                     <!-- BTN REPONSE -->
                     <br> <br>
-                    <button type="submit" name="submit" class="btn waves-effect waves-light teal">Poster ma réponse</button>
+                    <button type="submit" name="submit21" class="btn waves-effect waves-light teal enigma-submit-btn">Poster ma réponse</button>
                 </form>
 
             </div>

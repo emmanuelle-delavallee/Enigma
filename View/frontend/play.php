@@ -28,7 +28,7 @@
 
                         <div class="card-image">
                             <img src="Public/img/<?= $response->image ?>">
-                            <a class="btn-floating halfway-fab waves-effect waves-light cyan" href="index.php?url=enigma&id=<?= $response->id ?>&step=start"><i class="material-icons">play_arrow</i></a>
+                            <a class="btn-floating halfway-fab waves-effect waves-light cyan darken-2" href="index.php?url=enigma&id=<?= $response->id ?>&step=start"><i class="material-icons">play_arrow</i></a>
                         </div>
 
                         <div class="card-content">

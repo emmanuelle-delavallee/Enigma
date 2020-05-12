@@ -16,35 +16,47 @@ class StoriesManager extends Manager
                        stories.name, 
                        stories.resume,
                        stories.image,
-                       stories.steps,   
-                       stories.published   
+                       stories.steps
                 FROM stories 
-                WHERE published='1' 
             ";
 
         return $this->createQuery($sql);
     }
 
 
-    //-------------------------------------------------------------//
 
     // REF // FRONT/BACK : récupère les énigmes publiées de la BDD
-    public function getAllEnigmas()
+    public function getEnigmasUser()
     {
         $sql = "
-                    SELECT stories.id, 
-                           stories.name, 
-                           stories.resume,
-                           stories.image,
-                           stories.steps,   
-                           stories.published   
-                    FROM stories 
-                ";
+              SELECT distinct stories.id, 
+                     stories.name, 
+                     stories.resume,
+                     stories.image,
+                     stories.steps,
+                     progress.id_ending
+              FROM stories 
+              left join progress on progress.id_story = stories.id
+              where progress.id_ending is null or ( progress.id_ending is not null and progress.id_user = ?)
+          ";
 
-        return $this->createQuery($sql);
+        return $this->createQuery($sql, [$_SESSION['id_user']]);
     }
 
 
+    // REF // FRONT/BACK : récupère les énigmes publiées de la BDD
+    public function getIndices()
+    {
+        $sql = "
+                  SELECT id_story, 
+                         help, 
+                         text,
+                         id_step
+                  FROM help 
+              ";
+
+        return $this->createQuery($sql);
+    }
 
     //-------------------------------------------------------------//
 
@@ -52,10 +64,9 @@ class StoriesManager extends Manager
     public function getImgs()
     {
         $sql = "
-                SELECT stories.image,
-                       stories.published   
+                SELECT stories.image 
                 FROM stories 
-                WHERE published='1' 
+                
             ";
 
         return $this->createQuery($sql);
@@ -79,13 +90,18 @@ class StoriesManager extends Manager
                stories.name, 
                stories.resume,
                stories.image,
-               stories.steps,
-               stories.published      
+               stories.steps     
         FROM stories 
         WHERE id = ?
-        AND published='1' 
+       
     ";
 
         return $this->createQuery($sql, array($id));
+    }
+    public function updateStepEnig($id_story, $id_step, $help, $text)
+    {
+        $sql = "UPDATE help SET help.text=? WHERE help.id_story=? and help.id_step=? and help.help =?";
+
+        $this->createQuery($sql, [$text, $id_story, $id_step, $help]);
     }
 }

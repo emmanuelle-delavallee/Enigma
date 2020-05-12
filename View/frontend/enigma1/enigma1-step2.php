@@ -14,29 +14,32 @@
             </ul>
         </div>
         <?php
-        if (isset($_POST['submit2'])) {
+        if (isset($_POST['submit12'])) {
+            if (isset($_POST['answer12'])) {
 
-            // Trim supprime l'espace avant le mot 
-            $reponse = $_POST['reponse'];
+                $answer12 = $_POST['answer12'];
 
 
 
-            // Stocke les erreurs dans un tableau pour pouvoir les afficher
-            $errors = [];
+                // Stocke les erreurs dans un tableau pour pouvoir les afficher
+                $errors = [];
 
-            // Vérifie que les champs ont bien été complétés
-            if (empty($reponse)) {
-                $errors['empty'] = "Il faut indiquer une réponse !";
-            } else {
-                if ($reponse != "2") {
-                    $errors['erreur'] = "Mauvaise réponse ! Réessayer ";
+                // Vérifie que les champs ont bien été complétés
+                if (empty($answer12)) {
+                    $errors['empty'] = "Il faut indiquer une réponse !";
+                } else {
+                    if ($answer12 != "2") {
+                        $errors['erreur'] = "Mauvaise réponse ! Réessayer ";
+                    }
                 }
+            } else {
+                $errors['empty'] = "Il faut indiquer une réponse !";
             }
 
             // Affiche les erreurs si existantes
             if (!empty($errors)) {
         ?>
-                <div class="card red">
+                <div class="card red error-message">
                     <div class="card-content white-text">
                         <?php
                         foreach ($errors as $error) {
@@ -50,7 +53,7 @@
             }
         }
         ?>
-        <h5 class="center">Retrouverez-vous les Daltons ?</h5>
+        <h5 class="enigmas-title center">Retrouverez-vous les Daltons ?</h5>
         <p class="center">Cliquez sur l'image pour dessiner le chemin</p>
 
 
@@ -69,7 +72,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan">Retour au jeu <i class="material-icons right">play_arrow</i></a>
+                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan darken-2">Retour au jeu <i class="material-icons right">play_arrow</i></a>
             </div>
         </div>
 
@@ -88,18 +91,22 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan">Retour au jeu <i class="material-icons right">play_arrow</i></a>
+                <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan darken-2">Retour au jeu <i class="material-icons right">play_arrow</i></a>
             </div>
         </div>
 
 
         <!-- IMAGE + CANVAS DE DESSIN-->
-        <div id="signature_canvas" class="form-group">
-            <canvas id="canvas"></canvas>
+        <div class="col s12 m12 l10 center enigma-img">
+            <div id="signature_canvas" class="form-group">
+                <canvas id="canvas"></canvas>
+            </div>
+
+            <!--BTN EFFACER TRAITS DESSINES-->
+            <button class="btn" id="removeDrawBtn" type="reset">
+                Effacer les traits dessinés
+            </button>
         </div>
-        <button class="btn" id="removeSignatureBtn" type="reset">
-            Effacer les traits
-        </button>
 
 
         <!-- REPONSE-->
@@ -107,8 +114,8 @@
             <div class="col s12 m8 l4 offset-l4">
                 <form action="index.php?url=enigma&id=1&step=3" method="post">
                     <div class="input-field col s12">
-                        <select name="reponse" id="reponse">
-                            <option value="" disabled selected>Quel chemin choisissez-vous ?</option>
+                        <select name="answer12" id="answer12">
+                            <option value="0" disabled selected>Quel chemin choisissez-vous ?</option>
                             <option value="1">Chemin n°1</option>
                             <option value="2">Chemin n°2</option>
                             <option value="3">Chemin n°3</option>
@@ -118,7 +125,7 @@
 
                     <!-- BTN REPONSE -->
                     <div class="col s12 m6 l12 center">
-                        <button type="submit2" name="submit2" class="btn waves-effect waves-light teal">Poster ma réponse</button>
+                        <button type="submit" name="submit12" class="btn waves-effect waves-light teal enigma-submit-btn">Poster ma réponse</button>
                     </div>
 
                 </form>

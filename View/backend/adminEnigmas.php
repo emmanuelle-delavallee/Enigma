@@ -7,9 +7,7 @@
 
     <div class="col s12 m12">
 
-        <div class="col s12 m12 l12">
-            <a class="btn waves-effect waves-light cyan darken-2 right" href="index.php?url=adminAllEnigmas">Afficher les énigmes non publiées</a>
-        </div>
+
 
         <?php
         if ($responses != false) {
@@ -24,11 +22,11 @@
                     <div class="col s12 m12 l8">
                         <h4 class="enigma-subtitle"><?= $response->name ?></h4>
                         <p><?= $response->resume ?></p>
-                        <a class="waves-effect waves-light btn cyan darken-2" href="#">Modifier</a>
+                        <a class="waves-effect waves-light btn cyan darken-2" href="index.php?url=updateEnigma&id=<?= $response->id ?>">Modifier</a>
                     </div>
                 </div>
         <?php
-            }
+            } //indices
         }
         ?>
     </div>
