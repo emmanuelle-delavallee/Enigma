@@ -32,7 +32,7 @@
                                         <span class="card-title"> <strong> <?= $response->comment_title ?> - <?= $response->note ?>/5 </strong> </span>
                                         <p class="grey-text text-darken-1">Publié le <?= date("d/m/Y", strtotime($response->date)) ?> au sujet de l'aventure <?= $response->name ?></p>
                                         <p><?= nl2br($response->comment) ?></p>
-                                        <a href="index.php?url=warning&id=<?= $response->id ?>" class="right cyan-text text-darken-2">Signaler ce commentaire</a>
+                                        <a href="warning-comment-<?= $response->id ?>" class="right cyan-text text-darken-2">Signaler ce commentaire</a>
                                     </div>
 
                                     <div class="col s12 m12 l2 center">
@@ -46,14 +46,30 @@
                         }
                     }
                     ?>
-                    <ul class="pagination">
-                        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                        <li class="active"><a href="#!">1</a></li>
-                        <li class="waves-effect"><a href="#!">2</a></li>
-                        <li class="waves-effect"><a href="#!">3</a></li>
-                        <li class="waves-effect"><a href="#!">4</a></li>
-                        <li class="waves-effect"><a href="#!">5</a></li>
-                        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                    <ul class="pagination center">
+                        <li class="waves-effect"><a href="comments-<?= $pageEncours - 1 ?>"><i class="material-icons">chevron_left</i></a></li>
+
+                        <?php
+
+                        $i = 1;
+
+                        // Boucle pour afficher la liste des pages de commentaire 
+                        while ($i <= $pagetotal) :
+
+                            if ($i == $pageEncours) {
+                                echo '<li class="active cyan"><a href="#">' . $i . '</a></li>';
+                            } else {
+                                echo  '<li class="waves-effect"><a href="comments-' . $i . '">' . $i . '</a></li>';
+                            }
+
+                            $i++;
+
+                        endwhile;
+                        if ($pageEncours == $pagetotal) {
+                            $pageEncours--;
+                        }
+                        ?>
+                        <li class="waves-effect"><a href="comments-<?= $pageEncours + 1 ?>"><i class="material-icons">chevron_right</i></a></li>
                     </ul>
 
                 </div>
@@ -125,7 +141,7 @@
                                 }
                         ?>
                         <br>
-                        <form action="index.php?url=addNewComment" method="post">
+                        <form action="addNewComment" method="post">
                             <!--INPUT NOTATION PAR ETOILES-->
                             <input type="hidden" id="idNote" name="note" value="" />
 

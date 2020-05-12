@@ -101,7 +101,7 @@
         <!-- REPONSE-->
         <div class="row">
             <div class="col s12 m8 l4 offset-l4">
-                <form action="index.php?url=enigma&id=1&step=2" method="post">
+                <form action="enigma-1-step-2" method="post">
                     <br>
                     <div class="input-field">
                         <input type="text" name="answer11" id="answer11">

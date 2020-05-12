@@ -116,7 +116,7 @@ body {
 .comments-background {
   background-image: url("../img/comments-background.jpg");
   background-repeat: no-repeat;
-  height: auto;
+  min-height: 86vh;
   background-size: cover;
   background-position: center;
 }

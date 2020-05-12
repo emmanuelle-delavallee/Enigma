@@ -22,11 +22,11 @@
                     <div class="col s12 m12 l8">
                         <h4 class="enigma-subtitle"><?= $response->name ?></h4>
                         <p><?= $response->resume ?></p>
-                        <a class="waves-effect waves-light btn cyan darken-2" href="index.php?url=updateEnigma&id=<?= $response->id ?>">Modifier</a>
+                        <a class="waves-effect waves-light btn cyan darken-2" href="update-enigma-<?= $response->id ?>">Modifier</a>
                     </div>
                 </div>
         <?php
-            } //indices
+            }
         }
         ?>
     </div>

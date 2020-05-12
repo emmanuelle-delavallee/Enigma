@@ -67,7 +67,11 @@ class Router
 
                         // Afficher la page avis
                     case 'comments':
-                        $this->FrontendController->comments();
+                        $page = 1;
+                        if (isset($_GET['page']) && $_GET['page'] > 0) {
+                            $page = $_GET['page'];
+                        }
+                        $this->FrontendController->comments($page);
                         break;
 
 
@@ -75,7 +79,7 @@ class Router
                     case 'addNewComment':
                         if (!empty($_POST['id_story']) && !empty($_SESSION['username']) && !empty($_POST['comment_title']) && !empty($_POST['comment']) && !empty($_POST['note'])) {
                             $this->FrontendController->addUserComment($_POST['id_story'], $_SESSION['username'], $_POST['comment_title'], $_POST['comment'], $_POST['note']);
-                            $this->FrontendController->comments();
+                            $this->FrontendController->comments('1');
                         } else {
                             throw new Exception('Tous les champs ne sont pas remplis !');
                         }
@@ -86,7 +90,7 @@ class Router
                     case 'warning':
                         if (isset($_GET['id']) && $_GET['id'] > 0) {
                             $this->FrontendController->warningAComment($_GET['id']);
-                            $this->FrontendController->comments();
+                            $this->FrontendController->comments('1');
                         } else {
                             throw new Exception('Aucun identifiant de billet envoyé');
                         }
@@ -381,6 +385,10 @@ class Router
                         break;
 
 
+                        // Afficher la page de mentions légales
+                    case 'legal':
+                        $this->FrontendController->legal();
+                        break;
 
                         // Valider la publication d'un commentaire
                     case 'validComment':

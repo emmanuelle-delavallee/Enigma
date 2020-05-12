@@ -42,7 +42,8 @@ if (!empty($enigmes)) {
                                     <div class="card grey lighten-5 comm-card">
                                         <div class="row">
                                             <div class="col s12 m12 l10">
-                                                <form action="index.php?url=updateStepEnigme&id_story=<?= $enigme->id ?>&id_step=<?= $indice->id_step ?>&help=<?= $indice->help ?>" method="post">
+                                                <form action="update-enigme-<?= $enigme->id ?>-step-<?= $indice->id_step ?>-help-<?= $indice->help ?>" method="post">
+
                                                     <?php
                                                     if ($indice->help == "0") {
 

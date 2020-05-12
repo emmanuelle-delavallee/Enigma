@@ -78,7 +78,7 @@
         <div class="modal-content center">
             <h4 class="center">Gérer mon compte</h4>
             <div class="col s12">
-                <form action="index.php?url=AddImage" method="post" enctype="multipart/form-data" class="col s12">
+                <form action="AddImage" method="post" enctype="multipart/form-data" class="col s12">
                     <h5>Modifier mon image personnelle</h5>
                     <div class="row">
                         <div class="file-field input-field col s8">
@@ -125,9 +125,9 @@
                             <br>
                             <?php
                             if (!empty($response->id_ending)) {
-                                echo '<a class="right waves-effect waves-light btn cyan darken-2 btn-choices" href="index.php?url=enigma&id=' . $response->id . '&step=start">Rejouer <i class="material-icons right">play_arrow</i></a>';
+                                echo '<a class="right waves-effect waves-light btn cyan darken-2 btn-choices" href="enigma-' . $response->id . '-start">Rejouer <i class="material-icons right">play_arrow</i></a>';
                             } else {
-                                echo '<a class="right waves-effect waves-light btn cyan darken-2 btn-choices" href="index.php?url=enigma&id=' . $response->id . '&step=start">Jouer <i class="material-icons right">play_arrow</i></a>';
+                                echo '<a class="right waves-effect waves-light btn cyan darken-2 btn-choices" href="enigma-' . $response->id . '-start">Jouer <i class="material-icons right">play_arrow</i></a>';
                             }
 
                             ?>

@@ -2,11 +2,11 @@
 
 // Page accessible aux administrateurs qui ont une session active
 if ($checkIfAdmin == 0) {
-    header("Location:index.php?url=login");
+    header("Location:login");
 } ?>
 
 <h2>Tableau de bord</h2>
-<a class="waves-effect waves-light btn cyan darken-2 right" href="index.php?url=adminEnigmas">Gestion des énigmes</a>
+<a class="waves-effect waves-light btn cyan darken-2 right" href="adminEnigmas">Gestion des énigmes</a>
 <br>
 
 <!--STATISTIQUES-->
@@ -66,8 +66,8 @@ if ($checkIfAdmin == 0) {
                                 </div>
 
                                 <div class="modal-footer">
-                                    <a href="index.php?url=validComment&id= <?= $comment->id ?>" class="modal-action modal-close btn-floating btn-small waves-effect waves-light cyan darken-2"><i class="material-icons">done</i></a>
-                                    <a href="index.php?url=deleteComment&id= <?= $comment->id ?>" class="modal-action modal-close btn-floating btn-small waves-effect waves-light red darken-1"><i class="material-icons">delete</i></a>
+                                    <a href="comment-<?= $comment->id ?>-validated" class="modal-action modal-close btn-floating btn-small waves-effect waves-light cyan darken-2"><i class="material-icons">done</i></a>
+                                    <a href="comment-<?= $comment->id ?>-deleted" class="modal-action modal-close btn-floating btn-small waves-effect waves-light red darken-1"><i class="material-icons">delete</i></a>
                                 </div>
                             </div>
                         </tr>
@@ -126,7 +126,7 @@ if ($checkIfAdmin == 0) {
                                     <p>Email : <?= $admin->email ?></p>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="index.php?url=deleteAdmin&id= <?= $admin->id ?>" class="modal-action modal-close btn-floating btn-small waves-effect waves-light red darken-1"><i class="material-icons">delete</i></a>
+                                    <a href="admin-<?= $admin->id ?>-deleted" class="modal-action modal-close btn-floating btn-small waves-effect waves-light red darken-1"><i class="material-icons">delete</i></a>
                                 </div>
                             </div>
                     <?php
@@ -142,7 +142,7 @@ if ($checkIfAdmin == 0) {
                             <p class="grey-text darken-2 center">Ce compte utilisateur sera défini comme administrateur</p>
 
                             <!-- Formulaire d'inscription d'un nouvel admin -->
-                            <form action="index.php?url=addAdmin" method="post">
+                            <form action="addAdmin" method="post">
                                 <div class="row">
                                     <div class="input-field col s10 m8 l4 offset-l4">
                                         <input type="text" name="pseudo" id="pseudo">

@@ -1,0 +1,47 @@
+# On suit les liens symboliques 
+Options +FollowSymlinks 
+# Activation du mod rewrite d'Apache 
+RewriteEngine On
+RewriteRule home index.php
+RewriteRule discover index.php?url=discover
+RewriteRule play index.php?url=play
+RewriteRule comments index.php?url=comments
+RewriteRule comments-([0-9]+) index.php?url=comments&page=$1
+RewriteRule login index.php?url=login
+RewriteRule adminDashboard index.php?url=adminDashboard
+RewriteRule usersDashboard index.php?url=usersDashboard
+RewriteRule logout index.php?url=logout
+RewriteRule legal index.php?url=legal
+RewriteRule adminEnigmas index.php?url=adminEnigmas
+RewriteRule enigma-([0-9]+)-start index.php?url=enigma&id=$1&step=start
+RewriteRule comment-([0-9]+)-validated index.php?url=validComment&id=$1
+RewriteRule comment-([0-9]+)-deleted index.php?url=deleteComment&id=$1
+RewriteRule admin-([0-9]+)-deleted index.php?url=deleteAdmin&id=$1
+RewriteRule update-enigma-([0-9]+) index.php?url=updateEnigma&id=$1
+RewriteRule enigma1-done-ending1 index.php?url=enigma&id=1&step=done&idending=1
+RewriteRule enigma1-done-ending2 index.php?url=enigma&id=1&step=done&idending=2
+RewriteRule enigma1-done-ending3 index.php?url=enigma&id=1&step=done&idending=3
+RewriteRule enigma1-done-ending4 index.php?url=enigma&id=1&step=done&idending=4
+RewriteRule enigma1-done-ending5 index.php?url=enigma&id=1&step=done&idending=5
+RewriteRule enigma2-done-ending1 index.php?url=enigma&id=2&step=done&idending=1
+RewriteRule enigma2-done-ending2 index.php?url=enigma&id=2&step=done&idending=2
+RewriteRule enigma2-done-ending3 index.php?url=enigma&id=2&step=done&idending=3
+RewriteRule enigma2-done-ending4 index.php?url=enigma&id=2&step=done&idending=4
+RewriteRule enigma2-done-ending5 index.php?url=enigma&id=2&step=done&idending=5
+RewriteRule warning-comment-([0-9]+) index.php?url=warning&id=$1
+RewriteRule enigma-([0-9]+)-step1 index.php?url=enigma&id=$1&step=1
+RewriteRule enigma-1-step-2 index.php?url=enigma&id=1&step=2
+RewriteRule enigma-1-step-3 index.php?url=enigma&id=1&step=3
+RewriteRule enigma-2-step-2 index.php?url=enigma&id=2&step=2
+RewriteRule enigma-2-step-3 index.php?url=enigma&id=2&step=3
+RewriteRule addNewComment index.php?url=addNewComment
+RewriteRule checkLogin index.php?url=checklogin
+RewriteRule newUser index.php?url=newUser
+RewriteRule AddImage index.php?url=AddImage
+RewriteRule addAdmin index.php?url=addAdmin
+RewriteRule update-enigme-([0-9]+)-step-([0-9]+)-help-([0-9]+) index.php?url=updateStepEnigme&id_story=$1&id_step=$2&help=$3
+
+
+
+
+

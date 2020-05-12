@@ -17,8 +17,11 @@ class CommentsManager extends Manager
     //-------------------------------------------------------------//
 
     // REF // FRONT : Récupérer et afficher les commentaires avec pour valeur 0 ou 1
-    public function getComments()
+    public function getComments($page)
     {
+        $com_min = ($page - 1) * 5 + 1;
+        $com_max = $page * 5;
+
         $sql = "
         SELECT users_comments.id,
                users_comments.comment_title,
@@ -33,11 +36,33 @@ class CommentsManager extends Manager
         INNER JOIN users ON users.id = users_comments.id_user
         INNER JOIN stories ON stories.id = users_comments.id_story
         WHERE (comment_status = '0' or comment_status = '1')
-        ORDER BY date DESC
-        ";
+        ORDER BY date DESC LIMIT " . $com_min . "," . $com_max . " 
+        "; // Ne peut pas être transmis via ? et tableau car sinon les chiffres sont transmis en texte et ça ne marche pas 
 
         return $this->createQuery($sql);
     }
+
+    // Connaitre le nombre de page necessaire pour afficher tout les commentaires 
+    public function getPagesComments()
+    {
+        $sql = "
+        SELECT count(users_comments.id) as nb_com
+        FROM users_comments  
+        WHERE (comment_status = '0' or comment_status = '1')
+        ";
+
+        $res_reqs = $this->createQuery($sql);
+        $nb_commentaire = 0;
+        foreach ($res_reqs  as   $res_req) {
+
+            if ($res_req->nb_com > 0) {
+                $nb_commentaire = ceil($res_req->nb_com / 5);
+            }
+        }
+
+        return $nb_commentaire;
+    }
+
 
 
     //-------------------------------------------------------------//

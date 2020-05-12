@@ -32,7 +32,7 @@
                                 <p><?= $enigme->resume ?></p>
                             </div>
                             <div class="card-action play-btn">
-                                <a class="right waves-effect waves-light btn cyan darken-2 " href="index.php?url=enigma&id=<?= $enigme->id ?>&step=start">Jouer <i class="material-icons right">play_arrow</i></a>
+                                <a class="right waves-effect waves-light btn cyan darken-2 " href="enigma-<?= $enigme->id ?>-start">Jouer <i class="material-icons right">play_arrow</i></a>
                             </div>
                         </div>
                     </div>

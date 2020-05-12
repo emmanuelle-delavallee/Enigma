@@ -8,7 +8,7 @@
     <div class="col s12 m12">
 
         <div class="col s12 m12 l12">
-            <a class="btn waves-effect waves-light cyan darken-2 right" href="index.php?url=adminEnigmas">Afficher les énigmes publiées</a>
+            <a class="btn waves-effect waves-light cyan darken-2 right" href="adminEnigmas">Afficher les énigmes publiées</a>
         </div>
 
 
