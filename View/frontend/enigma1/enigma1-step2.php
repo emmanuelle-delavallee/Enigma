@@ -112,7 +112,7 @@
         <!-- REPONSE-->
         <div class="row">
             <div class="col s12 m8 l4 offset-l4">
-                <form action="index.php?url=enigma&id=1&step=3" method="post">
+                <form action="enigma-1-step-3" method="post">
                     <div class="input-field col s12">
                         <select name="answer12" id="answer12">
                             <option value="0" disabled selected>Quel chemin choisissez-vous ?</option>

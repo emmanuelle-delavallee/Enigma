@@ -109,13 +109,13 @@
                 <button class="btn waves-effect waves-teal btn-flat btn-choices " id="discuter" onclick="showDiscuter()" style="display:block"> <i class="large material-icons left">arrow_forward</i>Négocier avec le légionnaire de garde</button>
                 <button class="btn waves-effect waves-teal btn-flat btn-choices " id="tirer" onclick="showTirer()" style="display:block"><i class="large material-icons left">arrow_forward</i>Attaquer le camp</button>
 
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="fuire" onclick="window.location.href='index.php?url=enigma&id=2&step=done&idending=1'" style="display:none"><i class="large material-icons left">arrow_forward</i>Changer d'avis et rentrer au village</button>
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="saloon" onclick="window.location.href='index.php?url=enigma&id=2&step=done&idending=2'" style="display:none"><i class="large material-icons left">arrow_forward</i>Lui offrir un sanglier</button>
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="madalton" onclick="window.location.href='index.php?url=enigma&id=2&step=done&idending=2'" style="display:none"><i class="large material-icons left">arrow_forward</i>Le menacer au nom de césar </button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="fuire" onclick="window.location.href='enigma2-done-ending1'" style="display:none"><i class="large material-icons left">arrow_forward</i>Changer d'avis et rentrer au village</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="saloon" onclick="window.location.href='enigma2-done-ending2'" style="display:none"><i class="large material-icons left">arrow_forward</i>Lui offrir un sanglier</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="madalton" onclick="window.location.href='enigma2-done-ending2'" style="display:none"><i class="large material-icons left">arrow_forward</i>Le menacer au nom de césar </button>
 
                 <button class="btn waves-effect waves-teal btn-flat btn-choices" id="désarmer" onclick="showDesarmer()" style="display:none"><i class="large material-icons left">arrow_forward</i>Boire de la potion magique</button>
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="lasso1" onclick="window.location.href='index.php?url=enigma&id=2&step=done&idending=3'" style="display:none"><i class="large material-icons left">arrow_forward</i>Jeter un menhir sur la tente du général</button>
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="lasso2" onclick="window.location.href='index.php?url=enigma&id=2&step=done&idending=3'" style="display:none"><i class="large material-icons left">arrow_forward</i>A l'attaaaque !</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="lasso1" onclick="window.location.href='enigma2-done-ending3'" style="display:none"><i class="large material-icons left">arrow_forward</i>Jeter un menhir sur la tente du général</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="lasso2" onclick="window.location.href='enigma2-done-ending3'" style="display:none"><i class="large material-icons left">arrow_forward</i>A l'attaaaque !</button>
             </div>
         </div>
     </div>

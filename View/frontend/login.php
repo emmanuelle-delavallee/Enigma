@@ -64,7 +64,7 @@
                     <div class="card-panel white z-depth-5">
                         <div class="row">
 
-                            <form action="index.php?url=checklogin" method="post">
+                            <form action="checkLogin" method="post">
 
                                 <div class="row">
 
@@ -98,7 +98,7 @@
                     <div class="card-panel white z-depth-5">
                         <div class="row">
 
-                            <form action="index.php?url=newUser" method="post">
+                            <form action="newUser" method="post">
 
                                 <div class="row">
 

@@ -32,7 +32,7 @@
                         <p class="center"> <strong>Vous avez terminé cette aventure</strong></p>
                         <p class="center">Vous pouvez en choisir une autre ou retenter votre chance afin de découvrir les autres fins possibles</p>
                     </div>
-                    <a class="right waves-effect waves-light btn cyan darken-2 btn enigma-submit-btn" href="index.php?url=comments">Laisser un avis sur cette aventure</a>
+                    <a class="right waves-effect waves-light btn cyan darken-2 btn enigma-submit-btn" href="comments">Laisser un avis sur cette aventure</a>
                 </div>
             </div>
         </div>

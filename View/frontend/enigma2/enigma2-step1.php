@@ -98,7 +98,7 @@
         <div class="row">
             <div class="col s12 m12 l8 offset-l2 center">
 
-                <form action="index.php?url=enigma&id=2&step=2" method="post">
+                <form action="enigma-2-step-2" method="post">
 
                     <table class="responsive-table">
 

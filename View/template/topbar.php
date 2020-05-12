@@ -11,20 +11,20 @@ if (!isset($_SESSION['admin'])) {
             <div class="container">
 
                 <!-- Modifie le titre de la topbar si admin connecté-->
-                <a href="index.php" class="brand-logo">Enigma</a>
+                <a href="home" class="brand-logo">Enigma</a>
 
                 <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
                 <ul class="right hide-on-med-and-down">
-                    <li><a class="waves-effect waves-light" href="index.php?url=discover">Découvrir</a></li>
-                    <li><a class="waves-effect waves-light" href="index.php?url=play">Jouer</a></li>
-                    <li><a class="waves-effect waves-light" href="index.php?url=comments">Avis</a></li>
+                    <li><a class="waves-effect waves-light" href="discover">Découvrir</a></li>
+                    <li><a class="waves-effect waves-light" href="play">Jouer</a></li>
+                    <li><a class="waves-effect waves-light" href="comments">Avis</a></li>
 
                     <!-- Si session admin en cours, affiche le bouton administration-->
                     <?php
                     if ($_SESSION['admin'] == "VRAI") {
                     ?>
-                        <li><a class="waves-effect waves-light btn cyan darken-2" href="index.php?url=adminDashboard">Admin</a></li>
+                        <li><a class="waves-effect waves-light btn cyan darken-2" href="adminDashboard">Admin</a></li>
                     <?php
                     }
                     ?>
@@ -33,11 +33,11 @@ if (!isset($_SESSION['admin'])) {
                     <?php
                     if (isset($_SESSION['username']) && $_SESSION['username'] != "") {
                     ?>
-                        <li><a class="waves-effect waves-light btn grey darken-3" href="index.php?url=usersDashboard">Mon espace</a></li>
-                        <li><a class="waves-effect waves-light btn grey darken-3" href="index.php?url=logout"><i class="material-icons">exit_to_app</i></a></li>
+                        <li><a class="waves-effect waves-light btn grey darken-3" href="usersDashboard">Mon espace</a></li>
+                        <li><a class="waves-effect waves-light btn grey darken-3" href="logout"><i class="material-icons">exit_to_app</i></a></li>
                     <?php } else {
                     ?>
-                        <li><a class="waves-effect waves-light btn grey darken-3" href="index.php?url=login">Connexion</a></li>
+                        <li><a class="waves-effect waves-light btn grey darken-3" href="login">Connexion</a></li>
                     <?php
                     }
                     ?>
@@ -67,7 +67,7 @@ if (!isset($_SESSION['admin'])) {
     <?php
     if ($_SESSION['admin'] == "VRAI") {
     ?>
-        <li><a class="waves-effect waves-light" href="index.php?url=adminDashboard">Administration</a></li>
+        <li><a class="waves-effect waves-light" href="adminDashboard">Administration</a></li>
         <li>
             <div class="divider"></div>
         </li>
@@ -76,10 +76,10 @@ if (!isset($_SESSION['admin'])) {
     ?>
 
 
-    <li><a href="index.php" class="waves-effect waves-light">Accueil</a></li>
-    <li><a class="waves-effect waves-light" href="index.php?url=discover">Découvrir</a></li>
-    <li><a class="waves-effect waves-light" href="index.php?url=play">Jouer</a></li>
-    <li><a class="waves-effect waves-light" href="index.php?url=comments">Avis</a></li>
+    <li><a href="home" class="waves-effect waves-light">Accueil</a></li>
+    <li><a class="waves-effect waves-light" href="discover">Découvrir</a></li>
+    <li><a class="waves-effect waves-light" href="play">Jouer</a></li>
+    <li><a class="waves-effect waves-light" href="comments">Avis</a></li>
     <li>
         <div class="divider"></div>
     </li>
@@ -90,11 +90,11 @@ if (!isset($_SESSION['admin'])) {
     <?php
     if (isset($_SESSION['username']) && $_SESSION['username'] != "") {
     ?>
-        <li><a class="waves-effect waves-light" href="index.php?url=usersDashboard">Mon espace</a></li>
-        <li><a class="waves-effect waves-light" href="index.php?url=logout">Déconnexion</a></li>
+        <li><a class="waves-effect waves-light" href="usersDashboard">Mon espace</a></li>
+        <li><a class="waves-effect waves-light" href="logout">Déconnexion</a></li>
     <?php } else {
     ?>
-        <li><a class="waves-effect waves-light" href="index.php?url=login">Connexion</a></li>
+        <li><a class="waves-effect waves-light" href="login">Connexion</a></li>
     <?php
     }
     ?>

@@ -45,10 +45,11 @@ class FrontendController
 
 
     // Page commentaires, récupère les commentaires avec pour valeur 0 ou 1
-    function comments()
+    function comments($page)
     {
-        $responses = $this->CommentsManager->getComments();
-
+        $pagetotal = $this->CommentsManager->getPagesComments();
+        $responses = $this->CommentsManager->getComments($page);
+        $pageEncours = $page;
         $enigmes = $this->StoriesManager->getEnigmas();
 
         require('View/frontend/comments.php');
@@ -146,6 +147,13 @@ class FrontendController
     function error()
     {
         require('View/template/error.php');
+    }
+
+
+    // Page des mentions légales
+    function legal()
+    {
+        require('View/template/legal.php');
     }
 
     // User ajout image
