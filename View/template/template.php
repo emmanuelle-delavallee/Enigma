@@ -13,6 +13,7 @@
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Enigma est un site d'énigmes en ligne, dans une ambiance d'aventure avec des personnages de bandes-dessinées" />
     <title>Enigma</title>
 </head>
 
@@ -35,7 +36,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="Public/js/canvas.js"></script>
-    <script src="Public/js/enigmaScript.js"></script>
+    <script src="Public/js/enigma-jquery.js"></script>
     <script src="Public/js/main.js"></script>
 
 </body>

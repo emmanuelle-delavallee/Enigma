@@ -102,11 +102,11 @@
 
     <!-- AFFICHAGE DES AVENTURES JOUEES / NON JOUEES -->
     <div class="row col s12 m12 l8">
-        <h2 class="page-title">Espace personnel</h2>
+        <h2 class="enigmas-title">Espace personnel</h2>
     </div>
 
     <div class="col s12 m12 l12">
-
+        <h4 class="enigmas-subtitle">Vos aventures</h4>
         <?php
         if ($responses != false) {
             foreach ($responses as $response) {
@@ -122,12 +122,11 @@
                         <div class="col s12 m12 l8">
                             <h4 class="enigma-subtitle"><?= $response->name ?></h4>
                             <p><?= $response->resume ?></p>
-                            <br>
                             <?php
-                            if (!empty($response->id_ending)) {
-                                echo '<a class="right waves-effect waves-light btn cyan darken-2 btn-choices" href="enigma-' . $response->id . '-start">Rejouer <i class="material-icons right">play_arrow</i></a>';
+                            if (!empty($response->id_user)) {
+                                echo '<a class="right waves-effect waves-light btn cyan darken-2 btn-userdasboard-stories-img" href="enigma-' . $response->id . '-start">Rejouer <i class="material-icons right">play_arrow</i></a>';
                             } else {
-                                echo '<a class="right waves-effect waves-light btn cyan darken-2 btn-choices" href="enigma-' . $response->id . '-start">Jouer <i class="material-icons right">play_arrow</i></a>';
+                                echo '<a class="right waves-effect waves-light btn cyan darken-2 btn-userdasboard-stories-img" href="enigma-' . $response->id . '-start">Jouer <i class="material-icons right">play_arrow</i></a>';
                             }
 
                             ?>

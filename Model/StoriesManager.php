@@ -34,7 +34,7 @@ class StoriesManager extends Manager
                      stories.resume,
                      stories.image,
                      stories.steps,
-                     progress.id_ending
+                     progress.id_user
               FROM stories 
               left join progress on progress.id_story = stories.id
               where progress.id_ending is null or ( progress.id_ending is not null and progress.id_user = ?)

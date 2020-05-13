@@ -18,7 +18,7 @@ if (!isset($_SESSION['admin'])) {
                 <ul class="right hide-on-med-and-down">
                     <li><a class="waves-effect waves-light" href="discover">Découvrir</a></li>
                     <li><a class="waves-effect waves-light" href="play">Jouer</a></li>
-                    <li><a class="waves-effect waves-light" href="comments">Avis</a></li>
+                    <li><a class="waves-effect waves-light" href="comments-1">Avis</a></li>
 
                     <!-- Si session admin en cours, affiche le bouton administration-->
                     <?php
@@ -79,7 +79,7 @@ if (!isset($_SESSION['admin'])) {
     <li><a href="home" class="waves-effect waves-light">Accueil</a></li>
     <li><a class="waves-effect waves-light" href="discover">Découvrir</a></li>
     <li><a class="waves-effect waves-light" href="play">Jouer</a></li>
-    <li><a class="waves-effect waves-light" href="comments">Avis</a></li>
+    <li><a class="waves-effect waves-light" href="comments-1">Avis</a></li>
     <li>
         <div class="divider"></div>
     </li>
