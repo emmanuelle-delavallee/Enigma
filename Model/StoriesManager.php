@@ -8,7 +8,7 @@ require_once("Model/Manager.php");
 class StoriesManager extends Manager
 {
 
-    // REF // FRONT/BACK : récupère les énigmes publiées de la BDD
+    // FRONT/BACK : récupère les énigmes
     public function getEnigmas()
     {
         $sql = "
@@ -23,9 +23,9 @@ class StoriesManager extends Manager
         return $this->createQuery($sql);
     }
 
+    //-------------------------------------------------------------//
 
-
-    // REF // FRONT/BACK : récupère les énigmes publiées de la BDD
+    // FRONT/BACK : récupère la progression des utilisateurs 
     public function getEnigmasUser()
     {
         $sql = "
@@ -43,8 +43,9 @@ class StoriesManager extends Manager
         return $this->createQuery($sql, [$_SESSION['id_user']]);
     }
 
+    //-------------------------------------------------------------//
 
-    // REF // FRONT/BACK : récupère les énigmes publiées de la BDD
+    // FRONT/BACK : récupère les indices et solutions des énigmes 
     public function getIndices()
     {
         $sql = "
@@ -60,7 +61,7 @@ class StoriesManager extends Manager
 
     //-------------------------------------------------------------//
 
-    // REF // FRONT: récupère les images de la BDD
+    // FRONT/BACK : récupère les images de la BDD
     public function getImgs()
     {
         $sql = "
@@ -75,7 +76,7 @@ class StoriesManager extends Manager
 
     //-------------------------------------------------------------//
 
-    // REF // FRONT : récupère une énigme publiée de la BDD
+    // FRONT : récupère une énigme 
     public function getEnigma()
     {
 
@@ -98,6 +99,11 @@ class StoriesManager extends Manager
 
         return $this->createQuery($sql, array($id));
     }
+
+
+    //-------------------------------------------------------------//
+
+    // BACK : met à jour les indices et solutions dans la BDD
     public function updateStepEnig($id_story, $id_step, $help, $text)
     {
         $sql = "UPDATE help SET help.text=? WHERE help.id_story=? and help.id_step=? and help.help =?";

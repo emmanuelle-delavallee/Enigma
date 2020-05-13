@@ -8,7 +8,7 @@ require_once("Model/Manager.php");
 class Enigma1Manager extends Manager
 {
 
-    // REF // FRONT/BACK : récupère les énigmes publiées de la BDD
+    // FRONT : récupère la réponse de l'énigme
     public function Enigma1Answer($story, $step)
     {
         $sql = "
@@ -22,7 +22,10 @@ class Enigma1Manager extends Manager
         return $this->createQuery($sql, array($story, $step));
     }
 
-    // REF // FRONT/BACK : récupère les énigmes publiées de la BDD
+
+    //-------------------------------------------------------------//
+
+    // FRONT : récupère l'indice de l'énigme
     public function Enigma1Help($story, $step)
     {
         $sql = "
@@ -36,8 +39,9 @@ class Enigma1Manager extends Manager
         return $this->createQuery($sql, array($story, $step));
     }
 
+    //-------------------------------------------------------------//
 
-    // REF // FRONT/BACK : récupère les énigmes publiées de la BDD
+    // FRONT : récupère la fin de l'énigme
     public function enigmaEnding($story, $id)
     {
         $sql = "
@@ -51,6 +55,11 @@ class Enigma1Manager extends Manager
 
         return $this->createQuery($sql, array($story, $id));
     }
+
+
+    //-------------------------------------------------------------//
+
+    // FRONT/BACK : Insère en base la fin de l'énigme choisie
 
     public function postEnding($id_story, $user_name, $id_ending)
     {
