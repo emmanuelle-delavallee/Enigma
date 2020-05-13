@@ -17,7 +17,37 @@ if ($checkIfAdmin == 0) {
     </div>
 
     <div class="col s12 stats-slide-hide">
-        <p>Insérer ici des statistiques</p>
+
+        <div class="row">
+
+            <?php
+
+            // Affiche le nom des tables et le nombre d'entrées de chacune des tables
+
+            $i = 0;
+
+            foreach ($tables as $table_name => $table) {
+            ?>
+
+                <div class="col l4 m4 s12">
+                    <div class="card">
+                        <div class="card-content cyan darken-2 white-text center">
+
+                            <h6 class="card_title"><?= $table_name ?></h6>
+
+                            <h5 id="dashboard-subtitle"><?= $nbrInTable[$i]; ?></h5>
+
+                        </div>
+                    </div>
+                </div>
+
+            <?php
+                $i = $i + 1;
+            }
+
+            ?>
+
+        </div>
     </div>
 </section>
 <br>

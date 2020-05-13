@@ -27,6 +27,23 @@ class BackendController
         $comments = $this->CommentsManager->getUnreadComments();
         $admins = $this->UsersManager->getAdmins();
         $checkIfAdmin = $this->UsersManager->checkIfAdmin();
+        $nb_coms = 0;
+        $nb_user = 0;
+        $nb_finish = 0;
+        $tables = [
+            "Utilisateurs"      =>  "users",
+            "Commentaires"      =>  "users_comments",
+            "Succès"   =>  "progress"
+        ];
+
+        $i = 0;
+
+        foreach ($tables as $table_name => $table) {
+
+            $nbrInTable[$i] = $this->UsersManager->inTable($table);
+
+            $i = $i + 1;
+        }
 
         require('View/backend/adminDashboard.php');
     }

@@ -61,7 +61,7 @@ body {
 
 /*HOME*/
 .iris {
-  background-image: url("../img/home-img-min.jpg");
+  background-image: url("../img/backgrounds/background.jpg");
   background-repeat: no-repeat;
   min-height: 120vh;
   background-size: cover;
@@ -86,9 +86,9 @@ body {
 /*DISCOVER & COMMENTS*/
 
 .pages-background {
-  background-image: url("../img/pages-background.jpg");
+  background-image: url("../img/backgrounds/pages-background.jpg");
   background-repeat: no-repeat;
-  height: auto;
+  min-height: auto;
   background-size: cover;
   background-position: center;
 }
@@ -114,7 +114,7 @@ body {
 /*COMMENTS*/
 
 .comments-background {
-  background-image: url("../../Public/img/comments-background.jpg");
+  background-image: url("../../Public/img/backgrounds/comments-background.jpg");
   background-repeat: no-repeat;
   min-height: 86vh;
   background-size: cover;
@@ -199,8 +199,8 @@ body {
 
 /*LOGIN*/
 
-.login-background {
-  background-image: url("../img/login-background-2.jpg");
+.background-login {
+  background-image: url("../img/backgrounds/background-log.jpg");
   background-repeat: no-repeat;
   min-height: 100vh;
   background-size: cover;
@@ -222,4 +222,10 @@ body {
 
 .btn-userdasboard-stories-img {
   margin-right: 25px;
+}
+
+/*UPADTE ENIGMAS ADMIN*/
+
+.background-up-enigm {
+  min-height: 85vh;
 }

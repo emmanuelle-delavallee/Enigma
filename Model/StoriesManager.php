@@ -29,15 +29,15 @@ class StoriesManager extends Manager
     public function getEnigmasUser()
     {
         $sql = "
-              SELECT distinct stories.id, 
+              SELECT  distinct stories.id, 
                      stories.name, 
                      stories.resume,
                      stories.image,
                      stories.steps,
                      progress.id_user
               FROM stories 
-              left join progress on progress.id_story = stories.id
-              where progress.id_ending is null or ( progress.id_ending is not null and progress.id_user = ?)
+              left join progress on progress.id_story = stories.id and progress.id_user = ? 
+               
           ";
 
         return $this->createQuery($sql, [$_SESSION['id_user']]);
