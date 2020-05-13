@@ -55,10 +55,17 @@ if (!isset($_SESSION['admin'])) {
     <li>
         <div class="user-view center-align">
             <div class="background">
-                <img src="Public/img/home-img.jpg">
+                <img src="Public/img/backgrounds/background.jpg" alt="background_image">
             </div>
-            <a href="#user"><img class="circle" src="Public/img/2.jpg"></a>
-            <a href="#name"><span class="white-text name">Bonjour<?= '' . $_SESSION['username'] ?>,</span></a>
+            <?php
+            if (isset($_SESSION['username']) && $_SESSION['username'] != "") {
+            ?>
+                <a href="#name"><span class="white-text name">Bonjour<?= '' . $_SESSION['username'] ?>,</span></a>
+            <?php
+            } else {    ?>
+                <a href="#name"><span class="white-text name">Bonjour,</span></a>
+            <?php
+            }    ?>
             <p class="white-text">Prêt·e pour une nouvelle aventure ?</p>
         </div>
     </li>

@@ -2,14 +2,40 @@
 
 
 </div>
-<div class="login-background">
+<div class="background-login">
 
 
     <div class="container discover-container">
         <h5 class="page-subtitle center white-text">Merci de vous connecter ou de vous inscrire pour jouer</h5>
 
         <?php
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['submit1'])) {
+
+            $errors = [];
+            $errors['different_MDP'] = "Le mots de passe ou le pseudo n'est pas bon";
+
+
+            // Affiche les erreurs s'il y en a
+            if (!empty($errors)) {
+        ?>
+
+                <div class="card red error-message">
+                    <div class="card-content white-text">
+                        <?php
+                        foreach ($errors as $error) {
+                            echo $error . "<br/>";
+                        }
+                        ?>
+                    </div>
+                </div>
+
+            <?php
+            }
+        }
+
+
+
+        if (isset($_POST['submit2'])) {
 
             $pseudo = htmlspecialchars(trim($_POST['pseudo']));
             $email = htmlspecialchars(trim($_POST['email']));
@@ -39,7 +65,7 @@
 
             // Affiche les erreurs s'il y en a
             if (!empty($errors)) {
-        ?>
+            ?>
 
                 <div class="card red error-message">
                     <div class="card-content white-text">
@@ -84,7 +110,7 @@
                                 </div>
 
                                 <div class="center">
-                                    <button type="submit" name="submit" class="waves-effect waves-light btn cyan darken-2">Se connecter</button>
+                                    <button type="submit" name="submit1" class="waves-effect waves-light btn cyan darken-2">Se connecter</button>
                                 </div>
 
                             </form>
@@ -131,7 +157,7 @@
                                 </div>
 
                                 <div class="center">
-                                    <button type="submit" name="submit" class="waves-effect waves-light btn cyan darken-2">S'inscrire</button>
+                                    <button type="submit" name="submit2" class="waves-effect waves-light btn cyan darken-2">S'inscrire</button>
                                 </div>
 
                             </form>

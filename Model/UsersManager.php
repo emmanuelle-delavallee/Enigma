@@ -159,4 +159,19 @@ class UsersManager extends Manager
 
         return $this->createQuery($sql, [$_SESSION['username']]);
     }
+
+    // BACK : Récupère le nombre d'entrées d'une table
+    public function inTable($table)
+    {
+
+        $db = $this->dbconnect();
+
+        $query = $db->query("
+            SELECT COUNT(id) as nb
+            FROM $table
+            ");
+        $nombre = $query->fetch();
+
+        return $nombre['nb'];
+    }
 }
