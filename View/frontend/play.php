@@ -7,7 +7,7 @@
     if ($imgs != false) {
         foreach ($imgs as $img) {
     ?>
-            <a class="carousel-item" href="#one!"><img src="Public/img/<?= $img->image ?>"></a>
+            <a class="carousel-item" href="#one!"><img src="Public/img/<?= $img->image ?>" alt="carousel-image"></a>
     <?php
         }
     }

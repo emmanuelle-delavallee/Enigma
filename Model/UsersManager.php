@@ -7,8 +7,7 @@ require_once("Model/Manager.php");
 class UsersManager extends Manager
 {
 
-    //-------------------------------------------------------------//
-    // Vérification de login utilisateurs + administrateurs
+    // FRONT :  Vérification de login utilisateurs + administrateurs
     public function checkAtLogin($pseudo, $password)
     {
         $sql = "
@@ -30,9 +29,9 @@ class UsersManager extends Manager
     }
 
 
-
     //-------------------------------------------------------------//
-    // REF // Vérifie si administrateur pour afficher les contenus ou pas 
+
+    // BACK :  Vérifie si administrateur pour afficher les contenus ou pas 
     function checkIfAdmin()
     {
         $exist = 0;
@@ -61,10 +60,9 @@ class UsersManager extends Manager
     }
 
 
-
-
     //-------------------------------------------------------------//
-    // REF // Récupère les administrateurs de la BDD
+
+    // BACK : Récupère les administrateurs de la BDD
     public function getAdmins()
     {
         $sql = "
@@ -80,7 +78,8 @@ class UsersManager extends Manager
 
 
     //-------------------------------------------------------------//
-    // REF // Supprime les droits d'administrateur d'un compte admin
+
+    // BACK : Supprime les droits d'administrateur d'un compte admin
     public function delAdmin($adminId)
     {
         $sql = "UPDATE users SET users.admin = '0' WHERE id=" . $adminId;
@@ -90,7 +89,8 @@ class UsersManager extends Manager
 
 
     //-------------------------------------------------------------//
-    // REF // Ajoute les droits d'administrateur d'un compte user
+
+    // BACK : Ajoute les droits d'administrateur d'un compte user
     public function newAdmin($pseudo)
     {
         $sql = "UPDATE users SET users.admin = '1' WHERE pseudo='" . $pseudo . "'";
@@ -107,7 +107,8 @@ class UsersManager extends Manager
 
 
     //-------------------------------------------------------------//
-    // Vérification si le pseudo existe déjà
+
+    // FRONT : Vérification si le pseudo existe déjà
     public function checkIfUserexist($pseudo)
     {
         $sql = "
@@ -127,7 +128,11 @@ class UsersManager extends Manager
         return $res;
     }
 
-    // BACK : ajoute une image à un article 
+
+    //-------------------------------------------------------------//
+
+    // FRONT : choisir une image dans l'espace perso utilisateur
+
     public function postImg($pseudo, $tmp_name, $extension)
     {
 
@@ -145,7 +150,11 @@ class UsersManager extends Manager
         move_uploaded_file($tmp_name, "Public/img/users/" . $pseudo . $extension);
     }
 
-    // REF // Récupère les administrateurs de la BDD
+
+    //-------------------------------------------------------------//
+
+    // FRONT/BACK : Récupère les utilisateurs
+
     public function getUser()
     {
         $sql = "
@@ -159,6 +168,9 @@ class UsersManager extends Manager
 
         return $this->createQuery($sql, [$_SESSION['username']]);
     }
+
+
+    //-------------------------------------------------------------//
 
     // BACK : Récupère le nombre d'entrées d'une table
     public function inTable($table)

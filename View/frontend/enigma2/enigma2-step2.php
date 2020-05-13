@@ -98,7 +98,7 @@
 
         <!-- IMAGE-->
         <div class="col s12 m12 l10 center enigma-img">
-            <img src="Public/img/asterix/asterix-2-4.png" alt="">
+            <img src="Public/img/asterix/asterix-2-4.png" alt="asterix_image">
         </div>
 
         <!-- REPONSE-->

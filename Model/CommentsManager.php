@@ -16,7 +16,7 @@ class CommentsManager extends Manager
 
     //-------------------------------------------------------------//
 
-    // REF // FRONT : Récupérer et afficher les commentaires avec pour valeur 0 ou 1
+    // FRONT : Récupére et affiche les commentaires avec pour valeur 0 ou 1
     public function getComments($page)
     {
         $com_min = ($page - 1) * 5 + 1;
@@ -42,7 +42,10 @@ class CommentsManager extends Manager
         return $this->createQuery($sql);
     }
 
-    // Connaitre le nombre de page necessaire pour afficher tout les commentaires 
+
+    //-------------------------------------------------------------//
+
+    // FRONT : Connaitre le nombre de page necessaire pour afficher tout les commentaires 
     public function getPagesComments()
     {
         $sql = "
@@ -64,10 +67,9 @@ class CommentsManager extends Manager
     }
 
 
-
     //-------------------------------------------------------------//
-    // REF // FRONT : Envoyer un commentaire
 
+    // FRONT : Publier un commentaire
 
     public function postComment($id_story, $pseudo, $comment_title, $comment, $note)
     {
@@ -86,7 +88,7 @@ class CommentsManager extends Manager
 
     //-------------------------------------------------------------//
 
-    // REF // FRONT : Signaler un commentaire 
+    // FRONT : Signaler un commentaire 
     public function warnAComment($commentid)
     {
 
@@ -99,7 +101,7 @@ class CommentsManager extends Manager
 
     //-------------------------------------------------------------//
 
-    // REF // BACK : Récupère les commentaires non lus ou signalés de la base de données
+    // BACK : Récupère les commentaires non lus ou signalés de la base de données
     public function getUnreadComments()
     {
         $sql = "
@@ -124,7 +126,7 @@ class CommentsManager extends Manager
 
     //-------------------------------------------------------------//
 
-    // REF // BACK : Valider un commentaire
+    // BACK : Valider un commentaire
     public function validAComment($commentid)
     {
         $sql = "UPDATE users_comments SET comment_status='1'  WHERE id=" . $commentid;
@@ -134,7 +136,7 @@ class CommentsManager extends Manager
 
     //-------------------------------------------------------------//
 
-    // REF // BACK : Supprimer un commentaire mais le conserver en base
+    // BACK : Supprimer un commentaire mais le conserver en base
     public function deleteAComment($commentid)
     {
         $sql = "UPDATE users_comments SET comment_status='3'  WHERE id=" . $commentid;

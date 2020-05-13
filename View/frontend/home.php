@@ -24,7 +24,7 @@
                     <!--<h4 class="header center">Nouvelle énigme</h4>-->
                     <div class="card small horizontal">
                         <div class="card-image">
-                            <img src="Public/img/<?= $enigme->image ?>">
+                            <img src="Public/img/<?= $enigme->image ?>" alt="enigma-image">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
