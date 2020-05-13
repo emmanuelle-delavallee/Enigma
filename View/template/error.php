@@ -1,8 +1,3 @@
-<?php ob_start(); ?>
-
+<?php $this->title = "Enigma - Erreur"; ?>
 
 <h2>Page introuvable</h2>
-<?php $content = ob_get_clean(); ?>
-
-
-<?php require('View/template/template.php'); ?>

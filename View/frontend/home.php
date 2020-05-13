@@ -1,4 +1,5 @@
-<?php ob_start(); ?>
+<?php $this->title = "Enigma - Accueil"; ?>
+
 
 </div>
 
@@ -21,7 +22,6 @@
     ?>
             <div class="row home-cards grey-text text-darken-3">
                 <div class="col s12 m7">
-                    <!--<h4 class="header center">Nouvelle énigme</h4>-->
                     <div class="card small horizontal">
                         <div class="card-image">
                             <img src="Public/img/<?= $enigme->image ?>" alt="enigma-image">
@@ -44,7 +44,3 @@
     } ?>
 
 </div>
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require('View/template/template.php'); ?>

@@ -1,4 +1,4 @@
-<?php ob_start(); ?>
+<?php $this->title = "Enigma - Avis"; ?>
 
 </div>
 
@@ -203,7 +203,3 @@
         </div>
     </div>
 </div>
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require('View/template/template.php'); ?>

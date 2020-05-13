@@ -6,10 +6,12 @@ use Enigma\CommentsManager;
 use Enigma\StoriesManager;
 use Enigma\UsersManager;
 use Enigma\Enigma1Manager;
+use Enigma\ViewManager;
 
 class FrontendController
 {
     private $CommentsManager;
+    private $ViewManager;
 
     public function __construct()
     {
@@ -17,20 +19,23 @@ class FrontendController
         $this->StoriesManager = new StoriesManager();
         $this->UsersManager = new UsersManager();
         $this->Enigma1Manager = new Enigma1Manager();
+        $this->ViewManager = new ViewManager();
     }
 
     // Page d'accueil
     function home()
     {
         $enigmes = $this->StoriesManager->getEnigma();
-        require('View/frontend/home.php');
+
+        return $this->ViewManager->render("frontend/home", [
+            'enigmes' => $enigmes
+        ]);
     }
 
-
-    // Page découvrir 
-    function discover()
+    // Page d'erreur
+    function error()
     {
-        require('View/frontend/discover.php');
+        return $this->ViewManager->render('template/error', ['']);
     }
 
 
@@ -40,7 +45,17 @@ class FrontendController
         $imgs = $this->StoriesManager->getImgs();
         $responses = $this->StoriesManager->getEnigmas();
 
-        require('View/frontend/play.php');
+        return $this->ViewManager->render('frontend/play', [
+            'imgs' => $imgs,
+            'responses' => $responses
+        ]);
+    }
+
+
+    // Page découvrir 
+    function discover()
+    {
+        return $this->ViewManager->render('frontend/discover', ['']);
     }
 
 
@@ -52,7 +67,12 @@ class FrontendController
         $pageEncours = $page;
         $enigmes = $this->StoriesManager->getEnigmas();
 
-        require('View/frontend/comments.php');
+        return $this->ViewManager->render('frontend/comments', [
+            'pagetotal' => $pagetotal,
+            'responses' => $responses,
+            'pageEncours' => $pageEncours,
+            'enigmes' => $enigmes
+        ]);
     }
 
 
@@ -75,7 +95,9 @@ class FrontendController
     {
         $enigmes = $this->StoriesManager->getEnigma();
 
-        require('View/frontend/enigma.php');
+        return $this->ViewManager->render('frontend/enigma', [
+            'enigmes' => $enigmes
+        ]);
     }
 
 
@@ -84,7 +106,8 @@ class FrontendController
     {
         $responses = $this->Enigma1Manager->Enigma1Answer($id, $step);
         $helps = $this->Enigma1Manager->Enigma1Help($id, $step);
-        require('View/frontend/enigma' . $id . '/enigma' . $id . '-step' . $step . '.php');
+
+        return $this->ViewManager->render('frontend/enigma' . $id . '/enigma' . $id . '-step' . $step, ['']);
     }
 
 
@@ -93,17 +116,22 @@ class FrontendController
     {
         $endings = $this->Enigma1Manager->enigmaEnding($id_enigme, $id_ending);
         $postending = $this->Enigma1Manager->postEnding($id_enigme, $id_user, $id_ending);
-        require('View/frontend/enigma-done.php');
+
+        return $this->ViewManager->render('frontend/enigma-done', [
+            'endings' => $endings,
+            'postending' => $postending
+        ]);
     }
-
-
 
 
     // Page login
     function login()
     {
         $checkIfAdmin = $this->UsersManager->checkIfAdmin();
-        require('View/frontend/login.php');
+
+        return $this->ViewManager->render('frontend/login', [
+            'checkIfAdmin' => $checkIfAdmin
+        ]);
     }
 
     // S'inscrire
@@ -140,20 +168,17 @@ class FrontendController
         $responses = $this->StoriesManager->getEnigmasUser();
         $users = $this->UsersManager->getUser();
 
-        require('View/frontend/usersDashboard.php');
-    }
-
-    // Page d'erreur
-    function error()
-    {
-        require('View/template/error.php');
+        return $this->ViewManager->render('frontend/usersDashboard', [
+            'responses' => $responses,
+            'users' => $users,
+        ]);
     }
 
 
     // Page des mentions légales
     function legal()
     {
-        require('View/template/legal.php');
+        return $this->ViewManager->render('frontend/legal', ['']);
     }
 
     // User ajout image

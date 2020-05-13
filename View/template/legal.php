@@ -1,4 +1,4 @@
-<?php ob_start(); ?>
+<?php $this->title = "Enigma - Mentions légales"; ?>
 
 
 <h2>Informations légales</h2>
@@ -58,7 +58,3 @@
 <h3>11. Lexique.</h3>
 <p>Utilisateur : Internaute se connectant, utilisant le site susnommé.</p>
 <p>Informations personnelles : « les informations qui permettent, sous quelque forme que ce soit, directement ou non, l'identification des personnes physiques auxquelles elles s'appliquent » (article 4 de la loi n° 78-17 du 6 janvier 1978).</p>
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require('View/template/template.php'); ?>

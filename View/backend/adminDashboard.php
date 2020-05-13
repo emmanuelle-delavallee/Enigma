@@ -1,9 +1,10 @@
-<?php ob_start();
-
+<?php
 // Page accessible aux administrateurs qui ont une session active
 if ($checkIfAdmin == 0) {
     header("Location:login");
 } ?>
+
+<?php $this->title = "Enigma - Administration"; ?>
 
 <h2>Tableau de bord</h2>
 <a class="waves-effect waves-light btn cyan darken-2 right" href="adminEnigmas">Gestion des énigmes</a>
@@ -192,7 +193,3 @@ if ($checkIfAdmin == 0) {
     </div>
 
 </section>
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require('View/template/template.php'); ?>

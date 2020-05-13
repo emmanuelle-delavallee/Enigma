@@ -7,6 +7,7 @@ require_once("Model/Manager.php");
 class UsersManager extends Manager
 {
 
+
     // FRONT :  Vérification de login utilisateurs + administrateurs
     public function checkAtLogin($pseudo, $password)
     {

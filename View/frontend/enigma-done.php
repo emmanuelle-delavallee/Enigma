@@ -1,4 +1,4 @@
-<?php ob_start(); ?>
+<?php $this->title = "Enigma - Fin d'aventure"; ?>
 
 </div>
 
@@ -32,15 +32,9 @@
                         <p class="center"> <strong>Vous avez terminé cette aventure</strong></p>
                         <p class="center">Vous pouvez en choisir une autre ou retenter votre chance afin de découvrir les autres fins possibles</p>
                     </div>
-                    <a class="right waves-effect waves-light btn cyan darken-2 btn enigma-submit-btn" href="comments">Laisser un avis sur cette aventure</a>
+                    <a class="right waves-effect waves-light btn cyan darken-2 btn enigma-submit-btn" href="comments-1">Laisser un avis sur cette aventure</a>
                 </div>
             </div>
         </div>
     </div>
-
-
 </div>
-<?php $content = ob_get_clean(); ?>
-
-
-<?php require('View/template/template.php'); ?>

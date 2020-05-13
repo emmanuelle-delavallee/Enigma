@@ -1,4 +1,5 @@
-<?php ob_start(); ?>
+<?php $this->title = "Enigma - Les aventures"; ?>
+
 
 <h2 class="center-align page-title">Les aventures</h2>
 
@@ -46,7 +47,3 @@
     </div>
 
 </div>
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require('View/template/template.php'); ?>

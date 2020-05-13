@@ -1,4 +1,4 @@
-<?php ob_start(); ?>
+<?php $this->title = "Enigma - Aventure 1"; ?>
 
 </div>
 <div class="container">
@@ -134,9 +134,3 @@
 
     </div>
 </div>
-
-
-<?php $content = ob_get_clean(); ?>
-
-
-<?php require('View/template/template.php'); ?>

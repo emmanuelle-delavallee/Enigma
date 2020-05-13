@@ -1,7 +1,7 @@
-<?php ob_start(); ?>
+<?php $this->title = "Enigma - Espace personnel"; ?>
+
 
 <div class="row">
-
 
     <?php
 
@@ -142,8 +142,3 @@
         ?>
     </div>
 </div>
-
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require('View/template/template.php'); ?>
