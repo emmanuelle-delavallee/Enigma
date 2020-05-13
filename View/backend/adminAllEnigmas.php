@@ -1,5 +1,4 @@
-<?php ob_start(); ?>
-
+<?php $this->title = "Enigma - Administration"; ?>
 
 <h2>Enigmes publiées et brouillons</h2>
 
@@ -38,11 +37,3 @@
 
     </div>
 </div>
-
-
-
-
-<?php $content = ob_get_clean(); ?>
-
-
-<?php require('View/template/template.php'); ?>

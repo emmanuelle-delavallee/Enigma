@@ -1,4 +1,5 @@
-<?php ob_start(); ?>
+<?php $this->title = "Enigma - Administration"; ?>
+
 </div>
 
 <div class="background-up-enigm">
@@ -31,10 +32,3 @@
         </div>
     </div>
 </div>
-
-
-
-<?php $content = ob_get_clean(); ?>
-
-
-<?php require('View/template/template.php'); ?>

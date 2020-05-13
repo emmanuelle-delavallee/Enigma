@@ -4,7 +4,6 @@ namespace Enigma;
 
 require_once("Model/Manager.php");
 
-
 class StoriesManager extends Manager
 {
 

@@ -1,7 +1,7 @@
-<?php ob_start(); ?>
-
+<?php $this->title = "Enigma - Connexion"; ?>
 
 </div>
+
 <div class="background-login">
 
 
@@ -172,6 +172,3 @@
 
     </div>
 </div>
-<?php $content = ob_get_clean(); ?>
-
-<?php require('View/template/template.php'); ?>

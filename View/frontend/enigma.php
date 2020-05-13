@@ -1,7 +1,6 @@
-<?php ob_start(); ?>
+<?php $this->title = "Enigma - Début d'aventure"; ?>
 
 </div>
-
 
 <?php
 if (!empty($enigmes)) {
@@ -29,8 +28,3 @@ if (!empty($enigmes)) {
 <?php
     }
 } ?>
-
-<?php $content = ob_get_clean(); ?>
-
-
-<?php require('View/template/template.php'); ?>

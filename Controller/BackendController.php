@@ -5,6 +5,7 @@ namespace Enigma;
 use Enigma\CommentsManager;
 use Enigma\StoriesManager;
 use Enigma\UsersManager;
+use Enigma\ViewManager;
 
 
 class BackendController
@@ -12,12 +13,15 @@ class BackendController
 
     private $AdminManager;
     private $CommentsManager;
+    private $ViewManager;
+
 
     public function __construct()
     {
         $this->CommentsManager = new CommentsManager();
         $this->StoriesManager = new StoriesManager();
         $this->UsersManager = new UsersManager();
+        $this->ViewManager = new ViewManager();
     }
 
 
@@ -45,7 +49,17 @@ class BackendController
             $i = $i + 1;
         }
 
-        require('View/backend/adminDashboard.php');
+        return $this->ViewManager->render("backend/adminDashboard", [
+            'comments' => $comments,
+            'admins' => $admins,
+            'checkIfAdmin' => $checkIfAdmin,
+            'nb_coms' => $nb_coms,
+            'nb_user' => $nb_user,
+            'nb_finish' => $nb_finish,
+            'tables' => $tables,
+            'nbrInTable' => $nbrInTable
+
+        ]);
     }
 
 
@@ -81,7 +95,9 @@ class BackendController
     {
         $responses = $this->StoriesManager->getEnigmas();
 
-        require('View/backend/adminEnigmas.php');
+        return $this->ViewManager->render("backend/adminEnigmas", [
+            'responses' => $responses
+        ]);
     }
 
     // Gestion des énigmes publiées
@@ -90,7 +106,11 @@ class BackendController
         $enigmes = $this->StoriesManager->getEnigma();
 
         $indices = $this->StoriesManager->getIndices();
-        require('View/backend/adminUpdateEnigma.php');
+
+        return $this->ViewManager->render("backend/adminUpdateEnigma", [
+            'enigmes' => $enigmes,
+            'indices' => $indices
+        ]);
     }
 
 

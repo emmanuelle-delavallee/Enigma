@@ -330,7 +330,6 @@ class Router
                         break;
 
 
-
                         // Si URL = checklogin, vérifie que les champs ne soient pas vides, s'ils sont valides : dashboard, sinon page login
                     case 'checklogin':
                         if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
@@ -375,7 +374,6 @@ class Router
                         break;
 
 
-
                         // Déconnecter la session en cours
                     case 'logout':
                         $_SESSION['username'] = "";
@@ -401,7 +399,6 @@ class Router
                         break;
 
 
-
                         // Supprimer un commentaire publié
                     case 'deleteComment':
                         if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -413,13 +410,13 @@ class Router
                         break;
 
 
-
                         // Afficher la page de gestion des énigmes publiées(admin)
                     case 'adminEnigmas':
                         $this->BackendController->adminEnigmas();
                         break;
 
 
+                        // Met à jour les énigmes 
                     case 'updateEnigma':
                         if (isset($_GET['id']) && $_GET['id'] > 0) {
                             $this->BackendController->updateEnigma($_GET['id']);
@@ -428,12 +425,22 @@ class Router
                         }
                         break;
 
+
+                        // Met à jour les énigmes 
                     case 'updateStepEnigme':
                         if (!empty($_POST['indice'])) {
                             $this->BackendController->updateStepEnigme($_GET['id_story'], $_GET['id_step'], $_GET['help'], $_POST['indice']);
                         }
                         $this->BackendController->updateEnigma($_GET['id_story']);
                         break;
+
+
+
+                        // Page d'erreur
+                    case 'error':
+                        $this->FrontendController->error();
+                        break;
+
 
                         // Si aucune page n'est définie dans URL ou que la page d'existe pas, renvoi vers la page d'erreur
                     default:

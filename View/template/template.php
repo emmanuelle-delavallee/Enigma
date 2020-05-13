@@ -14,7 +14,7 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Enigma est un site d'énigmes en ligne, dans une ambiance d'aventure avec des personnages de bandes-dessinées" />
-    <title>Enigma</title>
+    <title><?= $title ?></title>
 </head>
 
 
@@ -26,7 +26,7 @@
     <?php require('View/template/topbar.php'); ?>
 
     <!-- Container de la page, contrôle la largeur occupée-->
-    <div class="container">
+    <div class="container content">
         <?= $content ?>
     </div>
 
