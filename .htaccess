@@ -5,7 +5,6 @@ RewriteEngine On
 RewriteRule home index.php
 RewriteRule discover index.php?url=discover
 RewriteRule play index.php?url=play
-RewriteRule comments index.php?url=comments
 RewriteRule comments-([0-9]+) index.php?url=comments&page=$1
 RewriteRule login index.php?url=login
 RewriteRule adminDashboard index.php?url=adminDashboard
