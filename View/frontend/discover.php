@@ -2,7 +2,7 @@
 
 </div>
 
-<div class="pages-background">
+<div class="common-background blue-background">
 
     <div class="container discover-container">
         <div class="col s12 l12">

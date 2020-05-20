@@ -59,17 +59,37 @@ body {
   padding-top: 0;
 }
 
-/*HOME*/
-.iris {
-  background-image: url("../img/backgrounds/background.jpg");
+/*BACKGROUNDS*/
+
+.common-background {
   background-repeat: no-repeat;
-  min-height: 120vh;
+  min-height: 86vh;
   background-size: cover;
   background-position: center;
 }
 
+.iris-background {
+  background-image: url("../img/backgrounds/background.jpg");
+  min-height: 120vh;
+}
+
+.blue-background {
+  background-image: url("../img/backgrounds/pages-background.jpg");
+}
+
+.comments-background {
+  background-image: url("../../Public/img/backgrounds/comments-background.jpg");
+}
+
+.background-login {
+  background-image: url("../img/backgrounds/background-log.jpg");
+  min-height: 100vh;
+}
+
+/*HOME*/
+
 .home-container {
-  padding: 5rem 15rem 17rem 15rem;
+  padding: 5rem 15rem 10rem 15rem;
 }
 
 .home-page-title {
@@ -84,14 +104,6 @@ body {
 }
 
 /*DISCOVER & COMMENTS*/
-
-.pages-background {
-  background-image: url("../img/backgrounds/pages-background.jpg");
-  background-repeat: no-repeat;
-  min-height: auto;
-  background-size: cover;
-  background-position: center;
-}
 
 .discover-container {
   padding: 2rem 0 2rem 0;
@@ -108,18 +120,14 @@ body {
 
 /*PLAY*/
 #play-carousel {
-  margin-bottom: 250px;
+  margin-bottom: 10%;
+}
+
+.card-title {
+  margin-top: 0px;
 }
 
 /*COMMENTS*/
-
-.comments-background {
-  background-image: url("../../Public/img/backgrounds/comments-background.jpg");
-  background-repeat: no-repeat;
-  min-height: 86vh;
-  background-size: cover;
-  background-position: center;
-}
 
 .comm-card {
   padding: 30px 10px 10px 30px;
@@ -171,7 +179,8 @@ body {
 }
 
 .enigma-img {
-  margin: 2rem 0 2rem 0;
+  margin: 2rem auto 2rem auto;
+  display: block;
 }
 
 .enigma-submit-btn {
@@ -197,16 +206,6 @@ body {
   margin: 25px 25px 25px 25px;
 }
 
-/*LOGIN*/
-
-.background-login {
-  background-image: url("../img/backgrounds/background-log.jpg");
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center;
-}
-
 /*ESPACE PERSONNEL*/
 
 .user_img {
@@ -224,8 +223,27 @@ body {
   margin-right: 25px;
 }
 
-/*UPADTE ENIGMAS ADMIN*/
+/*Media queries : tablettes*/
+@media screen and (max-width: 768px) {
+  .home-container {
+    padding: 5rem 5rem 5rem 5rem;
+  }
 
-.background-up-enigm {
-  min-height: 85vh;
+  .discover-container {
+    padding: 0 0 0 0;
+  }
+
+  .discover-txt {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .asterix-table {
+    word-wrap: break-word;
+    min-width: 200px;
+  }
+}
+
+/*Media queries : mobiles*/
+@media screen and (max-width: 425px) {
 }

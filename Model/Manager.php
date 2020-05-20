@@ -52,12 +52,12 @@ abstract class Manager
     // Gère les requêtes
     protected function createQuery($sql, $parameters = null)
     {
-        if ($parameters) {
+        if ($parameters) :
             $result = $this->checkConnection()->prepare($sql);
             $result->setFetchMode(PDO::FETCH_CLASS, static::class);
             $result->execute($parameters);
             return $result;
-        }
+        endif;
         $result = $this->checkConnection()->query($sql);
         $result->setFetchMode(PDO::FETCH_CLASS, static::class);
         return $result;

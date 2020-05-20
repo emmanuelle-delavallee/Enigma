@@ -79,11 +79,11 @@ class StoriesManager extends Manager
     public function getEnigma()
     {
 
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
+        if (isset($_GET['id']) && $_GET['id'] > 0) :
             $id = $_GET['id'];
-        } else {
+        else :
             $id = 1;
-        }
+        endif;
 
         $sql = "
         SELECT stories.id, 

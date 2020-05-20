@@ -20,12 +20,12 @@ class UsersManager extends Manager
 
         $res = 0;
         $users =  $this->createQuery($sql, array($pseudo, sha1($password)));
-        foreach ($users as $user) {
-            if ($user->id > 0) {
+        foreach ($users as $user) :
+            if ($user->id > 0) :
                 $res = 1;
                 $_SESSION['id_user'] = $user->id;
-            }
-        }
+            endif;
+        endforeach;
         return $res;
     }
 
@@ -36,7 +36,7 @@ class UsersManager extends Manager
     function checkIfAdmin()
     {
         $exist = 0;
-        if (isset($_SESSION['username'])) {
+        if (isset($_SESSION['username'])) :
             $value = $_SESSION['username'];
 
             $sql = "
@@ -45,18 +45,18 @@ class UsersManager extends Manager
 
             $admins =  $this->createQuery($sql, array($value));
 
-            foreach ($admins as $admin) {
-                if ($admin->id > 0) {
+            foreach ($admins as $admin) :
+                if ($admin->id > 0) :
                     $exist = 1;
-                }
-            }
-        }
+                endif;
+            endforeach;
+        endif;
         // Si connecté en tant qu'admin, stocke la donnée en session
-        if ($exist == 1) {
+        if ($exist == 1) :
             $_SESSION['admin'] = 'VRAI';
-        } else {
+        else :
             $_SESSION['admin'] = '';
-        }
+        endif;
         return $exist;
     }
 
@@ -121,11 +121,11 @@ class UsersManager extends Manager
 
         $res = 0;
         $users =  $this->createQuery($sql, array($pseudo));
-        foreach ($users as $user) {
-            if ($user->id > 0) {
+        foreach ($users as $user) :
+            if ($user->id > 0) :
                 $res = 1;
-            }
-        }
+            endif;
+        endforeach;
         return $res;
     }
 

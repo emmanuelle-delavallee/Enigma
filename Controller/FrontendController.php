@@ -60,7 +60,7 @@ class FrontendController
 
 
     // Page commentaires, récupère les commentaires avec pour valeur 0 ou 1
-    function comments($page)
+    function comments($page = 1)
     {
         $pagetotal = $this->CommentsManager->getPagesComments();
         $responses = $this->CommentsManager->getComments($page);

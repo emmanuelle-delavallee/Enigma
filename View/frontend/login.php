@@ -2,40 +2,34 @@
 
 </div>
 
-<div class="background-login">
+<div class="common-background background-login">
 
 
     <div class="container discover-container">
         <h5 class="page-subtitle center white-text">Merci de vous connecter ou de vous inscrire pour jouer</h5>
 
-        <?php
-        if (isset($_POST['submit1'])) {
+        <?php if (isset($_POST['submit1'])) :
 
             $errors = [];
             $errors['different_MDP'] = "Le mots de passe ou le pseudo n'est pas bon";
 
 
             // Affiche les erreurs s'il y en a
-            if (!empty($errors)) {
-        ?>
+            if (!empty($errors)) : ?>
 
                 <div class="card red error-message">
                     <div class="card-content white-text">
-                        <?php
-                        foreach ($errors as $error) {
-                            echo $error . "<br/>";
-                        }
-                        ?>
+                        <?php foreach ($errors as $error) : ?>
+                            <p><?= $error ?><br /></p>
+                        <?php endforeach ?>
                     </div>
                 </div>
 
             <?php
-            }
-        }
+            endif;
+        endif;
 
-
-
-        if (isset($_POST['submit2'])) {
+        if (isset($_POST['submit2'])) :
 
             $pseudo = htmlspecialchars(trim($_POST['pseudo']));
             $email = htmlspecialchars(trim($_POST['email']));
@@ -47,45 +41,40 @@
 
 
             // Vérifie que tous les champs ont été complétés
-            if (empty($pseudo) || empty($email) || empty($repeat_email) || empty($password) || empty($repeat_password)) {
+            if (empty($pseudo) || empty($email) || empty($repeat_email) || empty($password) || empty($repeat_password)) :
                 $errors['empty'] = "Veuillez remplir tous les champs";
-            }
+            endif;
 
 
             // Vérifie que les deux adresses email saisies soient identiques
-            if ($email != $repeat_email) {
+            if ($email != $repeat_email) :
                 $errors['different'] = "Les adresses email ne correspondent pas";
-            }
+            endif;
 
 
             // Vérifie que les deux mots de passe saisis soient identiques
-            if ($password != $repeat_password) {
+            if ($password != $repeat_password) :
                 $errors['different_MDP'] = "Les mots de passe ne correspondent pas";
-            }
+            endif;
 
             // Affiche les erreurs s'il y en a
-            if (!empty($errors)) {
-            ?>
+            if (!empty($errors)) : ?>
 
                 <div class="card red error-message">
                     <div class="card-content white-text">
-                        <?php
-                        foreach ($errors as $error) {
-                            echo $error . "<br/>";
-                        }
-                        ?>
+                        <?php foreach ($errors as $error) : ?>
+                            <p><?= $error ?><br /></p>
+                        <?php endforeach ?>
                     </div>
                 </div>
 
-        <?php
-            }
-        }
-        ?>
+        <?php endif;
+        endif; ?>
         <div class="col s12 l12">
 
             <div class="row">
 
-                <div class="col l4 m6 s12 offset-l1">
+                <div class="col s12 m8 l4 offset-m2 offset-l1">
 
                     <div class="card-panel white z-depth-5">
                         <div class="row">
@@ -119,7 +108,7 @@
                 </div>
 
 
-                <div class="col l4 m6 s12 offset-l1">
+                <div class="col s12 m8 l4 offset-m2 offset-l1">
 
                     <div class="card-panel white z-depth-5">
                         <div class="row">

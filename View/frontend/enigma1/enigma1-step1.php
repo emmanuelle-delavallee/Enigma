@@ -15,7 +15,7 @@
             </ul>
         </div>
         <?php
-        if (isset($_POST['submit11'])) {
+        if (isset($_POST['submit11'])) :
 
             // Trim supprime l'espace avant le mot 
             $answer11 = htmlspecialchars(trim($_POST['answer11']));
@@ -25,30 +25,27 @@
             $errors = [];
 
             // Vérifie que les champs ont bien été complétés
-            if (empty($answer11)) {
+            if (empty($answer11)) :
                 $errors['empty'] = "Il faut indiquer une réponse !";
-            } else {
-                if ($answer11 != "37") {
+            else :
+                if ($answer11 != "37") :
                     $errors['erreur'] = "Mauvaise réponse ! Réessayer ";
-                }
-            }
+                endif;
+            endif;
 
             // Affiche les erreurs si existantes
-            if (!empty($errors)) {
+            if (!empty($errors)) :
         ?>
                 <div class="card red error-message">
                     <div class="card-content white-text">
-                        <?php
-                        foreach ($errors as $error) {
-                            echo $error . "<br/>";
-                        }
-
-                        ?>
+                        <?php foreach ($errors as $error) : ?>
+                            <p><?= $error ?><br /></p>
+                        <?php endforeach ?>
                     </div>
                 </div>
         <?php
-            }
-        }
+            endif;
+        endif;
         ?>
         <h5 class="enigmas-title center">Vous jouez aux échecs avec Jolly Jumper</h5>
         <h6 class="enigmas-subtitle">Pendant la partie, vous remarquez qu'il vous tend une énigme, trouverez-vous la réponse ?</h6>
@@ -60,11 +57,11 @@
             <div class="modal-content">
                 <h4 class="center">Indice</h4>
                 <p>
-                    <?php if (!empty($helps)) {
-                        foreach ($helps as $help) {
-                            echo $help->text;
-                        }
-                    }
+                    <?php if (!empty($helps)) :
+                        foreach ($helps as $help) : ?>
+                            <?php $help->text ?>
+                    <?php endforeach;
+                    endif;
                     ?>
                 </p>
             </div>
@@ -79,11 +76,11 @@
             <div class="modal-content">
                 <h4 class="center">Solution</h4>
                 <p>
-                    <?php if (!empty($responses)) {
-                        foreach ($responses as $response) {
-                            echo $response->text;
-                        }
-                    }
+                    <?php if (!empty($responses)) :
+                        foreach ($responses as $response) : ?>
+                            <?php $response->text ?>
+                    <?php endforeach;
+                    endif;
                     ?>
                 </p>
             </div>
@@ -94,8 +91,8 @@
 
 
         <!-- IMAGE-->
-        <div class="col s12 m12 l10 center enigma-img">
-            <img src="Public/img/lucky_luke/echec.png" alt="Jeux_dechecs_Lucky_Luke">
+        <div class="col s12 m12 l10">
+            <img src="Public/img/lucky_luke/echec.png" class="materialboxed responsive-img enigma-img" alt="Jeux_dechecs_Lucky_Luke">
         </div>
 
 

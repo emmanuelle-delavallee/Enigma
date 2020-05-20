@@ -1,7 +1,7 @@
 <?php $this->title = "Enigma - Aventure 1"; ?>
 
 </div>
-<div class="container">
+<div class="container common-background">
     <div class="col s12">
 
         <div class="fixed-action-btn">
@@ -14,7 +14,7 @@
             </ul>
         </div>
         <?php
-        if (isset($_POST['submit3'])) {
+        if (isset($_POST['submit3'])) :
 
             // Trim supprime l'espace avant le mot 
             $reponse = htmlspecialchars(trim($_POST['reponse']));
@@ -24,30 +24,27 @@
             $errors = [];
 
             // Vérifie que les champs ont bien été complétés
-            if (empty($reponse)) {
+            if (empty($reponse)) :
                 $errors['empty'] = "Il faut indiquer une réponse !";
-            } else {
-                if ($reponse != "37") {
+            else :
+                if ($reponse != "37") :
                     $errors['erreur'] = "Mauvaise réponse ! Réessayer ";
-                }
-            }
+                endif;
+            endif;
 
             // Affiche les erreurs si existantes
-            if (!empty($errors)) {
+            if (!empty($errors)) :
         ?>
                 <div class="card red error-message">
                     <div class="card-content white-text">
-                        <?php
-                        foreach ($errors as $error) {
-                            echo $error . "<br/>";
-                        }
-
-                        ?>
+                        <?php foreach ($errors as $error) : ?>
+                            <p><?= $error ?><br /></p>
+                        <?php endforeach ?>
                     </div>
                 </div>
         <?php
-            }
-        }
+            endif;
+        endif;
         ?>
         <h5 class="enigmas-title center">Vous faites face aux Daltons</h5>
 
@@ -60,11 +57,11 @@
             <div class="modal-content">
                 <h4 class="center">Indice</h4>
                 <p>
-                    <?php if (!empty($helps)) {
-                        foreach ($helps as $help) {
-                            echo $help->text;
-                        }
-                    }
+                    <?php if (!empty($helps)) :
+                        foreach ($helps as $help) : ?>
+                            <?php $help->text ?>
+                    <?php endforeach;
+                    endif;
                     ?>
                 </p>
             </div>
@@ -79,11 +76,11 @@
             <div class="modal-content">
                 <h4 class="center">Solution</h4>
                 <p>
-                    <?php if (!empty($responses)) {
-                        foreach ($responses as $response) {
-                            echo $response->text;
-                        }
-                    }
+                    <?php if (!empty($responses)) :
+                        foreach ($responses as $response) : ?>
+                            <?php $response->text ?>
+                    <?php endforeach;
+                    endif;
                     ?>
                 </p>
             </div>
@@ -93,32 +90,33 @@
         </div>
 
 
+
         <!-- IMAGE-->
-        <div class="col s12 m12 l10 center enigma-img">
-            <img src="Public/img/lucky_luke/LuckyDuel.jpg" alt="Duel_Lucky_Luke_Daltons">
+        <div class="col s12 m12 l10">
+            <img src="Public/img/lucky_luke/LuckyDuel.jpg" class="materialboxed responsive-img enigma-img" alt="Duel_Lucky_Luke_Daltons">
         </div>
 
         <!-- REPONSE-->
         <div class="container ">
             <div class="row">
 
-                <h5 class="enigmas-subtitle" id="intro" style="display:block">Que faites-vous ?</h5>
-                <h5 class="enigmas-subtitle" id="disscuss" style="display:none">Les daltons semblent prêts à discuter, à vous de choisir le sujet de la conversation</h5>
-                <h5 class="enigmas-subtitle" id="capture" style="display:none">Plusieurs choix s'offrent à vous pour tenter la capture des Daltons</h5>
-                <h5 class="enigmas-subtitle" id="Lelasso" style="display:none">Après 4 brillant tirs, les Dalton sont désarmés</h5>
+                <h5 class="enigmas-subtitle premier" id="intro" style="display:block">Que faites-vous ?</h5>
+                <h5 class="enigmas-subtitle discuter" id="disscuss" style="display:none">Les daltons semblent prêts à discuter, à vous de choisir le sujet de la conversation</h5>
+                <h5 class="enigmas-subtitle tirer" id="capture" style="display:none">Plusieurs choix s'offrent à vous pour tenter la capture des Daltons</h5>
+                <h5 class="enigmas-subtitle désarmer" id="Lelasso" style="display:none">Après 4 brillant tirs, les Dalton sont désarmés</h5>
 
                 <!-- BTN REPONSE -->
 
-                <button class="btn waves-effect waves-teal btn-flat btn-choices " id="discuter" onclick="showDiscuter()" style="display:block"> <i class="large material-icons left">arrow_forward</i>Tenter de discuter</button>
-                <button class="btn waves-effect waves-teal btn-flat btn-choices " id="tirer" onclick="showTirer()" style="display:block"><i class="large material-icons left">arrow_forward</i>Tenter de les capturer</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices premier" id="discuter" onclick="showDiscuter()" style="display:block"> <i class="large material-icons left">arrow_forward</i>Tenter de discuter</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices premier" id="tirer" onclick="showTirer()" style="display:block"><i class="large material-icons left">arrow_forward</i>Tenter de les capturer</button>
 
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="fuire" onclick="window.location.href='enigma1-done-ending1'" style="display:none"><i class="large material-icons left">arrow_forward</i>Les laisser s'enfuir</button>
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="saloon" onclick="window.location.href='enigma1-done-ending2'" style="display:none"><i class="large material-icons left">arrow_forward</i>Emmener Joe au saloon</button>
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="madalton" onclick="window.location.href='enigma1-done-ending3'" style="display:none"><i class="large material-icons left">arrow_forward</i>Parler de 'ma Dalton</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices discuter tirer désarmer" id="fuire" onclick="window.location.href='enigma1-done-ending1'" style="display:none"><i class="large material-icons left">arrow_forward</i>Les laisser s'enfuir</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices discuter" id="saloon" onclick="window.location.href='enigma1-done-ending2'" style="display:none"><i class="large material-icons left">arrow_forward</i>Emmener Joe au saloon</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices discuter" id="madalton" onclick="window.location.href='enigma1-done-ending3'" style="display:none"><i class="large material-icons left">arrow_forward</i>Parler de 'ma Dalton</button>
 
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="désarmer" onclick="showDesarmer()" style="display:none"><i class="large material-icons left">arrow_forward</i>Tirer pour les désarmer</button>
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="lasso1" onclick="window.location.href='enigma1-done-ending4'" style="display:none"><i class="large material-icons left">arrow_forward</i>Capturer au lasso</button>
-                <button class="btn waves-effect waves-teal btn-flat btn-choices" id="lasso2" onclick="window.location.href='enigma1-done-ending5'" style="display:none"><i class="large material-icons left">arrow_forward</i>Capturer au lasso</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices tirer" id="désarmer" onclick="showDesarmer()" style="display:none"><i class="large material-icons left">arrow_forward</i>Tirer pour les désarmer</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices tirer" id="lasso1" onclick="window.location.href='enigma1-done-ending4'" style="display:none"><i class="large material-icons left">arrow_forward</i>Capturer au lasso</button>
+                <button class="btn waves-effect waves-teal btn-flat btn-choices désarmer" id="lasso2" onclick="window.location.href='enigma1-done-ending5'" style="display:none"><i class="large material-icons left">arrow_forward</i>Capturer au lasso</button>
 
             </div>
         </div>

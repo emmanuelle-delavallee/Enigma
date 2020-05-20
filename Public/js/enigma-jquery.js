@@ -1,4 +1,11 @@
 $(document).ready(function () {
+  /*Chargement dynamique de l'adminDashboard*/
+  $("#testetst").click(function () {
+    $("#reloadableContainer").load(
+      "View/backend/adminDashboard.php #reloadableContent"
+    );
+  });
+
   /* SYSTEME DE NOTATION PAR ETOILES*/
   /* Etoiles au survol */
   $("#stars li")
@@ -130,31 +137,81 @@ $(document).ready(function () {
 });
 
 function showDiscuter() {
-  document.getElementById("discuter").style.display = "none";
-  document.getElementById("intro").style.display = "none";
-  document.getElementById("tirer").style.display = "none";
-  document.getElementById("fuire").style.display = "block";
-  document.getElementById("saloon").style.display = "block";
-  document.getElementById("madalton").style.display = "block";
-  document.getElementById("disscuss").style.display = "block";
+  var elmts = document.getElementsByClassName("premier");
+  for (var i = 0; i < elmts.length; i++) {
+    elmts[i].style.display = "none";
+  }
+  var elmts2 = document.getElementsByClassName("discuter");
+  for (var i = 0; i < elmts2.length; i++) {
+    elmts2[i].style.display = "block";
+  }
 }
 
 function showTirer() {
-  document.getElementById("discuter").style.display = "none";
-  document.getElementById("intro").style.display = "none";
-  document.getElementById("tirer").style.display = "none";
-  document.getElementById("fuire").style.display = "block";
-  document.getElementById("lasso1").style.display = "block";
-  document.getElementById("désarmer").style.display = "block";
-  document.getElementById("capture").style.display = "block";
+  var elmts = document.getElementsByClassName("premier");
+  for (var i = 0; i < elmts.length; i++) {
+    elmts[i].style.display = "none";
+  }
+  var elmts2 = document.getElementsByClassName("tirer");
+  for (var i = 0; i < elmts2.length; i++) {
+    elmts2[i].style.display = "block";
+  }
 }
 
 function showDesarmer() {
-  document.getElementById("lasso1").style.display = "none";
-  document.getElementById("désarmer").style.display = "none";
-  document.getElementById("fuire").style.display = "none";
-  document.getElementById("fuire").style.display = "block";
-  document.getElementById("lasso2").style.display = "block";
-  document.getElementById("Lelasso").style.display = "block";
-  document.getElementById("capture").style.display = "none";
+  var elmts = document.getElementsByClassName("tirer");
+  for (var i = 0; i < elmts.length; i++) {
+    elmts[i].style.display = "none";
+  }
+  var elmts2 = document.getElementsByClassName("désarmer");
+  for (var i = 0; i < elmts2.length; i++) {
+    elmts2[i].style.display = "block";
+  }
+}
+
+function SuppEtRefresh(id) {
+  $.ajax({
+    url: "admin-" + id + "-deleted",
+    success: function (result) {
+      $("#reloadableContainer").load(
+        "View/backend/adminDashboard.php #reloadableContent"
+      );
+    },
+  });
+}
+function ValidComEtRefresh(id) {
+  $.ajax({
+    url: "comment-" + id + "-validated",
+    success: function (result) {
+      $("#reloadableContainerCom").load(
+        "View/backend/adminDashboard.php #reloadableContentCom"
+      );
+    },
+  });
+}
+function SuppComEtRefresh(id) {
+  $.ajax({
+    url: "comment-" + id + "-deleted",
+    success: function (result) {
+      $("#reloadableContainerCom").load(
+        "View/backend/adminDashboard.php #reloadableContentCom"
+      );
+    },
+  });
+}
+
+function addRefresh() {
+  event.preventDefault();
+  var settings = {
+    url: "addAdmin",
+    method: "POST",
+    data: {
+      pseudo: pseudo,
+    },
+  };
+  $.ajax(settings).done(function (response) {
+    $("#reloadableContainer").load(
+      "View/backend/adminDashboard.php #reloadableContent"
+    );
+  });
 }
