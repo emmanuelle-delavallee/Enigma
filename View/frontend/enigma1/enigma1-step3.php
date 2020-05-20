@@ -13,43 +13,10 @@
                 <li><a class="btn-floating waves-effect waves-light amber modal-trigger" href="#helpModal"><i class="material-icons">lightbulb_outline</i></a></li>
             </ul>
         </div>
-        <?php
-        if (isset($_POST['submit3'])) :
 
-            // Trim supprime l'espace avant le mot 
-            $reponse = htmlspecialchars(trim($_POST['reponse']));
-
-
-            // Stocke les erreurs dans un tableau pour pouvoir les afficher
-            $errors = [];
-
-            // Vérifie que les champs ont bien été complétés
-            if (empty($reponse)) :
-                $errors['empty'] = "Il faut indiquer une réponse !";
-            else :
-                if ($reponse != "37") :
-                    $errors['erreur'] = "Mauvaise réponse ! Réessayer ";
-                endif;
-            endif;
-
-            // Affiche les erreurs si existantes
-            if (!empty($errors)) :
-        ?>
-                <div class="card red error-message">
-                    <div class="card-content white-text">
-                        <?php foreach ($errors as $error) : ?>
-                            <p><?= $error ?><br /></p>
-                        <?php endforeach ?>
-                    </div>
-                </div>
-        <?php
-            endif;
-        endif;
-        ?>
         <h5 class="enigmas-title center">Vous faites face aux Daltons</h5>
 
         <h6 class="center">Ils sont armés et prêts à en découdre</h6>
-
 
 
         <!-- MODAL D'AIDE-->
@@ -59,7 +26,7 @@
                 <p>
                     <?php if (!empty($helps)) :
                         foreach ($helps as $help) : ?>
-                            <?php $help->text ?>
+                            <?= $help->text ?>
                     <?php endforeach;
                     endif;
                     ?>
@@ -78,7 +45,7 @@
                 <p>
                     <?php if (!empty($responses)) :
                         foreach ($responses as $response) : ?>
-                            <?php $response->text ?>
+                            <?= $response->text ?>
                     <?php endforeach;
                     endif;
                     ?>
@@ -117,7 +84,6 @@
                 <button class="btn waves-effect waves-teal btn-flat btn-choices tirer" id="désarmer" onclick="showDesarmer()" style="display:none"><i class="large material-icons left">arrow_forward</i>Tirer pour les désarmer</button>
                 <button class="btn waves-effect waves-teal btn-flat btn-choices tirer" id="lasso1" onclick="window.location.href='enigma1-done-ending4'" style="display:none"><i class="large material-icons left">arrow_forward</i>Capturer au lasso</button>
                 <button class="btn waves-effect waves-teal btn-flat btn-choices désarmer" id="lasso2" onclick="window.location.href='enigma1-done-ending5'" style="display:none"><i class="large material-icons left">arrow_forward</i>Capturer au lasso</button>
-
             </div>
         </div>
     </div>

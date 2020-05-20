@@ -1,3 +1,9 @@
+<?php
+// Page accessible aux administrateurs qui ont une session active
+if ($checkIfAdmin == 0) :
+    header("Location:login");
+endif ?>
+
 <?php $this->title = "Enigma - Administration"; ?>
 
 </div>
@@ -54,15 +60,10 @@
 
                                                         <button type="submit" name="submit" class="btn waves-effect waves-light cyan darken-2 right">Valider</button>
 
-
                                                     </form>
-
                                                 </div>
-
                                             </div>
-
                                         </div>
-
                             <?php
                                     endif;
                                 endforeach;

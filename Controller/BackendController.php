@@ -94,27 +94,30 @@ class BackendController
     function adminEnigmas()
     {
         $responses = $this->StoriesManager->getEnigmas();
+        $checkIfAdmin = $this->UsersManager->checkIfAdmin();
 
         return $this->ViewManager->render("backend/adminEnigmas", [
-            'responses' => $responses
+            'responses' => $responses,
+            'checkIfAdmin' => $checkIfAdmin
         ]);
     }
 
-    // Gestion des énigmes publiées
+    // Affichage de la page de mise à jour des énigmes publiées
     function updateEnigma()
     {
         $enigmes = $this->StoriesManager->getEnigma();
-
+        $checkIfAdmin = $this->UsersManager->checkIfAdmin();
         $indices = $this->StoriesManager->getIndices();
 
         return $this->ViewManager->render("backend/adminUpdateEnigma", [
             'enigmes' => $enigmes,
+            'checkIfAdmin' => $checkIfAdmin,
             'indices' => $indices
         ]);
     }
 
 
-    // Gestion des énigmes publiées
+    // Envoi en base des indices modifiés
     function updateStepEnigme($id_story, $id_step, $help, $text)
     {
         $enigmes = $this->StoriesManager->updateStepEnig($id_story, $id_step, $help, $text);

@@ -41,5 +41,3 @@
             </div>
     <?php endforeach;
     endif; ?>
-
-</div>

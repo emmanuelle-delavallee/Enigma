@@ -56,7 +56,7 @@
                             if ($i == $pageEncours) : ?>
                                 <li class="active cyan"><a href="#"><?= $i ?></a></li>
                             <?php else : ?>
-                                <li class="waves-effect"><a href="comments-<?= $i ?>"> $i </a></li>
+                                <li class="waves-effect"><a href="comments-<?= $i ?>"> <?= $i ?> </a></li>
                         <?php endif;
 
                             $i++;
@@ -135,7 +135,7 @@
                                         <select name="id_story" id="id_story">
 
                                             <?php foreach ($enigmes as $enigme) : ?>
-                                                <option value=" . $enigme->id . "> <?= $enigme->name ?> </option>
+                                                <option value="<?= $enigme->id ?>"> <?= $enigme->name ?> </option>
                                             <?php endforeach ?>
 
                                         </select>

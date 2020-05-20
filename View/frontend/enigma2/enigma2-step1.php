@@ -3,7 +3,6 @@
 </div>
 <div class="container">
     <div class="col s12">
-
         <div class="fixed-action-btn">
             <a class="btn-floating btn-large waves-effect waves-light teal">
                 <i class="large material-icons">lightbulb_outline</i>
@@ -57,7 +56,7 @@
                 <p>
                     <?php if (!empty($helps)) :
                         foreach ($helps as $help) : ?>
-                            <?php $help->text ?>
+                            <?= $help->text ?>
                     <?php endforeach;
                     endif;
                     ?>
@@ -73,19 +72,19 @@
         <div id="answerModal" class="modal">
             <div class="modal-content">
                 <h4 class="center">Solution</h4>
-                <p>
-                    <?php if (!empty($responses)) :
-                        foreach ($responses as $response) : ?>
-                            <?php $response->text ?>
-                    <?php endforeach;
-                    endif;
-                    ?>
-                </p>
+                <?php
+                if (!empty($responses)) :
+                    foreach ($responses as $response) : ?>
+                        <p><?= $response->text ?></p>
+                <?php endforeach;
+                endif;
+                ?>
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-light btn btn-small cyan darken-2">Retour au jeu <i class="material-icons right">play_arrow</i></a>
             </div>
         </div>
+
 
         <!-- IMAGE-->
         <div class="col s12 m12 l10">
@@ -101,9 +100,9 @@
 
                         <thead>
                             <tr>
-                                <th class="asterix-table">Arme</th>
-                                <th class="asterix-table">Repas</th>
-                                <th class="asterix-table">Boisson</th>
+                                <th class="asterix-table-title">Arme</th>
+                                <th class="asterix-table-title">Repas</th>
+                                <th class="asterix-table-title">Boisson</th>
                             </tr>
                         </thead>
 
@@ -208,9 +207,7 @@
                     <br> <br>
                     <button type="submit" name="submit21" class="btn waves-effect waves-light teal enigma-submit-btn">Poster ma réponse</button>
                 </form>
-
             </div>
-
         </div>
     </div>
 </div>

@@ -62,7 +62,7 @@
                 <p>
                     <?php if (!empty($helps)) :
                         foreach ($helps as $help) : ?>
-                            <?php $help->text ?>
+                            <?= $help->text ?>
                     <?php endforeach;
                     endif;
                     ?>
@@ -81,7 +81,7 @@
                 <p>
                     <?php if (!empty($responses)) :
                         foreach ($responses as $response) : ?>
-                            <?php $response->text ?>
+                            <?= $response->text ?>
                     <?php endforeach;
                     endif;
                     ?>
@@ -107,7 +107,7 @@
 
         <!-- REPONSE-->
         <div class="row">
-            <div class="col s12 m8 l4 offset-l4">
+            <div class="col s12 m12 l4 offset-l4">
                 <form action="enigma-1-step-3" method="post">
                     <div class="input-field col s12">
                         <select name="answer12" id="answer12">
@@ -123,10 +123,8 @@
                     <div class="col s12 m6 l12 center">
                         <button type="submit" name="submit12" class="btn waves-effect waves-light teal enigma-submit-btn">Poster ma réponse</button>
                     </div>
-
                 </form>
             </div>
         </div>
-
     </div>
 </div>

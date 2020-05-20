@@ -59,7 +59,7 @@
                 <p>
                     <?php if (!empty($helps)) :
                         foreach ($helps as $help) : ?>
-                            <?php $help->text ?>
+                            <?= $help->text ?>
                     <?php endforeach;
                     endif;
                     ?>
@@ -78,7 +78,7 @@
                 <p>
                     <?php if (!empty($responses)) :
                         foreach ($responses as $response) : ?>
-                            <?php $response->text ?>
+                            <?= $response->text ?>
                     <?php endforeach;
                     endif;
                     ?>
@@ -112,7 +112,5 @@
                 </form>
             </div>
         </div>
-
-
     </div>
 </div>

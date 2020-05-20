@@ -20,7 +20,6 @@ class CommentsManager extends Manager
     public function getComments($page)
     {
         $com_min = ($page - 1) * 5;
-        // $com_max = $page * 5;
 
         $sql = "
         SELECT users_comments.id,
@@ -92,9 +91,9 @@ class CommentsManager extends Manager
     public function warnAComment($commentid)
     {
 
-        $sql = "UPDATE users_comments SET comment_status='2'  WHERE id=" . $commentid;
+        $sql = "UPDATE users_comments SET comment_status='2'  WHERE id=?";
 
-        return $this->createQuery($sql);
+        return $this->createQuery($sql, [$commentid]);
     }
 
 
@@ -129,7 +128,7 @@ class CommentsManager extends Manager
     // BACK : Valider un commentaire
     public function validAComment($commentid)
     {
-        $sql = "UPDATE users_comments SET comment_status='1'  WHERE id=" . $commentid;
+        $sql = "UPDATE users_comments SET comment_status='1'  WHERE id=?";
         $this->createQuery($sql, [$commentid]);
     }
 
@@ -139,7 +138,7 @@ class CommentsManager extends Manager
     // BACK : Supprimer un commentaire mais le conserver en base
     public function deleteAComment($commentid)
     {
-        $sql = "UPDATE users_comments SET comment_status='3'  WHERE id=" . $commentid;
+        $sql = "UPDATE users_comments SET comment_status='3'  WHERE id=?";
 
         $this->createQuery($sql, [$commentid]);
     }

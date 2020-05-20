@@ -1,11 +1,4 @@
 $(document).ready(function () {
-  /*Chargement dynamique de l'adminDashboard*/
-  $("#testetst").click(function () {
-    $("#reloadableContainer").load(
-      "View/backend/adminDashboard.php #reloadableContent"
-    );
-  });
-
   /* SYSTEME DE NOTATION PAR ETOILES*/
   /* Etoiles au survol */
   $("#stars li")
@@ -71,6 +64,8 @@ $(document).ready(function () {
   $("#idNote").click(function () {
     modifyBtn();
   });
+
+  /*ABLE/DISABLE BTN POST COMMENT*/
   function modifyBtn() {
     var title = $("#comment_title").val();
     var textarea = $("#comment-textarea").val();
@@ -122,8 +117,6 @@ $(document).ready(function () {
     $(".admins-slide-hide").slideToggle();
   });
 
-  $("#YourElementID").css("display", "block");
-
   /*MENU LATERAL*/
   $(".sidenav").sidenav();
 
@@ -135,7 +128,7 @@ $(document).ready(function () {
     fullWidth: true,
   });
 });
-
+/* AFFICHE OU DESAFFICHE BTN SELON LES CHOIX DE L'UTILISATEUR */
 function showDiscuter() {
   var elmts = document.getElementsByClassName("premier");
   for (var i = 0; i < elmts.length; i++) {
@@ -169,6 +162,7 @@ function showDesarmer() {
   }
 }
 
+/* SUPPRIME UN ADMIN ET REFRESH UNIQUEMENT LA SECTION ADMIN DE ADMINDASHBOARD */
 function SuppEtRefresh(id) {
   $.ajax({
     url: "admin-" + id + "-deleted",
@@ -179,6 +173,8 @@ function SuppEtRefresh(id) {
     },
   });
 }
+
+/* VALIDE UN COM ET REFRESH UNIQUEMENT LA SECTION COM DE ADMINDASHBOARD */
 function ValidComEtRefresh(id) {
   $.ajax({
     url: "comment-" + id + "-validated",
@@ -189,6 +185,8 @@ function ValidComEtRefresh(id) {
     },
   });
 }
+
+/* SUPPRIME UN COM ET REFRESH UNIQUEMENT LA SECTION COM DE ADMINDASHBOARD */
 function SuppComEtRefresh(id) {
   $.ajax({
     url: "comment-" + id + "-deleted",
@@ -197,21 +195,5 @@ function SuppComEtRefresh(id) {
         "View/backend/adminDashboard.php #reloadableContentCom"
       );
     },
-  });
-}
-
-function addRefresh() {
-  event.preventDefault();
-  var settings = {
-    url: "addAdmin",
-    method: "POST",
-    data: {
-      pseudo: pseudo,
-    },
-  };
-  $.ajax(settings).done(function (response) {
-    $("#reloadableContainer").load(
-      "View/backend/adminDashboard.php #reloadableContent"
-    );
   });
 }

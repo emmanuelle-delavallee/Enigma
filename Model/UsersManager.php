@@ -83,7 +83,7 @@ class UsersManager extends Manager
     // BACK : Supprime les droits d'administrateur d'un compte admin
     public function delAdmin($adminId)
     {
-        $sql = "UPDATE users SET users.admin = '0' WHERE id=" . $adminId;
+        $sql = "UPDATE users SET users.admin = '0' WHERE id=?";
 
         $this->createQuery($sql, [$adminId]);
     }
@@ -94,7 +94,7 @@ class UsersManager extends Manager
     // BACK : Ajoute les droits d'administrateur d'un compte user
     public function newAdmin($pseudo)
     {
-        $sql = "UPDATE users SET users.admin = '1' WHERE pseudo='" . $pseudo . "'";
+        $sql = "UPDATE users SET users.admin = '1' WHERE pseudo=?";
         $this->createQuery($sql, [$pseudo]);
     }
 

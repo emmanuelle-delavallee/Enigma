@@ -1,3 +1,9 @@
+<?php
+// Page accessible aux administrateurs qui ont une session active
+if ($checkIfAdmin == 0) :
+    header("Location:login");
+endif ?>
+
 <?php $this->title = "Enigma - Administration"; ?>
 
 </div>

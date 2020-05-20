@@ -82,8 +82,8 @@ endif ?>
                                     <td><?php if ($comment->comment_status == '2') : ?> <i class="material-icons red-text text-darken-1 left"> priority_high</i> <?php endif ?> <?= $comment->comment_title ?> </td>
 
                                     <td><?= $comment->pseudo ?></td>
-                                    <td><button class="btn" id="<?= $comment->id . "AddComm" ?>" onclick="ValidComEtRefresh(<?= $comment->id ?>)"><i class="material-icons">done</i></button>
-                                        <button class="btn" id="<?= $comment->id . "DelCom" ?>" onclick="SuppComEtRefresh(<?= $comment->id ?>)"><i class="material-icons">delete</i></button>
+                                    <td><button class="btn cyan darken-2" id="<?= $comment->id . "AddComm" ?>" onclick="ValidComEtRefresh(<?= $comment->id ?>)"><i class="material-icons">done</i></button>
+                                        <button class="btn red" id="<?= $comment->id . "DelCom" ?>" onclick="SuppComEtRefresh(<?= $comment->id ?>)"><i class="material-icons">delete</i></button>
                                     </td>
 
                                 </tr>
@@ -138,7 +138,7 @@ endif ?>
 
                                     <td><?= $admin->pseudo ?></td>
                                     <td><?= $admin->email ?></td>
-                                    <td><button class="btn" id="<?= $admin->id ?>" onclick="SuppEtRefresh(<?= $admin->id ?>)"><i class="material-icons">delete</i></button></td>
+                                    <td><button class="btn red" id="<?= $admin->id ?>" onclick="SuppEtRefresh(<?= $admin->id ?>)"><i class="material-icons">delete</i></button></td>
 
                                 </tr>
 

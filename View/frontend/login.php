@@ -71,16 +71,12 @@
         <?php endif;
         endif; ?>
         <div class="col s12 l12">
-
             <div class="row">
-
                 <div class="col s12 m8 l4 offset-m2 offset-l1">
-
                     <div class="card-panel white z-depth-5">
                         <div class="row">
 
                             <form action="checkLogin" method="post">
-
                                 <div class="row">
 
                                     <h4 class="center-align">Se connecter</h4>
@@ -101,7 +97,6 @@
                                 <div class="center">
                                     <button type="submit" name="submit1" class="waves-effect waves-light btn cyan darken-2">Se connecter</button>
                                 </div>
-
                             </form>
                         </div>
                     </div>
@@ -109,19 +104,16 @@
 
 
                 <div class="col s12 m8 l4 offset-m2 offset-l1">
-
                     <div class="card-panel white z-depth-5">
                         <div class="row">
-
                             <form action="newUser" method="post">
-
                                 <div class="row">
 
                                     <h4 class="center-align">S'inscrire</h4>
 
                                     <div class="input-field col s12 m12 l12">
-                                        <input type="text" name="pseudo" id="pseudo">
-                                        <label for="pseudo">Pseudo</label>
+                                        <input type="text" name="newpseudo" id="newpseudo">
+                                        <label for="newpseudo">Pseudo</label>
                                     </div>
 
                                     <div class="input-field col s12 m12 l12">
@@ -135,8 +127,8 @@
                                     </div>
 
                                     <div class="input-field col s12 l6">
-                                        <input type="password" name="password" id="password">
-                                        <label for="password">Mot de passe</label>
+                                        <input type="password" name="newpassword" id="newpassword">
+                                        <label for="newpassword">Mot de passe</label>
                                     </div>
 
                                     <div class="input-field col s12 l6">
@@ -148,13 +140,9 @@
                                 <div class="center">
                                     <button type="submit" name="submit2" class="waves-effect waves-light btn cyan darken-2">S'inscrire</button>
                                 </div>
-
                             </form>
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
         </div>

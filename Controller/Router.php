@@ -78,7 +78,7 @@ class Router
                         // Poste un nouveau commentaire
                     case 'addNewComment':
                         if (!empty($_POST['id_story']) && !empty($_SESSION['username']) && !empty($_POST['comment_title']) && !empty($_POST['comment']) && !empty($_POST['note'])) :
-                            $this->FrontendController->addUserComment($_POST['id_story'], $_SESSION['username'], $_POST['comment_title'], $_POST['comment'], $_POST['note']);
+                            $this->FrontendController->addUserComment($_POST['id_story'], $_SESSION['username'], htmlspecialchars(trim($_POST['comment_title'])), htmlspecialchars(trim($_POST['comment'])), $_POST['note']);
                             $this->FrontendController->comments('1');
                         else :
                             throw new Exception('Tous les champs ne sont pas remplis !');
@@ -312,7 +312,6 @@ class Router
                     case 'deleteAdmin':
                         if (isset($_GET['id']) && $_GET['id'] > 0) :
                             $this->BackendController->deleteAdmin($_GET['id']);
-                        //$this->BackendController->adminDashboard();
                         else :
                             throw new Exception('Aucun identifiant de compte envoyé');
                         endif;
@@ -322,7 +321,7 @@ class Router
                         // Ajouter les droits d'administration d'un utilisateur (admin)
                     case 'addAdmin':
                         if (isset($_POST['pseudo'])) :
-                            $this->BackendController->addAdmin($_POST['pseudo']);
+                            $this->BackendController->addAdmin(htmlspecialchars(trim($_POST['pseudo'])));
                             $this->BackendController->adminDashboard();
                         else :
                             throw new Exception('Aucun pseudo envoyé');
@@ -333,8 +332,8 @@ class Router
                         // Si URL = checklogin, vérifie que les champs ne soient pas vides, s'ils sont valides : dashboard, sinon page login
                     case 'checklogin':
                         if (!empty($_POST['pseudo']) && !empty($_POST['password'])) :
-                            if ($this->FrontendController->checkLogin($_POST['pseudo'], $_POST['password']) == 1) :
-                                $_SESSION['username'] = $_POST['pseudo'];
+                            if ($this->FrontendController->checkLogin(htmlspecialchars(trim($_POST['pseudo'])), htmlspecialchars(trim($_POST['password']))) == 1) :
+                                $_SESSION['username'] = htmlspecialchars(trim($_POST['pseudo']));
 
 
                                 if ($this->FrontendController->checkAdmin() == 1) :
@@ -354,13 +353,13 @@ class Router
 
                         // Ajouter un nouvel administrateur ou modérateur 
                     case 'newUser':
-                        if (!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['repeat_email']) && !empty($_POST['password']) && !empty($_POST['repeat_password'])) :
-                            if ($_POST['email'] == $_POST['repeat_email'] && $_POST['password'] == $_POST['repeat_password']) :
+                        if (!empty($_POST['newpseudo']) && !empty($_POST['email']) && !empty($_POST['repeat_email']) && !empty($_POST['newpassword']) && !empty($_POST['repeat_password'])) :
+                            if ($_POST['email'] == $_POST['repeat_email'] && $_POST['newpassword'] == $_POST['repeat_password']) :
 
-                                if ($this->FrontendController->checkUser($_POST['pseudo']) == 0) :
+                                if ($this->FrontendController->checkUser(htmlspecialchars(trim($_POST['newpseudo']))) == 0) :
 
-                                    $this->FrontendController->addUser($_POST['pseudo'], $_POST['email'], $_POST['password']);
-                                    $_SESSION['username'] = $_POST['pseudo'];
+                                    $this->FrontendController->addUser(htmlspecialchars(trim($_POST['newpseudo'])), htmlspecialchars(trim($_POST['email'])), htmlspecialchars(trim($_POST['newpassword'])));
+                                    $_SESSION['username'] = htmlspecialchars(trim($_POST['newpseudo']));
                                     $this->FrontendController->usersDashboard();
                                 else :
                                     throw new Exception('Le pseudo existe déjà !');
