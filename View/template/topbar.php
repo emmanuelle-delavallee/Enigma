@@ -1,8 +1,7 @@
 <!-- Vérification de session -->
 <?php
-if (!isset($_SESSION['admin'])) {
-    $_SESSION['admin'] = '';
-} ?>
+if (!isset($_SESSION['admin'])) : $_SESSION['admin'] = '';
+endif ?>
 
 <!-- MENU TOP GRANDES RESOLUTIONS -->
 <div class="navbar-fixed">
@@ -21,26 +20,17 @@ if (!isset($_SESSION['admin'])) {
                     <li><a class="waves-effect waves-light" href="comments-1">Avis</a></li>
 
                     <!-- Si session admin en cours, affiche le bouton administration-->
-                    <?php
-                    if ($_SESSION['admin'] == "VRAI") {
-                    ?>
+                    <?php if ($_SESSION['admin'] == "VRAI") : ?>
                         <li><a class="waves-effect waves-light btn cyan darken-2" href="adminDashboard">Admin</a></li>
-                    <?php
-                    }
-                    ?>
+                    <?php endif ?>
 
                     <!-- Si utilisateur connecté, affiche les boutons Mon espace personnel et Déconnexion, Si pas de session utilisateur en cours, affiche le bouton Connexion-->
-                    <?php
-                    if (isset($_SESSION['username']) && $_SESSION['username'] != "") {
-                    ?>
+                    <?php if (isset($_SESSION['username']) && $_SESSION['username'] != "") : ?>
                         <li><a class="waves-effect waves-light btn grey darken-3" href="usersDashboard">Mon espace</a></li>
                         <li><a class="waves-effect waves-light btn grey darken-3" href="logout"><i class="material-icons">exit_to_app</i></a></li>
-                    <?php } else {
-                    ?>
+                    <?php else : ?>
                         <li><a class="waves-effect waves-light btn grey darken-3" href="login">Connexion</a></li>
-                    <?php
-                    }
-                    ?>
+                    <?php endif ?>
                 </ul>
             </div>
         </div>
@@ -57,30 +47,22 @@ if (!isset($_SESSION['admin'])) {
             <div class="background">
                 <img src="Public/img/backgrounds/background.jpg" alt="background_image">
             </div>
-            <?php
-            if (isset($_SESSION['username']) && $_SESSION['username'] != "") {
-            ?>
+            <?php if (isset($_SESSION['username']) && $_SESSION['username'] != "") : ?>
                 <a href="#name"><span class="white-text name">Bonjour<?= '' . $_SESSION['username'] ?>,</span></a>
-            <?php
-            } else {    ?>
+            <?php else : ?>
                 <a href="#name"><span class="white-text name">Bonjour,</span></a>
-            <?php
-            }    ?>
+            <?php endif ?>
             <p class="white-text">Prêt·e pour une nouvelle aventure ?</p>
         </div>
     </li>
 
     <!-- Si session admin en cours, affiche le bouton administration-->
-    <?php
-    if ($_SESSION['admin'] == "VRAI") {
-    ?>
+    <?php if ($_SESSION['admin'] == "VRAI") : ?>
         <li><a class="waves-effect waves-light" href="adminDashboard">Administration</a></li>
         <li>
             <div class="divider"></div>
         </li>
-    <?php
-    }
-    ?>
+    <?php endif ?>
 
 
     <li><a href="home" class="waves-effect waves-light">Accueil</a></li>
@@ -94,15 +76,10 @@ if (!isset($_SESSION['admin'])) {
 
 
     <!-- Si utilisateur connecté, affiche les boutons Mon espace personnel et Déconnexion, Si pas de session utilisateur en cours, affiche le bouton Connexion-->
-    <?php
-    if (isset($_SESSION['username']) && $_SESSION['username'] != "") {
-    ?>
+    <?php if (isset($_SESSION['username']) && $_SESSION['username'] != "") :    ?>
         <li><a class="waves-effect waves-light" href="usersDashboard">Mon espace</a></li>
         <li><a class="waves-effect waves-light" href="logout">Déconnexion</a></li>
-    <?php } else {
-    ?>
+    <?php else : ?>
         <li><a class="waves-effect waves-light" href="login">Connexion</a></li>
-    <?php
-    }
-    ?>
+    <?php endif ?>
 </ul>

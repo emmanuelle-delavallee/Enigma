@@ -1,29 +1,23 @@
 <?php $this->title = "Enigma - Les aventures"; ?>
 
-
 <h2 class="center-align page-title">Les aventures</h2>
 
-<div class="carousel carousel-slider" id="play-carousel">
-    <?php
-    if ($imgs != false) {
-        foreach ($imgs as $img) {
-    ?>
-            <a class="carousel-item" href="#one!"><img src="Public/img/<?= $img->image ?>" alt="carousel-image"></a>
-    <?php
-        }
-    }
-    ?>
+<!-- CAROUSEL DE PRESENTATION -->
+<div class="col s12 m12 l12">
+    <div class="carousel carousel-slider" id="play-carousel">
+        <?php if ($imgs != false) :
+            foreach ($imgs as $img) : ?>
+                <a class="carousel-item" href="#one!"><img src="Public/img/<?= $img->image ?>" alt="carousel-image"></a>
+        <?php endforeach;
+        endif ?>
+    </div>
 </div>
 
-
+<!-- CARTES DES ENIGMES -->
 <div class="col s12 m12 l12">
-
-
     <div class="row">
-        <?php
-        if ($responses != false) {
-            foreach ($responses as $response) {
-        ?>
+        <?php if ($responses != false) :
+            foreach ($responses as $response) : ?>
                 <div class="col col s12 m6 l4">
                     <div class="card">
 
@@ -38,12 +32,7 @@
                         </div>
                     </div>
                 </div>
-
-        <?php
-            }
-        }
-        ?>
-
+        <?php endforeach;
+        endif ?>
     </div>
-
 </div>

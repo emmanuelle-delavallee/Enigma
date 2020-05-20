@@ -64,6 +64,8 @@ $(document).ready(function () {
   $("#idNote").click(function () {
     modifyBtn();
   });
+
+  /*ABLE/DISABLE BTN POST COMMENT*/
   function modifyBtn() {
     var title = $("#comment_title").val();
     var textarea = $("#comment-textarea").val();
@@ -115,8 +117,6 @@ $(document).ready(function () {
     $(".admins-slide-hide").slideToggle();
   });
 
-  $("#YourElementID").css("display", "block");
-
   /*MENU LATERAL*/
   $(".sidenav").sidenav();
 
@@ -128,33 +128,72 @@ $(document).ready(function () {
     fullWidth: true,
   });
 });
-
+/* AFFICHE OU DESAFFICHE BTN SELON LES CHOIX DE L'UTILISATEUR */
 function showDiscuter() {
-  document.getElementById("discuter").style.display = "none";
-  document.getElementById("intro").style.display = "none";
-  document.getElementById("tirer").style.display = "none";
-  document.getElementById("fuire").style.display = "block";
-  document.getElementById("saloon").style.display = "block";
-  document.getElementById("madalton").style.display = "block";
-  document.getElementById("disscuss").style.display = "block";
+  var elmts = document.getElementsByClassName("premier");
+  for (var i = 0; i < elmts.length; i++) {
+    elmts[i].style.display = "none";
+  }
+  var elmts2 = document.getElementsByClassName("discuter");
+  for (var i = 0; i < elmts2.length; i++) {
+    elmts2[i].style.display = "block";
+  }
 }
 
 function showTirer() {
-  document.getElementById("discuter").style.display = "none";
-  document.getElementById("intro").style.display = "none";
-  document.getElementById("tirer").style.display = "none";
-  document.getElementById("fuire").style.display = "block";
-  document.getElementById("lasso1").style.display = "block";
-  document.getElementById("désarmer").style.display = "block";
-  document.getElementById("capture").style.display = "block";
+  var elmts = document.getElementsByClassName("premier");
+  for (var i = 0; i < elmts.length; i++) {
+    elmts[i].style.display = "none";
+  }
+  var elmts2 = document.getElementsByClassName("tirer");
+  for (var i = 0; i < elmts2.length; i++) {
+    elmts2[i].style.display = "block";
+  }
 }
 
 function showDesarmer() {
-  document.getElementById("lasso1").style.display = "none";
-  document.getElementById("désarmer").style.display = "none";
-  document.getElementById("fuire").style.display = "none";
-  document.getElementById("fuire").style.display = "block";
-  document.getElementById("lasso2").style.display = "block";
-  document.getElementById("Lelasso").style.display = "block";
-  document.getElementById("capture").style.display = "none";
+  var elmts = document.getElementsByClassName("tirer");
+  for (var i = 0; i < elmts.length; i++) {
+    elmts[i].style.display = "none";
+  }
+  var elmts2 = document.getElementsByClassName("désarmer");
+  for (var i = 0; i < elmts2.length; i++) {
+    elmts2[i].style.display = "block";
+  }
+}
+
+/* SUPPRIME UN ADMIN ET REFRESH UNIQUEMENT LA SECTION ADMIN DE ADMINDASHBOARD */
+function SuppEtRefresh(id) {
+  $.ajax({
+    url: "admin-" + id + "-deleted",
+    success: function (result) {
+      $("#reloadableContainer").load(
+        "View/backend/adminDashboard.php #reloadableContent"
+      );
+    },
+  });
+}
+
+/* VALIDE UN COM ET REFRESH UNIQUEMENT LA SECTION COM DE ADMINDASHBOARD */
+function ValidComEtRefresh(id) {
+  $.ajax({
+    url: "comment-" + id + "-validated",
+    success: function (result) {
+      $("#reloadableContainerCom").load(
+        "View/backend/adminDashboard.php #reloadableContentCom"
+      );
+    },
+  });
+}
+
+/* SUPPRIME UN COM ET REFRESH UNIQUEMENT LA SECTION COM DE ADMINDASHBOARD */
+function SuppComEtRefresh(id) {
+  $.ajax({
+    url: "comment-" + id + "-deleted",
+    success: function (result) {
+      $("#reloadableContainerCom").load(
+        "View/backend/adminDashboard.php #reloadableContentCom"
+      );
+    },
+  });
 }

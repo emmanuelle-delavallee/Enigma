@@ -60,7 +60,7 @@ class FrontendController
 
 
     // Page commentaires, récupère les commentaires avec pour valeur 0 ou 1
-    function comments($page)
+    function comments($page = 1)
     {
         $pagetotal = $this->CommentsManager->getPagesComments();
         $responses = $this->CommentsManager->getComments($page);
@@ -107,7 +107,12 @@ class FrontendController
         $responses = $this->Enigma1Manager->Enigma1Answer($id, $step);
         $helps = $this->Enigma1Manager->Enigma1Help($id, $step);
 
-        return $this->ViewManager->render('frontend/enigma' . $id . '/enigma' . $id . '-step' . $step, ['']);
+
+
+        return $this->ViewManager->render('frontend/enigma' . $id . '/enigma' . $id . '-step' . $step, [
+            'responses' => $responses,
+            'helps' => $helps
+        ]);
     }
 
 
@@ -178,7 +183,7 @@ class FrontendController
     // Page des mentions légales
     function legal()
     {
-        return $this->ViewManager->render('frontend/legal', ['']);
+        return $this->ViewManager->render('template/legal', ['']);
     }
 
     // User ajout image

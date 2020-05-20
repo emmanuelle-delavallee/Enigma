@@ -19,8 +19,7 @@ class CommentsManager extends Manager
     // FRONT : Récupére et affiche les commentaires avec pour valeur 0 ou 1
     public function getComments($page)
     {
-        $com_min = ($page - 1) * 5 + 1;
-        $com_max = $page * 5;
+        $com_min = ($page - 1) * 5;
 
         $sql = "
         SELECT users_comments.id,
@@ -36,7 +35,7 @@ class CommentsManager extends Manager
         INNER JOIN users ON users.id = users_comments.id_user
         INNER JOIN stories ON stories.id = users_comments.id_story
         WHERE (comment_status = '0' or comment_status = '1')
-        ORDER BY date DESC LIMIT " . $com_min . "," . $com_max . " 
+        ORDER BY id DESC LIMIT " . $com_min . ", 5 
         "; // Ne peut pas être transmis via ? et tableau car sinon les chiffres sont transmis en texte et ça ne marche pas 
 
         return $this->createQuery($sql);
@@ -56,12 +55,12 @@ class CommentsManager extends Manager
 
         $res_reqs = $this->createQuery($sql);
         $nb_commentaire = 0;
-        foreach ($res_reqs  as   $res_req) {
+        foreach ($res_reqs  as   $res_req) :
 
-            if ($res_req->nb_com > 0) {
+            if ($res_req->nb_com > 0) :
                 $nb_commentaire = ceil($res_req->nb_com / 5);
-            }
-        }
+            endif;
+        endforeach;
 
         return $nb_commentaire;
     }
@@ -92,9 +91,9 @@ class CommentsManager extends Manager
     public function warnAComment($commentid)
     {
 
-        $sql = "UPDATE users_comments SET comment_status='2'  WHERE id=" . $commentid;
+        $sql = "UPDATE users_comments SET comment_status='2'  WHERE id=?";
 
-        return $this->createQuery($sql);
+        return $this->createQuery($sql, [$commentid]);
     }
 
 
@@ -129,7 +128,7 @@ class CommentsManager extends Manager
     // BACK : Valider un commentaire
     public function validAComment($commentid)
     {
-        $sql = "UPDATE users_comments SET comment_status='1'  WHERE id=" . $commentid;
+        $sql = "UPDATE users_comments SET comment_status='1'  WHERE id=?";
         $this->createQuery($sql, [$commentid]);
     }
 
@@ -139,7 +138,7 @@ class CommentsManager extends Manager
     // BACK : Supprimer un commentaire mais le conserver en base
     public function deleteAComment($commentid)
     {
-        $sql = "UPDATE users_comments SET comment_status='3'  WHERE id=" . $commentid;
+        $sql = "UPDATE users_comments SET comment_status='3'  WHERE id=?";
 
         $this->createQuery($sql, [$commentid]);
     }

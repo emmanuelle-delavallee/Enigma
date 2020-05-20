@@ -23,8 +23,8 @@ class Enigma1Manager extends Manager
     {
         $sql = "
                 SELECT text
-                FROM help 
-                WHERE help='0' 
+                from help 
+                WHERE help='0'
                 and id_story = ? 
                 and id_step = ?
             ";

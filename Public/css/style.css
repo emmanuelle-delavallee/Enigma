@@ -51,25 +51,41 @@ body {
   text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
-.page-txt {
-  margin: 2rem 0 5rem 0;
-}
-
 .page-footer {
   padding-top: 0;
 }
 
-/*HOME*/
-.iris {
-  background-image: url("../img/backgrounds/background.jpg");
+/*BACKGROUNDS*/
+
+.common-background {
   background-repeat: no-repeat;
-  min-height: 120vh;
+  min-height: 86vh;
   background-size: cover;
   background-position: center;
 }
 
+.iris-background {
+  background-image: url("../img/backgrounds/background.jpg");
+  min-height: 120vh;
+}
+
+.blue-background {
+  background-image: url("../img/backgrounds/pages-background.jpg");
+}
+
+.comments-background {
+  background-image: url("../../Public/img/backgrounds/comments-background.jpg");
+}
+
+.background-login {
+  background-image: url("../img/backgrounds/background-log.jpg");
+  min-height: 100vh;
+}
+
+/*HOME*/
+
 .home-container {
-  padding: 5rem 15rem 17rem 15rem;
+  padding: 5rem 15rem 10rem 15rem;
 }
 
 .home-page-title {
@@ -83,15 +99,7 @@ body {
   animation: tracking-in-expand-fwd 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
 }
 
-/*DISCOVER & COMMENTS*/
-
-.pages-background {
-  background-image: url("../img/backgrounds/pages-background.jpg");
-  background-repeat: no-repeat;
-  min-height: auto;
-  background-size: cover;
-  background-position: center;
-}
+/*DISCOVER*/
 
 .discover-container {
   padding: 2rem 0 2rem 0;
@@ -108,18 +116,14 @@ body {
 
 /*PLAY*/
 #play-carousel {
-  margin-bottom: 250px;
+  margin-bottom: 10%;
+}
+
+.card-title {
+  margin-top: 0px;
 }
 
 /*COMMENTS*/
-
-.comments-background {
-  background-image: url("../../Public/img/backgrounds/comments-background.jpg");
-  background-repeat: no-repeat;
-  min-height: 86vh;
-  background-size: cover;
-  background-position: center;
-}
 
 .comm-card {
   padding: 30px 10px 10px 30px;
@@ -171,11 +175,18 @@ body {
 }
 
 .enigma-img {
-  margin: 2rem 0 2rem 0;
+  margin: 2rem auto 2rem auto;
+  display: block;
 }
 
 .enigma-submit-btn {
   margin: 1rem 0 1rem 0;
+}
+
+.asterix-table,
+.asterix-table-title {
+  word-wrap: break-word;
+  max-width: 50px;
 }
 
 /*CANVAS*/
@@ -190,21 +201,12 @@ body {
   border: 1px solid #cecece;
   margin: 0 auto 40px;
   display: block;
+  background-size: cover;
   background-image: url("../img/lucky_luke/laby.png");
 }
 
 .btn-choices {
   margin: 25px 25px 25px 25px;
-}
-
-/*LOGIN*/
-
-.background-login {
-  background-image: url("../img/backgrounds/background-log.jpg");
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center;
 }
 
 /*ESPACE PERSONNEL*/
@@ -215,17 +217,44 @@ body {
   margin-top: 5px;
 }
 
-.asterix-table {
-  word-wrap: break-word;
-  max-width: 50px;
-}
-
 .btn-userdasboard-stories-img {
   margin-right: 25px;
 }
 
-/*UPADTE ENIGMAS ADMIN*/
+/*Media queries : tablettes*/
+@media screen and (max-width: 768px) {
+  .home-container {
+    padding: 5rem 5rem 5rem 5rem;
+  }
 
-.background-up-enigm {
-  min-height: 85vh;
+  #canvas {
+    width: 480px;
+    height: 360px;
+  }
+
+  .discover-container {
+    padding: 0 0 0 0;
+  }
+
+  .discover-txt {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .asterix-table {
+    word-wrap: break-word;
+    min-width: 200px;
+  }
+  .asterix-table-title {
+    word-wrap: break-word;
+    min-width: 100px;
+  }
+}
+
+/*Media queries : mobiles*/
+@media screen and (max-width: 425px) {
+  #canvas {
+    width: 320px;
+    height: 240px;
+  }
 }

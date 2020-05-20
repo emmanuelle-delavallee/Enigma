@@ -1,7 +1,7 @@
 <?php $this->title = "Enigma - Aventure 2"; ?>
 
 </div>
-<div class="container">
+<div class="container common-background">
     <div class="col s12">
 
         <div class="fixed-action-btn">
@@ -16,9 +16,9 @@
 
 
         <?php
-        if (isset($_POST['submit22'])) {
+        if (isset($_POST['submit22'])) :
 
-            if (isset($_POST['answer22'])) {
+            if (isset($_POST['answer22'])) :
 
                 $answer22 = $_POST['answer22'];
 
@@ -27,32 +27,29 @@
                 $errors = [];
 
                 // Vérifie que les champs ont bien été complétés
-                if (empty($answer22)) {
+                if (empty($answer22)) :
                     $errors['empty'] = "Il faut indiquer une réponse !";
-                } else {
-                    if ($answer22 != "3") {
+                else :
+                    if ($answer22 != "3") :
                         $errors['erreur'] = "Mauvaise réponse ! Réessayer ";
-                    }
-                }
-            } else {
+                    endif;
+                endif;
+            else :
                 $errors['empty'] = "Il faut indiquer une réponse !";
-            }
+            endif;
             // Affiche les erreurs si existantes
-            if (!empty($errors)) {
+            if (!empty($errors)) :
         ?>
                 <div class="card red error-message">
                     <div class="card-content white-text">
-                        <?php
-                        foreach ($errors as $error) {
-                            echo $error . "<br/>";
-                        }
-
-                        ?>
+                        <?php foreach ($errors as $error) : ?>
+                            <p><?= $error ?><br /></p>
+                        <?php endforeach ?>
                     </div>
                 </div>
         <?php
-            }
-        }
+            endif;
+        endif;
         ?>
 
 
@@ -64,11 +61,11 @@
             <div class="modal-content">
                 <h4 class="center">Indice</h4>
                 <p>
-                    <?php if (!empty($helps)) {
-                        foreach ($helps as $help) {
-                            echo $help->text;
-                        }
-                    }
+                    <?php if (!empty($helps)) :
+                        foreach ($helps as $help) : ?>
+                            <?= $help->text ?>
+                    <?php endforeach;
+                    endif;
                     ?>
                 </p>
             </div>
@@ -83,11 +80,11 @@
             <div class="modal-content">
                 <h4 class="center">Solution</h4>
                 <p>
-                    <?php if (!empty($responses)) {
-                        foreach ($responses as $response) {
-                            echo $response->text;
-                        }
-                    }
+                    <?php if (!empty($responses)) :
+                        foreach ($responses as $response) : ?>
+                            <?= $response->text ?>
+                    <?php endforeach;
+                    endif;
                     ?>
                 </p>
             </div>
@@ -97,8 +94,8 @@
         </div>
 
         <!-- IMAGE-->
-        <div class="col s12 m12 l10 center enigma-img">
-            <img src="Public/img/asterix/asterix-2-4.png" alt="asterix_image">
+        <div class="col s12 m12 l10">
+            <img src="Public/img/asterix/asterix-2-4.png" class="materialboxed responsive-img enigma-img" alt="asterix_image">
         </div>
 
         <!-- REPONSE-->
@@ -125,6 +122,5 @@
                 </form>
             </div>
         </div>
-
     </div>
 </div>
