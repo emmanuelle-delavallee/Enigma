@@ -47,7 +47,7 @@ endif ?>
                                                         <?php
                                                         if ($indice->help == "0") : ?>
 
-                                                            <h5 class='center'>Etape <?= $indice->id_step ?>: modifier la réponse</h5>
+                                                            <h5 class='center'>Etape <?= $indice->id_step ?> : modifier la solution</h5>
                                                         <?php else : ?>
 
                                                             <h5 class='center'>Etape <?= $indice->id_step ?> : modifier l'indice</h5>

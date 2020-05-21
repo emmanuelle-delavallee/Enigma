@@ -64,10 +64,10 @@ endif ?>
                 <table class="responsive-table">
                     <thead>
                         <tr>
-                            <th>Enigme</th>
-                            <th>Titre du commentaire</th>
                             <th>Auteur</th>
-                            <th> </th>
+                            <th>Titre du commentaire</th>
+                            <th>Commentaire</th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -76,16 +76,12 @@ endif ?>
                         <?php if (!empty($comments)) :
                             foreach ($comments as $comment) : ?>
                                 <tr>
-
-                                    <td><?= $comment->name ?></td>
-
-                                    <td><?php if ($comment->comment_status == '2') : ?> <i class="material-icons red-text text-darken-1 left"> priority_high</i> <?php endif ?> <?= $comment->comment_title ?> </td>
-
                                     <td><?= $comment->pseudo ?></td>
+                                    <td><?php if ($comment->comment_status == '2') : ?> <i class="material-icons red-text text-darken-1 left"> priority_high</i> <?php endif ?> <?= $comment->comment_title ?> </td>
+                                    <td><?= nl2br($comment->comment)  ?></td>
                                     <td><button class="btn cyan darken-2" id="<?= $comment->id . "AddComm" ?>" onclick="ValidComEtRefresh(<?= $comment->id ?>)"><i class="material-icons">done</i></button>
                                         <button class="btn red" id="<?= $comment->id . "DelCom" ?>" onclick="SuppComEtRefresh(<?= $comment->id ?>)"><i class="material-icons">delete</i></button>
                                     </td>
-
                                 </tr>
 
                             <?php endforeach;
