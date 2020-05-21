@@ -2,10 +2,8 @@
 
 namespace Enigma;
 
-
 require 'Controller/BackendController.php';
 require 'Controller/FrontendController.php';
-
 
 use Exception;
 

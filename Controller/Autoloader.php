@@ -5,8 +5,6 @@ namespace Enigma;
 
 class Autoloader
 {
-
-
     //Enregistre l'autoloader
     static function register()
     {
